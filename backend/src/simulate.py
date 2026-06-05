@@ -4,7 +4,7 @@ import numpy as np
 from joblib import Parallel, delayed
 
 from .elo import DEFAULT_RATING
-from .poisson import lambda_from_elo, score_matrix
+from .poisson import RHO, lambda_from_elo, score_matrix
 
 # Official FIFA 2026 group draw
 FIFA_2026_GROUPS = {
@@ -36,8 +36,8 @@ HOST_NATIONS = {"USA", "Canada", "Mexico"}
 HOME_ELO_BOOST = 75
 
 
-def _draw_score(lam: float, mu: float, rng: np.random.Generator) -> tuple[int, int]:
-    mat = score_matrix(lam, mu)
+def _draw_score(lam: float, mu: float, rng: np.random.Generator, rho: float = RHO) -> tuple[int, int]:
+    mat = score_matrix(lam, mu, rho=rho)
     flat = mat.flatten()
     idx = rng.choice(len(flat), p=flat)
     x, y = divmod(idx, mat.shape[1])
@@ -50,6 +50,7 @@ def simulate_match(
     ratings: dict[str, float],
     rng: np.random.Generator,
     allow_draw: bool = True,
+    rho: float = RHO,
 ) -> tuple[int, int]:
     r_a = ratings.get(team_a, DEFAULT_RATING)
     r_b = ratings.get(team_b, DEFAULT_RATING)
@@ -60,9 +61,8 @@ def simulate_match(
     elif b_host and not a_host:
         r_b += HOME_ELO_BOOST
     lam, mu = lambda_from_elo(r_a, r_b)
-    goals_a, goals_b = _draw_score(lam, mu, rng)
+    goals_a, goals_b = _draw_score(lam, mu, rng, rho=rho)
     if not allow_draw and goals_a == goals_b:
-        # 50/50 extra-time / penalties coin flip
         if rng.random() < 0.5:
             goals_a += 1
         else:
@@ -74,13 +74,14 @@ def simulate_group(
     group_teams: list[str],
     ratings: dict[str, float],
     rng: np.random.Generator,
+    rho: float = RHO,
 ) -> list[dict]:
     records: dict[str, dict] = {
         t: {"team": t, "pts": 0, "gd": 0, "gf": 0} for t in group_teams
     }
     for i, home in enumerate(group_teams):
         for away in group_teams[i + 1 :]:
-            gh, ga = simulate_match(home, away, ratings, rng, allow_draw=True)
+            gh, ga = simulate_match(home, away, ratings, rng, allow_draw=True, rho=rho)
             records[home]["gf"] += gh
             records[away]["gf"] += ga
             records[home]["gd"] += gh - ga
@@ -110,9 +111,10 @@ def _third_place_score(row: dict) -> tuple:
 def simulate_groups(
     ratings: dict[str, float],
     rng: np.random.Generator,
+    rho: float = RHO,
 ) -> dict[str, list[dict]]:
     return {
-        gid: simulate_group(teams, ratings, rng)
+        gid: simulate_group(teams, ratings, rng, rho=rho)
         for gid, teams in FIFA_2026_GROUPS.items()
     }
 
@@ -164,12 +166,13 @@ def play_knockout(
     teams: list[tuple[str, str]],
     ratings: dict[str, float],
     rng: np.random.Generator,
+    rho: float = RHO,
 ) -> str:
     """Single-elimination: list of (team_a, team_b) pairs → winner of tournament."""
     while len(teams) > 1:
         next_round: list[tuple[str, str]] = []
         for a, b in teams:
-            ga, gb = simulate_match(a, b, ratings, rng, allow_draw=False)
+            ga, gb = simulate_match(a, b, ratings, rng, allow_draw=False, rho=rho)
             winner = a if ga > gb else b
             next_round.append((winner, winner))  # placeholder pairing
         # Re-pair winners sequentially
@@ -184,18 +187,19 @@ def play_knockout(
 def simulate_tournament(
     ratings: dict[str, float],
     rng: np.random.Generator,
+    rho: float = RHO,
 ) -> str:
-    group_results = simulate_groups(ratings, rng)
+    group_results = simulate_groups(ratings, rng, rho=rho)
     slots, _ = get_qualifiers(group_results)
     r32 = _build_r32(slots)
-    return play_knockout(r32, ratings, rng)
+    return play_knockout(r32, ratings, rng, rho=rho)
 
 
-def _batch(ratings: dict[str, float], n: int, seed: int) -> dict[str, int]:
+def _batch(ratings: dict[str, float], n: int, seed: int, rho: float = RHO) -> dict[str, int]:
     rng = np.random.default_rng(seed)
     counts: dict[str, int] = {}
     for _ in range(n):
-        winner = simulate_tournament(ratings, rng)
+        winner = simulate_tournament(ratings, rng, rho=rho)
         counts[winner] = counts.get(winner, 0) + 1
     return counts
 
@@ -204,6 +208,7 @@ def run_simulations(
     ratings: dict[str, float],
     n: int = 10_000,
     n_jobs: int = -1,
+    rho: float = RHO,
 ) -> dict[str, int]:
     n_cpu = __import__("os").cpu_count() or 4
     workers = n_cpu if n_jobs == -1 else max(1, n_jobs)
@@ -212,7 +217,7 @@ def run_simulations(
     batches[-1] += n - sum(batches)  # absorb remainder
 
     results = Parallel(n_jobs=workers)(
-        delayed(_batch)(ratings, b, seed=i * 999983)
+        delayed(_batch)(ratings, b, seed=i * 999983, rho=rho)
         for i, b in enumerate(batches)
     )
 
