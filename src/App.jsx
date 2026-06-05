@@ -59,7 +59,7 @@ export default function App() {
           </div>
           <div className="text-right text-[10px] text-[var(--muted)] pb-1">
             <div>Updated</div>
-            <div className="font-mono">{data.generated_at.slice(0, 16).replace('T', ' ')} UTC</div>
+            <div className="font-mono">{new Date(data.generated_at).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })}</div>
           </div>
         </div>
 
