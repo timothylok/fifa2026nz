@@ -1,3 +1,5 @@
+import math
+
 import pandas as pd
 
 DEFAULT_RATING = 1500.0
@@ -37,11 +39,15 @@ def update_rating(
 def build_ratings(matches_df: pd.DataFrame) -> dict[str, float]:
     ratings: dict[str, float] = {}
     df = matches_df.sort_values("date").reset_index(drop=True)
-    for _, row in df.iterrows():
+    dates = pd.to_datetime(df["date"])
+    ref_date = dates.max()
+    for (_, row), match_date in zip(df.iterrows(), dates):
+        delta_years = (ref_date - match_date).days / 365.25
+        k = K * math.exp(-delta_years / 2)
         home, away = row["home_team"], row["away_team"]
         r_h = ratings.get(home, DEFAULT_RATING)
         r_a = ratings.get(away, DEFAULT_RATING)
-        new_h, new_a = update_rating(r_h, r_a, int(row["home_goals"]), int(row["away_goals"]))
+        new_h, new_a = update_rating(r_h, r_a, int(row["home_goals"]), int(row["away_goals"]), k=k)
         ratings[home] = new_h
         ratings[away] = new_a
     return ratings
