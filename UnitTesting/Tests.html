@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIFA 2026 — Test Suite</title>
+  <style>
+    :root {
+      --bg: #0f1117; --surface: #1a1d27; --border: #2a2d3a;
+      --text: #e8eaf0; --muted: #6b7280; --accent: #4f9eff;
+      --pass: #22c55e; --fail: #ef4444; --skip: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: system-ui, sans-serif; padding: 2rem; }
+    h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .meta { color: var(--muted); font-size: 0.8rem; margin-bottom: 2rem; }
+    .summary-bar { display: flex; gap: 1.5rem; background: var(--surface); border: 1px solid var(--border);
+                   border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 2rem; align-items: center; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-val { font-size: 2rem; font-weight: 700; }
+    .stat-lbl { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+    .pass-val { color: var(--pass); }
+    .fail-val { color: var(--fail); }
+    .progress { flex: 1; background: var(--border); border-radius: 999px; height: 8px; overflow: hidden; min-width: 120px; }
+    .progress-fill { height: 100%; background: var(--pass); border-radius: 999px; transition: width 0.5s; }
+    .suite-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;
+                   color: var(--accent); margin: 1.5rem 0 0.75rem; font-weight: 600; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th { text-align: left; padding: 0.5rem 0.75rem; font-size: 0.7rem; text-transform: uppercase;
+         letter-spacing: 0.07em; color: var(--muted); border-bottom: 1px solid var(--border); }
+    td { padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--border)/40; vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--surface); }
+    .badge { display: inline-block; padding: 0.2em 0.55em; border-radius: 5px;
+             font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+    .badge-pass { background: var(--pass)/15; color: var(--pass); }
+    .badge-fail { background: var(--fail)/15; color: var(--fail); }
+    .badge-pending { background: var(--skip)/15; color: var(--skip); }
+    .error-msg { color: var(--fail); font-size: 0.75rem; font-family: monospace; margin-top: 0.3rem; }
+    .ms { color: var(--muted); font-size: 0.75rem; font-family: monospace; }
+    .thumb-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.4rem; }
+    .thumb-row a img { width: 80px; height: 50px; object-fit: cover; border-radius: 4px;
+                       border: 1px solid var(--border); opacity: 0.8; transition: opacity 0.2s; }
+    .thumb-row a:hover img { opacity: 1; }
+    .run-selector { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    select { background: var(--surface); color: var(--text); border: 1px solid var(--border);
+             border-radius: 6px; padding: 0.4rem 0.75rem; font-size: 0.85rem; cursor: pointer; }
+    .reload-btn { background: var(--accent)/10; border: 1px solid var(--accent)/30; color: var(--accent);
+                  padding: 0.4rem 0.9rem; border-radius: 6px; font-size: 0.8rem; cursor: pointer; }
+    .reload-btn:hover { background: var(--accent)/20; }
+    .no-data { color: var(--muted); text-align: center; padding: 3rem; font-size: 0.9rem; }
+    .timestamp { color: var(--muted); font-size: 0.75rem; }
+
+    /* Test catalog (static) */
+    .catalog { margin-top: 3rem; }
+    .catalog h2 { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: var(--muted); }
+    .catalog-item { display: flex; gap: 1rem; padding: 0.65rem 0; border-bottom: 1px solid var(--border)/40; align-items: flex-start; }
+    .catalog-id { font-family: monospace; font-size: 0.75rem; color: var(--accent); min-width: 180px; }
+    .catalog-name { font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+<h1>⚽ FIFA 2026 — Test Suite</h1>
+<p class="meta">Playwright browser tests · results loaded from <code>results/latest.json</code></p>
+
+<div class="run-selector">
+  <label style="color:var(--muted);font-size:0.8rem">Run:</label>
+  <select id="runSelect" onchange="loadRun(this.value)">
+    <option value="results/latest.json">Latest</option>
+  </select>
+  <button class="reload-btn" onclick="init()">↻ Refresh</button>
+</div>
+
+<div id="summaryBar" class="summary-bar">
+  <div class="no-data">No results loaded — run <code>node UnitTesting/run-tests.js</code> first.</div>
+</div>
+
+<div id="resultsBody"></div>
+
+<!-- ────────────────────────────────────────────────────── -->
+<!-- STATIC CATALOG — source of truth for all test cases  -->
+<!-- ────────────────────────────────────────────────────── -->
+<div class="catalog">
+  <h2>Test Catalog</h2>
+
+  <div style="color:var(--accent);font-size:0.7rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem">Predict Tab</div>
+  <div class="catalog-item"><span class="catalog-id">predict-renders</span><span class="catalog-name">Predict tab renders 12 group cards</span></div>
+  <div class="catalog-item"><span class="catalog-id">predict-pick-teams</span><span class="catalog-name">Picking 1st and 2nd highlights teams with badges</span></div>
+  <div class="catalog-item"><span class="catalog-id">predict-score-banner</span><span class="catalog-name">Score summary banner appears after first pick</span></div>
+  <div class="catalog-item"><span class="catalog-id">predict-full-score</span><span class="catalog-name">Picking all 12 groups shows 12/12 done and non-zero score</span></div>
+  <div class="catalog-item"><span class="catalog-id">predict-reset</span><span class="catalog-name">Reset button clears all picks</span></div>
+  <div class="catalog-item"><span class="catalog-id">predict-localstorage</span><span class="catalog-name">Picks persist in localStorage and clear on reset</span></div>
+  <div class="catalog-item"><span class="catalog-id">predict-model-expects</span><span class="catalog-name">Model expects section shows 2 teams per group</span></div>
+  <div class="catalog-item"><span class="catalog-id">predict-no-console-errors</span><span class="catalog-name">No console errors on Predict tab</span></div>
+</div>
+
+<script>
+  async function init() {
+    try {
+      const res = await fetch('results/latest.json?' + Date.now())
+      const data = await res.json()
+      render(data, 'results/latest.json')
+    } catch {
+      // no results yet
+    }
+  }
+
+  async function loadRun(path) {
+    try {
+      const res = await fetch(path + '?' + Date.now())
+      const data = await res.json()
+      render(data, path)
+    } catch {}
+  }
+
+  function render(data, path) {
+    const pct = Math.round(data.passed / data.total * 100)
+    document.getElementById('summaryBar').innerHTML = `
+      <div class="stat"><div class="stat-val">${data.total}</div><div class="stat-lbl">Total</div></div>
+      <div class="stat"><div class="stat-val pass-val">${data.passed}</div><div class="stat-lbl">Passed</div></div>
+      <div class="stat"><div class="stat-val fail-val">${data.failed}</div><div class="stat-lbl">Failed</div></div>
+      <div class="progress"><div class="progress-fill" style="width:${pct}%"></div></div>
+      <div class="timestamp">${new Date(data.timestamp).toLocaleString()}<br><span style="font-size:0.7rem">${path}</span></div>
+    `
+
+    // Group by suite
+    const suites = {}
+    for (const r of data.results) {
+      if (!suites[r.suite]) suites[r.suite] = []
+      suites[r.suite].push(r)
+    }
+
+    const runDir = path.replace('latest.json', data.runId + '/')
+                       .replace(/results\.json$/, '')
+
+    let html = ''
+    for (const [suite, results] of Object.entries(suites)) {
+      html += `<div class="suite-title">${suite}</div>
+      <table>
+        <thead><tr><th>Status</th><th>Test</th><th>Time</th><th>Screenshots</th></tr></thead>
+        <tbody>`
+      for (const r of results) {
+        const badge = r.status === 'pass'
+          ? '<span class="badge badge-pass">pass</span>'
+          : '<span class="badge badge-fail">fail</span>'
+        const err = r.error ? `<div class="error-msg">✗ ${r.error}</div>` : ''
+        const thumbs = r.screenshots.length
+          ? `<div class="thumb-row">${r.screenshots.map(s =>
+              `<a href="${runDir}${s}" target="_blank"><img src="${runDir}${s}" alt="${s}"/></a>`
+            ).join('')}</div>`
+          : ''
+        html += `<tr>
+          <td>${badge}</td>
+          <td>${r.name}${err}</td>
+          <td class="ms">${r.ms}ms</td>
+          <td>${thumbs}</td>
+        </tr>`
+      }
+      html += '</tbody></table>'
+    }
+    document.getElementById('resultsBody').innerHTML = html
+  }
+
+  init()
+</script>
+</body>
+</html>

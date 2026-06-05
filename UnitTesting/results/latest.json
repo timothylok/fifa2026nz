@@ -1,0 +1,92 @@
+{
+  "runId": "2026-06-05T22-15-38",
+  "timestamp": "2026-06-05T22:15:46.197Z",
+  "baseUrl": "http://localhost:5175",
+  "total": 8,
+  "passed": 8,
+  "failed": 0,
+  "results": [
+    {
+      "suite": "Predict Tab",
+      "id": "predict-renders",
+      "name": "Predict tab renders 12 group cards",
+      "status": "pass",
+      "ms": 527,
+      "error": null,
+      "screenshots": [
+        "predict-renders.png"
+      ]
+    },
+    {
+      "suite": "Predict Tab",
+      "id": "predict-pick-teams",
+      "name": "Picking 1st and 2nd highlights teams with badges",
+      "status": "pass",
+      "ms": 483,
+      "error": null,
+      "screenshots": [
+        "predict-pick-teams.png"
+      ]
+    },
+    {
+      "suite": "Predict Tab",
+      "id": "predict-score-banner",
+      "name": "Score summary banner appears after first pick",
+      "status": "pass",
+      "ms": 522,
+      "error": null,
+      "screenshots": [
+        "predict-score-banner.png"
+      ]
+    },
+    {
+      "suite": "Predict Tab",
+      "id": "predict-full-score",
+      "name": "Picking all 12 groups shows 12/12 done and non-zero score",
+      "status": "pass",
+      "ms": 1796,
+      "error": null,
+      "screenshots": [
+        "predict-full-score.png"
+      ]
+    },
+    {
+      "suite": "Predict Tab",
+      "id": "predict-reset",
+      "name": "Reset button clears all picks",
+      "status": "pass",
+      "ms": 766,
+      "error": null,
+      "screenshots": [
+        "predict-reset.png"
+      ]
+    },
+    {
+      "suite": "Predict Tab",
+      "id": "predict-localstorage",
+      "name": "Picks persist in localStorage and clear on reset",
+      "status": "pass",
+      "ms": 614,
+      "error": null,
+      "screenshots": []
+    },
+    {
+      "suite": "Predict Tab",
+      "id": "predict-model-expects",
+      "name": "Model expects section shows 2 teams per group",
+      "status": "pass",
+      "ms": 421,
+      "error": null,
+      "screenshots": []
+    },
+    {
+      "suite": "Predict Tab",
+      "id": "predict-no-console-errors",
+      "name": "No console errors on Predict tab",
+      "status": "pass",
+      "ms": 613,
+      "error": null,
+      "screenshots": []
+    }
+  ]
+}
