@@ -3,12 +3,14 @@ import ChampionshipOdds from './components/ChampionshipOdds'
 import GroupStage from './components/GroupStage'
 import Bracket from './components/Bracket'
 import EloSandbox from './components/EloSandbox'
+import Predict from './components/Predict'
 
 const TABS = [
   { id: 'odds',    label: 'Championship' },
   { id: 'groups',  label: 'Groups' },
   { id: 'bracket', label: 'Bracket' },
   { id: 'sandbox', label: 'Elo Sandbox' },
+  { id: 'predict', label: 'Predict' },
 ]
 
 export default function App() {
@@ -80,10 +82,11 @@ export default function App() {
       </header>
 
       <main className="max-w-5xl mx-auto px-6 py-8">
-        {tab === 'odds'    && <ChampionshipOdds teams={data.teams} />}
+        {tab === 'odds'    && <ChampionshipOdds teams={data.teams} groupMatchProbs={data.group_match_probs} />}
         {tab === 'groups'  && <GroupStage groupMatchProbs={data.group_match_probs} teams={data.teams} />}
         {tab === 'bracket' && <Bracket teams={data.teams} groupMatchProbs={data.group_match_probs} />}
         {tab === 'sandbox' && <EloSandbox teams={data.teams} />}
+        {tab === 'predict' && <Predict teams={data.teams} groupMatchProbs={data.group_match_probs} />}
       </main>
     </div>
   )
