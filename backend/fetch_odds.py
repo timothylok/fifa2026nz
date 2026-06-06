@@ -1,17 +1,21 @@
 #!/usr/bin/env python3
 """
-Fetch FIFA 2026 outright winner odds from TheOddsAPI (primary) and HKJC (secondary),
-then write public/data/market_odds.json in the schema ValueIndex.jsx expects.
+Fetch FIFA 2026 outright winner odds and write public/data/market_odds.json.
+
+Sources (in order of priority):
+  1. Polymarket prediction market — free, no auth, live 24/7
+  2. TheOddsAPI — requires ODDS_API_KEY; outrights need a paid plan (currently 422)
 
 Usage:
-    python fetch_odds.py                  # requires ODDS_API_KEY env var
+    python fetch_odds.py                  # ODDS_API_KEY env var optional
     python fetch_odds.py --dry-run        # print JSON, skip file write
-    python fetch_odds.py --key <KEY>      # explicit key override
+    python fetch_odds.py --key <KEY>      # explicit TheOddsAPI key override
 """
 
 import argparse
 import json
 import os
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -20,19 +24,18 @@ import requests
 
 OUTPUT_PATH = Path(__file__).resolve().parent.parent / "public" / "data" / "market_odds.json"
 
+# ── Polymarket ────────────────────────────────────────────────────────────────
+POLYMARKET_URL = "https://gamma-api.polymarket.com/events"
+POLYMARKET_SLUG = "world-cup-winner"
+_PM_RE = re.compile(r"Will (.+) win the 2026 FIFA World Cup\?")
+
+# ── TheOddsAPI (future use — outrights require paid plan) ─────────────────────
 ODDS_API_SPORTS_URL = "https://api.the-odds-api.com/v4/sports/?apiKey={key}"
 ODDS_API_ODDS_URL = (
     "https://api.the-odds-api.com/v4/sports/{sport}/odds/"
     "?apiKey={key}&regions=eu&markets=outrights&oddsFormat=decimal"
 )
 _DEFAULT_SPORT_KEY = "soccer_fifa_world_cup"
-
-HKJC_URL = (
-    "https://bet.hkjc.com/football/getJSON.aspx"
-    "?jsontype=odds_tournament&pool=CH&matchid=50000118"
-)
-
-# TheOddsAPI bookmaker key → display name (order defines preference)
 THEODDSAPI_BOOKMAKER_MAP = {
     "pinnacle":    "Pinnacle",
     "bet365":      "Bet365",
@@ -44,9 +47,11 @@ THEODDSAPI_BOOKMAKER_MAP = {
 }
 PREFERRED_BOOKMAKERS = ["pinnacle", "bet365", "fanduel"]
 
+# ── Name normalisation ────────────────────────────────────────────────────────
 TEAM_NAME_MAP = {
     "South Korea":            "Korea Republic",
     "Turkey":                 "Türkiye",
+    "Turkiye":                "Türkiye",   # Polymarket uses no umlaut
     "United States":          "USA",
     "Ivory Coast":            "Côte d'Ivoire",
     "Iran":                   "IR Iran",
@@ -79,19 +84,67 @@ def normalise(name: str):
     return canonical if canonical in FIFA_2026_TEAMS else None
 
 
+# ── Polymarket ────────────────────────────────────────────────────────────────
+
+def fetch_polymarket() -> dict:
+    """Return {canonical_team: decimal_odds} from Polymarket. No auth required."""
+    try:
+        resp = requests.get(POLYMARKET_URL, params={"slug": POLYMARKET_SLUG, "limit": 1}, timeout=15)
+        print(f"  Polymarket: HTTP {resp.status_code}")
+        if not resp.ok:
+            return {}
+
+        data = resp.json()
+        if not data:
+            print("  Polymarket: world-cup-winner event not found.")
+            return {}
+
+        markets = data[0].get("markets", [])
+        result = {}
+        for m in markets:
+            match = _PM_RE.match(m.get("question", ""))
+            if not match:
+                continue
+            team_raw = match.group(1)
+
+            op = m.get("outcomePrices")
+            if op is None:
+                continue
+            prices = json.loads(op) if isinstance(op, str) else op
+            yes_price = float(prices[0])
+
+            if yes_price < 0.0002:
+                continue  # skip near-zero markets (no meaningful price)
+
+            canonical = normalise(team_raw)
+            if canonical is None:
+                print(f"  WARN unmapped team (Polymarket): {team_raw!r}")
+                continue
+
+            result[canonical] = round(1.0 / yes_price, 2)
+
+        print(f"  Polymarket: {len(result)} teams parsed.")
+        return result
+
+    except Exception as exc:
+        print(f"  Polymarket fetch failed: {exc}")
+        return {}
+
+
+# ── TheOddsAPI ────────────────────────────────────────────────────────────────
+
 def _discover_wc_sport_key(key: str) -> str | None:
-    """Search /sports for any World Cup / FIFA key."""
     resp = requests.get(ODDS_API_SPORTS_URL.format(key=key), timeout=15)
     if not resp.ok:
         return None
-    for sport in resp.json():
+    sports = resp.json()
+    for sport in sports:
         sk = sport.get("key", "").lower()
         title = sport.get("title", "").lower()
         if any(w in sk or w in title for w in ("world_cup", "worldcup", "fifa", "wc2026")):
             print(f"  Found sport key: {sport['key']} — {sport.get('title', '')}")
             return sport["key"]
-    # Log what soccer sports ARE available to help diagnose
-    soccer = [s["key"] for s in resp.json() if "soccer" in s.get("key", "")]
+    soccer = [s["key"] for s in sports if "soccer" in s.get("key", "")]
     print(f"  Available soccer keys: {soccer}")
     return None
 
@@ -99,8 +152,7 @@ def _discover_wc_sport_key(key: str) -> str | None:
 def fetch_theoddsapi(key: str) -> dict:
     """Return {canonical_team: {BookmakerName: decimal_odds}}."""
     sport = _DEFAULT_SPORT_KEY
-    url = ODDS_API_ODDS_URL.format(sport=sport, key=key)
-    resp = requests.get(url, timeout=30)
+    resp = requests.get(ODDS_API_ODDS_URL.format(sport=sport, key=key), timeout=30)
     remaining = resp.headers.get("x-requests-remaining", "?")
     used = resp.headers.get("x-requests-used", "?")
     print(f"  TheOddsAPI ({sport}): HTTP {resp.status_code} | used={used} remaining={remaining}")
@@ -111,16 +163,14 @@ def fetch_theoddsapi(key: str) -> dict:
         if not sport:
             print("  No World Cup sport found on TheOddsAPI.")
             return {}
-        url = ODDS_API_ODDS_URL.format(sport=sport, key=key)
-        resp = requests.get(url, timeout=30)
+        resp = requests.get(ODDS_API_ODDS_URL.format(sport=sport, key=key), timeout=30)
         remaining = resp.headers.get("x-requests-remaining", "?")
         used = resp.headers.get("x-requests-used", "?")
         print(f"  TheOddsAPI ({sport}): HTTP {resp.status_code} | used={used} remaining={remaining}")
 
     if not resp.ok:
-        # Log body so we can see the exact error reason
         print(f"  TheOddsAPI error body: {resp.text[:400]}")
-        resp.raise_for_status()
+        return {}
 
     events = resp.json()
     if not events:
@@ -144,38 +194,32 @@ def fetch_theoddsapi(key: str) -> dict:
                         print(f"  WARN unmapped team (TheOddsAPI): {team_raw!r}")
                         continue
                     entry = result.setdefault(canonical, {})
-                    # Keep best (highest) odds when team appears in multiple events
                     entry[bm_name] = max(entry.get(bm_name, 0.0), float(outcome.get("price", 0.0)))
 
     print(f"  TheOddsAPI: {len(result)} teams parsed.")
     return result
 
 
-def fetch_hkjc() -> dict:
-    """Return {canonical_team: decimal_odds}. Returns {} on any error.
+# ── Output builder ────────────────────────────────────────────────────────────
 
-    NOTE: The HKJC getJSON.aspx endpoint serves the SPA HTML shell to server-side
-    requests (no session cookie). Kept here for future investigation; currently a no-op.
-    """
-    print("  HKJC: skipped — endpoint requires browser session cookie.")
-    return {}
-
-
-def build_output(theoddsapi_data: dict, hkjc_data: dict) -> dict:
+def build_output(theoddsapi_data: dict, polymarket_data: dict) -> dict:
     active_bms = [
         THEODDSAPI_BOOKMAKER_MAP[k]
         for k in PREFERRED_BOOKMAKERS
         if any(THEODDSAPI_BOOKMAKER_MAP[k] in v for v in theoddsapi_data.values())
     ]
-    if hkjc_data:
-        active_bms.append("HKJC")
+    if polymarket_data:
+        active_bms.append("Polymarket")
 
-    all_teams = set(theoddsapi_data) | set(hkjc_data)
+    all_teams = set(theoddsapi_data) | set(polymarket_data)
     teams_list = []
     for team in all_teams:
         odds = {}
         for bm in active_bms:
-            val = hkjc_data.get(team) if bm == "HKJC" else theoddsapi_data.get(team, {}).get(bm)
+            if bm == "Polymarket":
+                val = polymarket_data.get(team)
+            else:
+                val = theoddsapi_data.get(team, {}).get(bm)
             if val is not None:
                 odds[bm] = val
         if odds:
@@ -190,31 +234,32 @@ def build_output(theoddsapi_data: dict, hkjc_data: dict) -> dict:
     }
 
 
+# ── Entry point ───────────────────────────────────────────────────────────────
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--key", default=os.environ.get("ODDS_API_KEY", ""))
     args = parser.parse_args()
 
-    if not args.key:
-        print("ERROR: ODDS_API_KEY not set. Pass --key or set the env var.", file=sys.stderr)
-        sys.exit(1)
+    print("Fetching Polymarket ...")
+    polymarket_data = fetch_polymarket()
 
-    print("Fetching TheOddsAPI ...")
-    try:
-        theoddsapi_data = fetch_theoddsapi(args.key)
-    except Exception as exc:
-        print(f"  TheOddsAPI error: {exc}")
-        theoddsapi_data = {}
+    theoddsapi_data = {}
+    if args.key:
+        print("Fetching TheOddsAPI ...")
+        try:
+            theoddsapi_data = fetch_theoddsapi(args.key)
+        except Exception as exc:
+            print(f"  TheOddsAPI error: {exc}")
+    else:
+        print("Skipping TheOddsAPI (no ODDS_API_KEY set).")
 
-    print("Fetching HKJC ...")
-    hkjc_data = fetch_hkjc()
-
-    if not theoddsapi_data and not hkjc_data:
-        print("WARNING: both sources empty — keeping existing market_odds.json.")
+    if not theoddsapi_data and not polymarket_data:
+        print("WARNING: all sources empty — keeping existing market_odds.json.")
         sys.exit(0)
 
-    output = build_output(theoddsapi_data, hkjc_data)
+    output = build_output(theoddsapi_data, polymarket_data)
     json_str = json.dumps(output, indent=2, ensure_ascii=False)
 
     if args.dry_run:
