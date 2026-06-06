@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Disclaimer — FIFA 2026 World Cup Predictor</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0f172a;
+      color: #e2e8f0;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      max-width: 560px;
+      width: 100%;
+      padding: 36px 32px;
+    }
+
+    h2 {
+      color: #22d3ee;
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #cbd5e1;
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    p strong {
+      color: #e2e8f0;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #334155;
+      margin: 20px 0;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+
+    .checkbox-row input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #22d3ee;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .checkbox-row label {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    button {
+      background: #22d3ee;
+      color: #0f172a;
+      border: none;
+      border-radius: 8px;
+      padding: 11px 28px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.15s;
+    }
+
+    button:hover {
+      background: #38bdf8;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Research &amp; Educational Use Only</h2>
+
+    <p>
+      This website and all data displayed are strictly for
+      <strong>research, analysis, and educational purposes only</strong>.
+      All win probabilities are statistical model outputs and do not constitute
+      predictions or guarantees of any sporting outcome.
+    </p>
+
+    <p>
+      No betting, wagering, gambling, or financial decisions should be made
+      based on the information provided. The creators of this site do not
+      encourage or facilitate gambling in any form.
+    </p>
+
+    <p>
+      By clicking <strong>Accept</strong>, you confirm that you understand and
+      agree to this disclaimer.
+    </p>
+
+    <hr />
+
+    <div class="checkbox-row">
+      <input type="checkbox" id="dontShow" />
+      <label for="dontShow">Don't show this again</label>
+    </div>
+
+    <button onclick="acceptDisclaimer()">Accept</button>
+  </div>
+
+  <script>
+    function acceptDisclaimer() {
+      if (document.getElementById('dontShow').checked) {
+        localStorage.setItem('disclaimerAccepted', 'true');
+      } else {
+        sessionStorage.setItem('disclaimerAccepted', 'session');
+      }
+      window.location.replace('/');
+    }
+  </script>
+</body>
+</html>

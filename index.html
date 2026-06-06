@@ -7,6 +7,13 @@
     <title>FIFA 2026 World Cup Predictor</title>
   </head>
   <body>
+    <script>
+      (function () {
+        if (!localStorage.getItem('disclaimerAccepted') && !sessionStorage.getItem('disclaimerAccepted')) {
+          window.location.replace('/disclaimer.html');
+        }
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
