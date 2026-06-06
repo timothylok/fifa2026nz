@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { matchProbs } from '../utils/elo'
-import { flag } from '../utils/flags'
+import { flag, FlagIcon } from '../utils/flags.jsx'
 import { FIFA_2026_GROUPS, computeGroupStandings } from '../utils/groups'
 
 const ROUND_LABELS = ['Round of 32', 'Round of 16', 'Quarter-Finals', 'Semi-Finals', 'Final']
@@ -77,7 +77,7 @@ function MatchCard({ match, isChampion }) {
 function TeamRow({ name, prob, isWinner }) {
   return (
     <div className={`flex items-center gap-1.5 rounded px-1 py-0.5 ${isWinner ? 'bg-[var(--accent)]/10' : ''}`}>
-      <span className="text-sm leading-none shrink-0">{flag(name)}</span>
+      <span className="text-sm leading-none shrink-0"><FlagIcon name={name} /></span>
       <span className={`text-[11px] font-medium flex-1 truncate ${isWinner ? 'text-[var(--text)]' : 'text-[var(--muted)]'}`}>
         {name}
       </span>
@@ -113,7 +113,7 @@ export default function Bracket({ teams, groupMatchProbs }) {
 
       {champion && (
         <div className="mb-6 inline-flex items-center gap-3 px-4 py-2.5 rounded-xl border border-[#f5c542]/40 bg-[#f5c542]/5">
-          <span className="text-2xl">{flag(champion)}</span>
+          <span className="text-2xl"><FlagIcon name={champion} /></span>
           <div>
             <div className="text-[11px] text-[var(--muted)] uppercase tracking-wider">Predicted Champion</div>
             <div className="text-sm font-bold text-[#f5c542]">{champion}</div>

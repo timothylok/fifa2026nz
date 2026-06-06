@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { flag } from '../utils/flags'
+import { flag, FlagIcon } from '../utils/flags.jsx'
 import { FIFA_2026_GROUPS, computeGroupStandings } from '../utils/groups'
 
 function ProbBar({ homeWin, draw, awayWin }) {
@@ -22,7 +22,7 @@ function MatchCard({ match }) {
       <div className="flex items-center gap-2">
         {/* Home */}
         <div className="flex-1 flex items-center gap-1.5">
-          <span className="text-base leading-none">{flag(home)}</span>
+          <span className="text-base leading-none"><FlagIcon name={home} /></span>
           <span className={`text-xs font-medium truncate ${hFav ? 'text-[var(--text)]' : 'text-[var(--muted)]'}`}>
             {home}
           </span>
@@ -53,7 +53,7 @@ function MatchCard({ match }) {
           <span className={`text-xs font-medium truncate text-right ${aFav ? 'text-[var(--text)]' : 'text-[var(--muted)]'}`}>
             {away}
           </span>
-          <span className="text-base leading-none">{flag(away)}</span>
+          <span className="text-base leading-none"><FlagIcon name={away} /></span>
         </div>
       </div>
       <ProbBar homeWin={home_win} draw={draw} awayWin={away_win} />
@@ -110,7 +110,7 @@ export default function GroupStage({ groupMatchProbs, teams }) {
                   <span className={`text-xs font-mono w-4 shrink-0 ${qual ? 'text-[var(--accent)]' : 'text-[var(--muted)]'}`}>
                     {i + 1}
                   </span>
-                  <span className="text-base leading-none shrink-0">{flag(team)}</span>
+                  <span className="text-base leading-none shrink-0"><FlagIcon name={team} /></span>
                   <span className="text-sm font-medium flex-1 truncate">{team}</span>
                   {qual && (
                     <span className="text-[10px] text-[var(--accent)] font-bold bg-[var(--accent)]/10 px-1.5 py-0.5 rounded shrink-0">

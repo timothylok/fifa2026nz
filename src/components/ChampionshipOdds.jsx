@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { FIFA_2026_GROUPS } from '../utils/groups'
-import { flag } from '../utils/flags'
+import { flag, FlagIcon } from '../utils/flags.jsx'
 
 const HOST_NATIONS = new Set(['USA', 'Canada', 'Mexico'])
 
@@ -160,7 +160,7 @@ export default function ChampionshipOdds({ teams, groupMatchProbs }) {
                 <span className="text-[var(--muted)] text-xs font-mono w-5 text-right shrink-0">
                   {rank + 1}
                 </span>
-                <span className="text-lg leading-none shrink-0">{flag(team.name)}</span>
+                <span className="text-lg leading-none shrink-0"><FlagIcon name={team.name} /></span>
                 <span className="text-sm font-medium w-32 shrink-0 truncate">{team.name}</span>
                 <div className="flex-1 bg-[var(--border)]/40 rounded-full h-2 overflow-hidden">
                   <div className="h-full rounded-full transition-all duration-500"
@@ -214,7 +214,7 @@ export default function ChampionshipOdds({ teams, groupMatchProbs }) {
                       <div className="space-y-1.5">
                         {opponents.map(opp => (
                           <div key={opp.name} className="flex items-center gap-2 text-xs">
-                            <span className="text-base leading-none">{flag(opp.name)}</span>
+                            <span className="text-base leading-none"><FlagIcon name={opp.name} /></span>
                             <span className="w-28 truncate text-[var(--text)]">{opp.name}</span>
                             <span className="text-[var(--muted)] font-mono w-10 shrink-0">{Math.round(opp.elo)}</span>
                             {opp.win != null && (

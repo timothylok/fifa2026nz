@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
-import { flag } from '../utils/flags'
+import { FlagIcon } from '../utils/flags.jsx'
 
 function valueColor(vi) {
   if (vi > 0.02)  return '#3ecf6e'
@@ -210,7 +210,7 @@ export default function ValueIndex({ teams }) {
                 <span className="text-[var(--muted)] text-xs font-mono w-5 text-right shrink-0">
                   {idx + 1}
                 </span>
-                <span className="text-lg leading-none shrink-0">{flag(row.name)}</span>
+                <span className="text-lg leading-none shrink-0"><FlagIcon name={row.name} /></span>
                 <span className="text-sm font-medium w-32 shrink-0 truncate">{row.name}</span>
                 <span className="text-xs font-mono w-14 text-right shrink-0 text-[var(--text)]">
                   {fmt(row.modelProb)}

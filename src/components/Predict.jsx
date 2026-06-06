@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from 'react'
 import { FIFA_2026_GROUPS, computeGroupStandings } from '../utils/groups'
-import { flag } from '../utils/flags'
+import { FlagIcon } from '../utils/flags.jsx'
 
 const STORAGE_KEY = 'fifa2026_picks'
 
@@ -155,7 +155,7 @@ export default function Predict({ teams, groupMatchProbs }) {
                                       ? 'bg-[#8892a4]/15 border border-[#8892a4]/60 text-[var(--text)]'
                                       : 'border border-transparent hover:bg-[var(--border)]/30 text-[var(--text)]'}`}
                     >
-                      <span className="text-base leading-none">{flag(name)}</span>
+                      <span className="text-base leading-none"><FlagIcon name={name} /></span>
                       <span className="flex-1 truncate">{name}</span>
                       {teamData && (
                         <span className="text-[10px] font-mono text-[var(--muted)] shrink-0">
@@ -179,7 +179,7 @@ export default function Predict({ teams, groupMatchProbs }) {
                 <div className="flex gap-2">
                   {modelTop2.map((name, i) => (
                     <span key={name} className="flex items-center gap-1 text-xs text-[var(--muted)]">
-                      <span>{flag(name)}</span>
+                      <FlagIcon name={name} />
                       <span className={userPicks[i] === name ? 'text-[var(--accent)]' : ''}>{name}</span>
                     </span>
                   ))}

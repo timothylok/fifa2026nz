@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { matchProbs } from '../utils/elo'
-import { flag } from '../utils/flags'
+import { FlagIcon } from '../utils/flags.jsx'
 
 function ProbRow({ label, prob, color, max }) {
   return (
@@ -30,7 +30,7 @@ function TeamPanel({ label, teamName, baseElo, adjust, onTeamChange, onAdjust, a
       {/* Team select */}
       <div className="relative">
         <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-base pointer-events-none leading-none">
-          {flag(teamName)}
+          <FlagIcon name={teamName} />
         </span>
         <select
           value={teamName}
@@ -125,7 +125,7 @@ export default function EloSandbox({ teams }) {
         {/* Header */}
         <div className="flex items-center mb-6">
           <div className="flex-1 text-center">
-            <div className="text-2xl mb-1">{flag(nameA)}</div>
+            <div className="text-2xl mb-1"><FlagIcon name={nameA} /></div>
             <div className="text-sm font-semibold">{nameA}</div>
             <div className="text-[11px] font-mono text-[var(--muted)] mt-0.5">Elo {eloA}</div>
           </div>
@@ -139,7 +139,7 @@ export default function EloSandbox({ teams }) {
             ⇄
           </button>
           <div className="flex-1 text-center">
-            <div className="text-2xl mb-1">{flag(nameB)}</div>
+            <div className="text-2xl mb-1"><FlagIcon name={nameB} /></div>
             <div className="text-sm font-semibold">{nameB}</div>
             <div className="text-[11px] font-mono text-[var(--muted)] mt-0.5">Elo {eloB}</div>
           </div>
