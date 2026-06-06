@@ -20,10 +20,12 @@ import requests
 
 OUTPUT_PATH = Path(__file__).resolve().parent.parent / "public" / "data" / "market_odds.json"
 
-ODDS_API_URL = (
-    "https://api.the-odds-api.com/v4/sports/soccer_fifa_world_cup/odds/"
-    "?apiKey={key}&regions=us,eu&markets=outrights&oddsFormat=decimal"
+ODDS_API_SPORTS_URL = "https://api.the-odds-api.com/v4/sports/?apiKey={key}"
+ODDS_API_ODDS_URL = (
+    "https://api.the-odds-api.com/v4/sports/{sport}/odds/"
+    "?apiKey={key}&regions=eu&markets=outrights&oddsFormat=decimal"
 )
+_DEFAULT_SPORT_KEY = "soccer_fifa_world_cup"
 
 HKJC_URL = (
     "https://bet.hkjc.com/football/getJSON.aspx"
@@ -77,17 +79,46 @@ def normalise(name: str):
     return canonical if canonical in FIFA_2026_TEAMS else None
 
 
+def _discover_wc_sport_key(key: str) -> str | None:
+    """Search /sports for any World Cup / FIFA key."""
+    resp = requests.get(ODDS_API_SPORTS_URL.format(key=key), timeout=15)
+    if not resp.ok:
+        return None
+    for sport in resp.json():
+        sk = sport.get("key", "").lower()
+        title = sport.get("title", "").lower()
+        if any(w in sk or w in title for w in ("world_cup", "worldcup", "fifa", "wc2026")):
+            print(f"  Found sport key: {sport['key']} — {sport.get('title', '')}")
+            return sport["key"]
+    # Log what soccer sports ARE available to help diagnose
+    soccer = [s["key"] for s in resp.json() if "soccer" in s.get("key", "")]
+    print(f"  Available soccer keys: {soccer}")
+    return None
+
+
 def fetch_theoddsapi(key: str) -> dict:
     """Return {canonical_team: {BookmakerName: decimal_odds}}."""
-    resp = requests.get(ODDS_API_URL.format(key=key), timeout=30)
+    sport = _DEFAULT_SPORT_KEY
+    url = ODDS_API_ODDS_URL.format(sport=sport, key=key)
+    resp = requests.get(url, timeout=30)
     remaining = resp.headers.get("x-requests-remaining", "?")
     used = resp.headers.get("x-requests-used", "?")
-    print(f"  TheOddsAPI: HTTP {resp.status_code} | used={used} remaining={remaining}")
+    print(f"  TheOddsAPI ({sport}): HTTP {resp.status_code} | used={used} remaining={remaining}")
 
-    if resp.status_code == 404:
-        print("  soccer_fifa_world_cup not yet available on TheOddsAPI.")
-        return {}
-    resp.raise_for_status()
+    if resp.status_code in (404, 422):
+        print("  Searching for correct sport key ...")
+        sport = _discover_wc_sport_key(key)
+        if not sport:
+            print("  No World Cup sport found on TheOddsAPI.")
+            return {}
+        url = ODDS_API_ODDS_URL.format(sport=sport, key=key)
+        resp = requests.get(url, timeout=30)
+        remaining = resp.headers.get("x-requests-remaining", "?")
+        used = resp.headers.get("x-requests-used", "?")
+        print(f"  TheOddsAPI ({sport}): HTTP {resp.status_code} | used={used} remaining={remaining}")
+
+    if not resp.ok:
+        resp.raise_for_status()
 
     events = resp.json()
     if not events:
@@ -121,10 +152,22 @@ def fetch_theoddsapi(key: str) -> dict:
 def fetch_hkjc() -> dict:
     """Return {canonical_team: decimal_odds}. Returns {} on any error."""
     try:
-        resp = requests.get(HKJC_URL, headers={"User-Agent": "Mozilla/5.0"}, timeout=15)
-        print(f"  HKJC: HTTP {resp.status_code}")
+        resp = requests.get(HKJC_URL, headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+            "Accept": "application/json, text/javascript, */*; q=0.01",
+            "Referer": "https://bet.hkjc.com/football/",
+            "X-Requested-With": "XMLHttpRequest",
+        }, timeout=15)
+        ct = resp.headers.get("Content-Type", "?")
+        print(f"  HKJC: HTTP {resp.status_code} | Content-Type: {ct} | body len: {len(resp.text)}")
         if not resp.ok:
             return {}
+
+        text = resp.text.strip()
+        if not text:
+            print("  HKJC: empty response body — endpoint may require a browser session.")
+            return {}
+        print(f"  HKJC body preview: {text[:300]}")
 
         raw = resp.json()
 
