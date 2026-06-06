@@ -4,6 +4,7 @@ import GroupStage from './components/GroupStage'
 import Bracket from './components/Bracket'
 import EloSandbox from './components/EloSandbox'
 import Predict from './components/Predict'
+import ValueIndex from './components/ValueIndex'
 
 const TABS = [
   { id: 'odds',    label: 'Championship' },
@@ -11,6 +12,7 @@ const TABS = [
   { id: 'bracket', label: 'Bracket' },
   { id: 'sandbox', label: 'Elo Sandbox' },
   { id: 'predict', label: 'Predict' },
+  { id: 'value',   label: 'Value' },
 ]
 
 export default function App() {
@@ -87,6 +89,7 @@ export default function App() {
         {tab === 'bracket' && <Bracket teams={data.teams} groupMatchProbs={data.group_match_probs} />}
         {tab === 'sandbox' && <EloSandbox teams={data.teams} />}
         {tab === 'predict' && <Predict teams={data.teams} groupMatchProbs={data.group_match_probs} />}
+        {tab === 'value'   && <ValueIndex teams={data.teams} />}
       </main>
     </div>
   )
