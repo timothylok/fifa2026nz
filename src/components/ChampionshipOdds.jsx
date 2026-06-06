@@ -108,11 +108,13 @@ export default function ChampionshipOdds({ teams, groupMatchProbs }) {
         </span>
         <button
           onClick={handleShare}
-          className="px-3 py-2 rounded-md border border-[var(--border)] text-xs text-[var(--muted)]
-                     hover:text-[var(--text)] hover:border-[var(--accent)]/50 transition-colors
-                     bg-[var(--surface)] shrink-0"
+          className={`px-4 py-2 rounded-lg text-sm font-bold shrink-0 transition-all duration-200
+                     ${copied
+                       ? 'bg-green-500 text-white scale-95 shadow-none'
+                       : 'bg-[var(--accent)] text-[#0f172a] shadow-[0_0_16px_2px_rgba(34,211,238,0.45)] hover:shadow-[0_0_24px_4px_rgba(34,211,238,0.6)] hover:scale-105 active:scale-95'
+                     }`}
         >
-          {copied ? '✓ Copied!' : '⎘ Share top 10'}
+          {copied ? '✓ Copied!' : '📤 Share Top 10'}
         </button>
       </div>
 
