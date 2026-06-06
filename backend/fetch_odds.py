@@ -118,6 +118,8 @@ def fetch_theoddsapi(key: str) -> dict:
         print(f"  TheOddsAPI ({sport}): HTTP {resp.status_code} | used={used} remaining={remaining}")
 
     if not resp.ok:
+        # Log body so we can see the exact error reason
+        print(f"  TheOddsAPI error body: {resp.text[:400]}")
         resp.raise_for_status()
 
     events = resp.json()
@@ -150,73 +152,13 @@ def fetch_theoddsapi(key: str) -> dict:
 
 
 def fetch_hkjc() -> dict:
-    """Return {canonical_team: decimal_odds}. Returns {} on any error."""
-    try:
-        resp = requests.get(HKJC_URL, headers={
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-            "Accept": "application/json, text/javascript, */*; q=0.01",
-            "Referer": "https://bet.hkjc.com/football/",
-            "X-Requested-With": "XMLHttpRequest",
-        }, timeout=15)
-        ct = resp.headers.get("Content-Type", "?")
-        print(f"  HKJC: HTTP {resp.status_code} | Content-Type: {ct} | body len: {len(resp.text)}")
-        if not resp.ok:
-            return {}
+    """Return {canonical_team: decimal_odds}. Returns {} on any error.
 
-        text = resp.text.strip()
-        if not text:
-            print("  HKJC: empty response body — endpoint may require a browser session.")
-            return {}
-        print(f"  HKJC body preview: {text[:300]}")
-
-        raw = resp.json()
-
-        # Response structure is undocumented — probe common shapes
-        odds_list = None
-        if isinstance(raw, list):
-            odds_list = raw
-        elif isinstance(raw, dict):
-            for key in ("ODDS", "odds", "OddsNodes", "betOptions", "selections"):
-                if key in raw and isinstance(raw[key], list):
-                    odds_list = raw[key]
-                    break
-
-        if odds_list is None:
-            print(f"  HKJC: unrecognised structure — {str(raw)[:300]}")
-            return {}
-
-        result = {}
-        for item in odds_list:
-            team_raw = (
-                item.get("COMPETITOR_NAME")
-                or item.get("name")
-                or item.get("team")
-                or item.get("TEAM_NAME_E")
-                or ""
-            )
-            odds_val = (
-                item.get("ODDS")
-                or item.get("odds")
-                or item.get("PRICE")
-                or item.get("price")
-            )
-            if not team_raw or odds_val is None:
-                continue
-            canonical = normalise(str(team_raw))
-            if canonical is None:
-                print(f"  WARN unmapped team (HKJC): {team_raw!r}")
-                continue
-            try:
-                result[canonical] = float(odds_val)
-            except (ValueError, TypeError):
-                pass
-
-        print(f"  HKJC: {len(result)} teams parsed.")
-        return result
-
-    except Exception as exc:
-        print(f"  HKJC fetch failed: {exc}")
-        return {}
+    NOTE: The HKJC getJSON.aspx endpoint serves the SPA HTML shell to server-side
+    requests (no session cookie). Kept here for future investigation; currently a no-op.
+    """
+    print("  HKJC: skipped — endpoint requires browser session cookie.")
+    return {}
 
 
 def build_output(theoddsapi_data: dict, hkjc_data: dict) -> dict:
