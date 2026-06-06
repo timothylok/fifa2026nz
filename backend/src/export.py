@@ -13,6 +13,7 @@ def to_json(
     group_match_probs: list[dict],
     output_path: str,
     n_simulations: int,
+    raw_win_pcts: dict[str, float] | None = None,
 ) -> None:
     total = sum(win_counts.values())
     teams = sorted(
@@ -20,6 +21,7 @@ def to_json(
             {
                 "name": team,
                 "win_pct": round(100.0 * win_counts.get(team, 0) / total, 2),
+                "raw_win_pct": round(raw_win_pcts[team], 2) if raw_win_pcts else round(100.0 * win_counts.get(team, 0) / total, 2),
                 "elo": round(ratings.get(team, 1500.0), 1),
             }
             for team in ratings

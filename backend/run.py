@@ -13,6 +13,53 @@ from src.poisson import fit_rho, lambda_from_elo, match_probs
 from src.simulate import FIFA_2026_GROUPS, run_simulations
 
 
+def blend_with_market(raw_pcts: dict[str, float], output_path: str, alpha: float) -> dict[str, float]:
+    """Blend raw model probabilities with Polymarket-implied probabilities.
+
+    Returns a new dict of {team: blended_pct} summing to ~100.
+    Falls back to raw_pcts unchanged if market_odds.json is missing or empty.
+    """
+    market_path = Path(output_path).parent / "market_odds.json"
+    if not market_path.exists():
+        print("  market_odds.json not found — skipping market blend.")
+        return dict(raw_pcts)
+
+    try:
+        odds_data = json.loads(market_path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        print(f"  Could not read market_odds.json: {exc} — skipping blend.")
+        return dict(raw_pcts)
+
+    # Build {team: decimal_odds} from Polymarket column only
+    market_decimal: dict[str, float] = {}
+    for entry in odds_data.get("teams", []):
+        pm_odds = entry.get("odds", {}).get("Polymarket")
+        if pm_odds and pm_odds > 0:
+            market_decimal[entry["name"]] = pm_odds
+
+    if not market_decimal:
+        print("  No Polymarket entries in market_odds.json — skipping blend.")
+        return dict(raw_pcts)
+
+    # Implied prob = 1/decimal; normalize across all listed teams to remove overround
+    implied = {team: 1.0 / dec for team, dec in market_decimal.items()}
+    total_implied = sum(implied.values())
+    mkt_pct = {team: 100.0 * imp / total_implied for team, imp in implied.items()}
+
+    blended: dict[str, float] = {}
+    for team, raw in raw_pcts.items():
+        mkt = mkt_pct.get(team, 0.0)
+        blended[team] = alpha * raw + (1 - alpha) * mkt
+
+    # Renormalize to exactly 100 (floating-point safety)
+    total_blended = sum(blended.values())
+    if total_blended > 0:
+        blended = {t: 100.0 * v / total_blended for t, v in blended.items()}
+
+    print(f"  Market blend applied (alpha={alpha:.2f}): {len(market_decimal)} teams with Polymarket data.")
+    return blended
+
+
 def build_group_match_probs(ratings: dict, rho: float = -0.1) -> list[dict]:
     rows = []
     for gid, teams in FIFA_2026_GROUPS.items():
@@ -41,6 +88,8 @@ def main() -> None:
     parser.add_argument("--sims", type=int, default=10_000)
     parser.add_argument("--jobs", type=int, default=-1)
     parser.add_argument("--output", default="results/results.json")
+    parser.add_argument("--alpha", type=float, default=0.4,
+                        help="Model weight in market blend (0=pure market, 1=pure model). Default 0.4.")
     args = parser.parse_args()
 
     print(f"Loading match data from {args.data} ...")
@@ -60,18 +109,29 @@ def main() -> None:
     print(f"Running {args.sims:,} simulations ...")
     win_counts = run_simulations(ratings, n=args.sims, n_jobs=args.jobs, rho=rho)
 
+    # Raw model probabilities (before market blending)
+    total_sims = sum(win_counts.values())
+    raw_pcts = {team: 100.0 * win_counts.get(team, 0) / total_sims for team in ratings}
+
+    # Market calibration: blend raw model with Polymarket-implied probs
+    print("Applying market calibration ...")
+    blended_pcts = blend_with_market(raw_pcts, args.output, args.alpha)
+
+    # Rebuild win_counts from blended_pcts so export sorts correctly
+    # We pass blended as win_counts (scaled to original total) and raw separately
+    blended_counts = {team: int(round(pct / 100.0 * total_sims)) for team, pct in blended_pcts.items()}
+
     print("Computing group match probabilities ...")
     gmp = build_group_match_probs(ratings, rho=rho)
 
     print(f"Writing results to {args.output} ...")
-    to_json(win_counts, ratings, gmp, args.output, args.sims)
+    to_json(blended_counts, ratings, gmp, args.output, total_sims, raw_win_pcts=raw_pcts)
 
-    # Print top 10
-    total = sum(win_counts.values())
-    ranked = sorted(win_counts.items(), key=lambda x: -x[1])
-    print("\nTop 10 championship probabilities:")
-    for team, count in ranked[:10]:
-        print(f"  {team:<20} {100*count/total:.1f}%")
+    # Print top 10 (blended)
+    ranked = sorted(blended_pcts.items(), key=lambda x: -x[1])
+    print("\nTop 10 championship probabilities (blended):")
+    for team, pct in ranked[:10]:
+        print(f"  {team:<20} {pct:.1f}%  (raw: {raw_pcts.get(team, 0):.1f}%)")
 
     print(f"\nDone. Results saved to {args.output}")
 
