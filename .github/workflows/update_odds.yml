@@ -1,15 +1,15 @@
-name: Refresh Data & Simulations
+name: Refresh Odds
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # Daily 06:00 UTC
+    - cron: '0 */4 * * *'  # Every 4 hours
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  update:
+  odds:
     runs-on: ubuntu-latest
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -26,24 +26,16 @@ jobs:
       - name: Install dependencies
         run: pip install -r backend/requirements.txt
 
-      - name: Fetch latest match data
-        working-directory: backend
-        run: python fetch_data.py
-
-      - name: Run simulations
-        working-directory: backend
-        run: python run.py --data data/historical_matches.csv --sims 10000 --output ../public/data/results.json
-
       - name: Fetch bookmaker odds
         working-directory: backend
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
-        run: python fetch_odds.py || echo "Odds fetch failed — keeping existing market_odds.json"
+        run: python fetch_odds.py
 
       - name: Commit & push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add backend/data/historical_matches.csv public/data/results.json public/data/market_odds.json
-          git diff --staged --quiet || git commit -m "chore: daily data refresh [skip ci]"
+          git add public/data/market_odds.json
+          git diff --staged --quiet || git commit -m "chore: odds refresh [skip ci]"
           git push
