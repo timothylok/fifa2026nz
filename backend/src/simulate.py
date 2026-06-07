@@ -22,14 +22,26 @@ FIFA_2026_GROUPS = {
     "L": ["Ghana", "Panama", "England", "Croatia"],
 }
 
-# Official FIFA 2026 bracket: 3 pods of 4 groups each.
-# Within each pod, 1st-place teams cross-play 2nd-place teams (no same-group R32 clash).
-# Best 8 third-place teams fill the remaining 4 R32 slots, paired against each other.
-PODS = [
-    ["A", "B", "C", "D"],
-    ["E", "F", "G", "H"],
-    ["I", "J", "K", "L"],
+# Official FIFA 2026 R32 bracket — 8 fixed matches (no third-place teams involved).
+# Source: FIFA 2026 Competition Regulations match schedule (matches 73-88).
+_R32_FIXED = [
+    ("2A", "2B"), ("1F", "2C"), ("1C", "2F"), ("2E", "2I"),
+    ("2K", "2L"), ("1H", "2J"), ("1J", "2H"), ("2D", "2G"),
 ]
+
+# 8 slots where group winners play third-place teams.
+# Each frozenset lists the eligible groups a qualifying third can come from
+# (ensures no same-group R32 rematch). Source: FIFA Annex C eligibility grid.
+_THIRD_SLOT_ELIGIBILITY: dict[str, frozenset] = {
+    "1E": frozenset("ABCDF"),
+    "1I": frozenset("CDFGH"),
+    "1A": frozenset("CEFHI"),
+    "1L": frozenset("EHIJK"),
+    "1D": frozenset("BEFIJ"),
+    "1G": frozenset("AEHIJ"),
+    "1B": frozenset("EFGIJ"),
+    "1K": frozenset("DEIJL"),
+}
 
 # Host nations receive a home-advantage Elo boost (tournament played in North America).
 HOST_NATIONS = {"USA", "Canada", "Mexico"}
@@ -121,8 +133,8 @@ def simulate_groups(
 
 def get_qualifiers(
     group_results: dict[str, list[dict]],
-) -> tuple[dict[str, str], list[str]]:
-    """Returns (slot_to_team mapping, list of all third-place teams for reference)."""
+) -> tuple[dict[str, str], dict[str, str]]:
+    """Returns (slot_to_team, third_by_group) where third_by_group maps group → team for the 8 qualifying thirds."""
     slots: dict[str, str] = {}
     third_place: list[dict] = []
     for gid, standings in group_results.items():
@@ -130,34 +142,42 @@ def get_qualifiers(
         slots[f"2{gid}"] = standings[1]["team"]
         third_place.append({"group": gid, **standings[2]})
 
-    # Best 8 third-place teams advance (sorted by pts, gd, gf)
     best_thirds = sorted(third_place, key=_third_place_score, reverse=True)[:8]
-    for i, row in enumerate(best_thirds, 1):
-        slots[f"3rd_{i}"] = row["team"]
-
-    return slots, [r["team"] for r in third_place]
+    third_by_group = {row["group"]: row["team"] for row in best_thirds}
+    return slots, third_by_group
 
 
-def _build_r32(slots: dict[str, str]) -> list[tuple[str, str]]:
-    """Pair 32 qualifiers into 16 R32 matchups using official FIFA 2026 bracket seeding.
+def _assign_thirds(qualifying_groups: set[str]) -> dict[str, str]:
+    """Match 8 qualifying third-place groups to the 8 official slots via backtracking."""
+    slots_order = list(_THIRD_SLOT_ELIGIBILITY.keys())
+    assignment: dict[str, str] = {}
+    remaining = set(qualifying_groups)
 
-    Within each 4-group pod, 1st-place teams cross-play 2nd-place teams so no
-    two teams from the same group can meet in R32. Best 8 third-place teams are
-    paired against each other to fill the remaining 4 slots.
-    """
-    pairs: list[tuple[str, str]] = []
+    def backtrack(idx: int) -> bool:
+        if idx == len(slots_order):
+            return True
+        slot = slots_order[idx]
+        for grp in sorted(remaining):
+            if grp in _THIRD_SLOT_ELIGIBILITY[slot]:
+                assignment[slot] = grp
+                remaining.discard(grp)
+                if backtrack(idx + 1):
+                    return True
+                remaining.add(grp)
+                del assignment[slot]
+        return False
 
-    # 12 within-pod cross-pairings (no same-group R32 clash)
-    for a, b, c, d in PODS:
-        pairs.append((slots[f"1{a}"], slots[f"2{b}"]))
-        pairs.append((slots[f"1{b}"], slots[f"2{a}"]))
-        pairs.append((slots[f"1{c}"], slots[f"2{d}"]))
-        pairs.append((slots[f"1{d}"], slots[f"2{c}"]))
+    backtrack(0)
+    return assignment
 
-    # 4 third-place matches (best 8 thirds ranked 1-8 play each other)
-    thirds = [slots[f"3rd_{i}"] for i in range(1, 9)]
-    for i in range(0, 8, 2):
-        pairs.append((thirds[i], thirds[i + 1]))
+
+def _build_r32(slots: dict[str, str], third_by_group: dict[str, str]) -> list[tuple[str, str]]:
+    """Pair 32 qualifiers into 16 R32 matchups using the official FIFA 2026 bracket."""
+    pairs: list[tuple[str, str]] = [(slots[a], slots[b]) for a, b in _R32_FIXED]
+
+    slot_to_group = _assign_thirds(set(third_by_group.keys()))
+    for winner_slot, grp in slot_to_group.items():
+        pairs.append((slots[winner_slot], third_by_group[grp]))
 
     return pairs  # exactly 16 matchups
 
@@ -190,8 +210,8 @@ def simulate_tournament(
     rho: float = RHO,
 ) -> str:
     group_results = simulate_groups(ratings, rng, rho=rho)
-    slots, _ = get_qualifiers(group_results)
-    r32 = _build_r32(slots)
+    slots, third_by_group = get_qualifiers(group_results)
+    r32 = _build_r32(slots, third_by_group)
     return play_knockout(r32, ratings, rng, rho=rho)
 
 
