@@ -6,8 +6,9 @@
   --border:  #2d3148;
   --accent:  #4f8ef7;
   --green:   #3ecf6e;
-  --muted:   #8892a4;
-  --text:    #e2e8f0;
+  --muted:          #8892a4;
+  --text:           #e2e8f0;
+  --text-secondary: #a0aab8;
 }
 
 body {

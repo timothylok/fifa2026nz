@@ -7,6 +7,9 @@ import EloSandbox from './components/EloSandbox'
 import Predict from './components/Predict'
 import ValueIndex from './components/ValueIndex'
 
+const SUBHEADLINE =
+  '10,000 Monte‑Carlo simulations · Live Polymarket odds (4‑hour updates) · Daily match data · Calibrated Elo + Dixon‑Coles/Poisson'
+
 const TABS = [
   { id: 'odds',          label: 'Championship' },
   { id: 'trajectories',  label: 'Trajectories' },
@@ -57,8 +60,8 @@ export default function App() {
         <div className="max-w-5xl mx-auto px-6 pt-4 pb-0 flex items-start justify-between gap-4 flex-wrap">
           <div className="pb-1">
             <h1 className="text-xl font-bold tracking-tight">⚽ FIFA 2026 Predictor</h1>
-            <p className="text-[var(--muted)] text-xs mt-0.5">
-              10,000 Monte‑Carlo simulations · Live Polymarket odds (4‑hour updates) · Daily match data · Calibrated Elo + Dixon‑Coles/Poisson
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginTop: '4px', marginBottom: '16px' }}>
+              {SUBHEADLINE}
             </p>
           </div>
           <div className="text-right text-[10px] text-[var(--muted)] pb-1">
