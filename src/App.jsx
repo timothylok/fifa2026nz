@@ -56,9 +56,9 @@ export default function App() {
       <header className="border-b border-[var(--border)] bg-[var(--surface)] sticky top-0 z-10">
         <div className="max-w-5xl mx-auto px-6 pt-4 pb-0 flex items-start justify-between gap-4 flex-wrap">
           <div className="pb-1">
-            <h1 className="text-xl font-bold tracking-tight">⚽ FIFA 2026</h1>
+            <h1 className="text-xl font-bold tracking-tight">⚽ FIFA 2026 Predictor</h1>
             <p className="text-[var(--muted)] text-xs mt-0.5">
-              {data.n_simulations.toLocaleString()} Monte-Carlo sims · Elo + Dixon-Coles/Poisson
+              {data.n_simulations.toLocaleString()} Monte‑Carlo simulations · Calibrated Elo (4‑yr decay + shrinkage) · Dixon‑Coles/Poisson
             </p>
           </div>
           <div className="text-right text-[10px] text-[var(--muted)] pb-1">
