@@ -1,46 +1,46 @@
 {
-  "generated_at": "2026-06-08T05:38:10.928373+00:00",
+  "generated_at": "2026-06-08T06:38:39.520432+00:00",
   "n_simulations": 10000,
   "teams": [
     {
       "name": "Spain",
-      "win_pct": 12.29,
+      "win_pct": 12.27,
       "raw_win_pct": 7.23,
       "elo": 1832.7
     },
     {
       "name": "France",
-      "win_pct": 10.26,
+      "win_pct": 10.24,
       "raw_win_pct": 2.16,
       "elo": 1789.0
     },
     {
-      "name": "England",
-      "win_pct": 7.45,
-      "raw_win_pct": 2.41,
-      "elo": 1787.8
-    },
-    {
       "name": "Argentina",
-      "win_pct": 7.41,
+      "win_pct": 7.39,
       "raw_win_pct": 5.64,
       "elo": 1795.4
     },
     {
+      "name": "England",
+      "win_pct": 7.38,
+      "raw_win_pct": 2.41,
+      "elo": 1787.8
+    },
+    {
       "name": "Brazil",
-      "win_pct": 6.63,
+      "win_pct": 6.61,
       "raw_win_pct": 4.42,
       "elo": 1755.2
     },
     {
       "name": "Portugal",
-      "win_pct": 6.38,
+      "win_pct": 6.42,
       "raw_win_pct": 1.9,
       "elo": 1740.9
     },
     {
       "name": "Morocco",
-      "win_pct": 4.24,
+      "win_pct": 4.35,
       "raw_win_pct": 8.05,
       "elo": 1855.9
     },
@@ -52,7 +52,7 @@
     },
     {
       "name": "Germany",
-      "win_pct": 4.04,
+      "win_pct": 3.91,
       "raw_win_pct": 1.88,
       "elo": 1757.3
     },
@@ -82,7 +82,7 @@
     },
     {
       "name": "Mexico",
-      "win_pct": 1.71,
+      "win_pct": 1.82,
       "raw_win_pct": 2.3,
       "elo": 1710.4
     },
@@ -100,7 +100,7 @@
     },
     {
       "name": "T\u00fcrkiye",
-      "win_pct": 1.39,
+      "win_pct": 1.44,
       "raw_win_pct": 1.5,
       "elo": 1697.3
     },

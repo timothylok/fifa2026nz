@@ -8,7 +8,7 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).parent))
 
 from src.elo import build_ratings
-from src.export import to_json
+from src.export import to_json, write_elo_history
 from src.poisson import fit_rho, lambda_from_elo, match_probs
 from src.simulate import FIFA_2026_GROUPS, run_simulations
 
@@ -97,7 +97,7 @@ def main() -> None:
     df["date"] = pd.to_datetime(df["date"])
 
     print("Building Elo ratings ...")
-    ratings = build_ratings(df)
+    ratings, elo_history = build_ratings(df)
     print(f"  {len(ratings)} teams rated. Top 5:")
     for team, elo in sorted(ratings.items(), key=lambda x: -x[1])[:5]:
         print(f"    {team}: {elo:.0f}")
@@ -126,6 +126,10 @@ def main() -> None:
 
     print(f"Writing results to {args.output} ...")
     to_json(blended_counts, ratings, gmp, args.output, total_sims, raw_win_pcts=raw_pcts)
+
+    elo_history_path = str(Path(args.output).parent / "elo_history.json")
+    print(f"Writing Elo history to {elo_history_path} ...")
+    write_elo_history(elo_history, elo_history_path)
 
     # Print top 10 (blended)
     ranked = sorted(blended_pcts.items(), key=lambda x: -x[1])

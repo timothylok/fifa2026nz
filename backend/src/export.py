@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _WEB_PUBLIC = os.path.join(_ROOT, "web", "public", "data", "results.json")
+_WEB_ELO_HISTORY = os.path.join(_ROOT, "web", "public", "data", "elo_history.json")
 
 
 def to_json(
@@ -46,3 +47,16 @@ def to_json(
         and os.path.isdir(web_dir)
     ):
         shutil.copy2(output_path, _WEB_PUBLIC)
+
+
+def write_elo_history(history: dict, output_path: str) -> None:
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(history, f, separators=(",", ":"))
+
+    web_dir = os.path.dirname(_WEB_ELO_HISTORY)
+    if (
+        os.path.dirname(os.path.abspath(_WEB_ELO_HISTORY)) != os.path.dirname(os.path.abspath(output_path))
+        and os.path.isdir(web_dir)
+    ):
+        shutil.copy2(output_path, _WEB_ELO_HISTORY)

@@ -78,8 +78,9 @@ def update_rating(
     return r_a + delta, r_b - delta
 
 
-def build_ratings(matches_df: pd.DataFrame) -> dict[str, float]:
+def build_ratings(matches_df: pd.DataFrame) -> tuple[dict[str, float], dict[str, list]]:
     ratings: dict[str, float] = {}
+    history: dict[str, list] = {}
     df = matches_df.sort_values("date").reset_index(drop=True)
     dates = pd.to_datetime(df["date"])
     ref_date = dates.max()
@@ -94,4 +95,7 @@ def build_ratings(matches_df: pd.DataFrame) -> dict[str, float]:
         new_h, new_a = update_rating(r_h, r_a, int(row["home_goals"]), int(row["away_goals"]), k=k)
         ratings[home] = new_h
         ratings[away] = new_a
-    return ratings
+        date_str = match_date.strftime("%Y-%m-%d")
+        history.setdefault(home, []).append({"date": date_str, "elo": round(new_h, 2)})
+        history.setdefault(away, []).append({"date": date_str, "elo": round(new_a, 2)})
+    return ratings, history
