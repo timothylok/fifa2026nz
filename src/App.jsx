@@ -58,7 +58,7 @@ export default function App() {
           <div className="pb-1">
             <h1 className="text-xl font-bold tracking-tight">⚽ FIFA 2026 Predictor</h1>
             <p className="text-[var(--muted)] text-xs mt-0.5">
-              {data.n_simulations.toLocaleString()} Monte‑Carlo simulations · Calibrated Elo (4‑yr decay + shrinkage) · Dixon‑Coles/Poisson
+              10,000 Monte‑Carlo simulations · Live Polymarket odds (4‑hour updates) · Daily match data · Calibrated Elo + Dixon‑Coles/Poisson
             </p>
           </div>
           <div className="text-right text-[10px] text-[var(--muted)] pb-1">
