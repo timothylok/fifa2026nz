@@ -351,7 +351,7 @@ export default function ValueIndex({ teams }) {
         <div className="flex items-baseline justify-between mb-3 flex-wrap gap-2">
           <h2 className="text-sm font-semibold">Top Value Picks</h2>
           <span className="text-[10px] text-[var(--muted)]">
-            Odds updated {new Date(oddsData.updated_at).toLocaleDateString(undefined, { dateStyle: 'medium' })}
+            Odds updated {new Date(oddsData.updated_at).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })}
             {' · '}Polymarket overround{' '}
             {overrounds['Polymarket'] != null
               ? (overrounds['Polymarket'] * 100).toFixed(1) + '%'
