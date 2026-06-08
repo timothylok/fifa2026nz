@@ -3,7 +3,49 @@ import math
 import pandas as pd
 
 DEFAULT_RATING = 1500.0
-K = 30
+HALF_LIFE_YEARS = 4
+
+_TOURNAMENT_CLASS = {
+    'FIFA World Cup': 'wc', 'WC2022': 'wc', 'WC2018': 'wc',
+    'UEFA Euro': 'continental', 'Copa América': 'continental',
+    'African Cup of Nations': 'continental', 'AFC Asian Cup': 'continental',
+    'Gold Cup': 'continental',
+    'UEFA Nations League': 'nations_league', 'UEFANationsLeague': 'nations_league',
+    'CONCACAF Nations League': 'nations_league',
+    'EAFF Championship': 'nations_league', 'WAFF Championship': 'nations_league',
+    'COSAFA Cup': 'nations_league', 'Arab Cup': 'nations_league', 'Gulf Cup': 'nations_league',
+    'Friendly': 'friendlies', 'FIFA Series': 'friendlies',
+    'Kirin Challenge Cup': 'friendlies', 'Kirin Cup': 'friendlies',
+}
+
+K_BY_CLASS = {
+    'wc': 40,
+    'continental': 30,
+    'nations_league': 30,
+    'qualifiers': 40,
+    'friendlies': 25,
+}
+
+_SHRINKAGE_BY_CLASS = {
+    'wc': 0.20,
+    'continental': 0.15,
+    'nations_league': 0.10,
+    'qualifiers': 0.0,
+    'friendlies': 0.0,
+}
+
+
+def _classify(tournament: str) -> str:
+    t = tournament or ''
+    cls = _TOURNAMENT_CLASS.get(t)
+    if cls:
+        return cls
+    t_lower = t.lower()
+    if 'qualif' in t_lower or 'q2026' in t_lower or t in ('CONCACAFQ', 'CONMEBOLQ'):
+        return 'qualifiers'
+    if 'friendly' in t_lower:
+        return 'friendlies'
+    return 'qualifiers'
 
 
 def expected_score(r_a: float, r_b: float) -> float:
@@ -22,7 +64,7 @@ def goal_diff_multiplier(gd: int) -> float:
 
 
 def update_rating(
-    r_a: float, r_b: float, goals_a: int, goals_b: int, k: float = K
+    r_a: float, r_b: float, goals_a: int, goals_b: int, k: float = K_BY_CLASS['qualifiers']
 ) -> tuple[float, float]:
     e_a = expected_score(r_a, r_b)
     if goals_a > goals_b:
@@ -43,7 +85,9 @@ def build_ratings(matches_df: pd.DataFrame) -> dict[str, float]:
     ref_date = dates.max()
     for (_, row), match_date in zip(df.iterrows(), dates):
         delta_years = (ref_date - match_date).days / 365.25
-        k = K * math.exp(-delta_years / 2)
+        cls = _classify(row.get('tournament', ''))
+        lam = _SHRINKAGE_BY_CLASS.get(cls, 0.0)
+        k = K_BY_CLASS.get(cls, K_BY_CLASS['qualifiers']) * 0.5 ** (delta_years / HALF_LIFE_YEARS) * (1 - lam)
         home, away = row["home_team"], row["away_team"]
         r_h = ratings.get(home, DEFAULT_RATING)
         r_a = ratings.get(away, DEFAULT_RATING)
