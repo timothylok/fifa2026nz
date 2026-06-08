@@ -100,7 +100,12 @@ export default function App() {
 
       <footer className="border-t border-[var(--border)] mt-8">
         <div className="max-w-5xl mx-auto px-6 py-4 text-center text-[11px] text-[var(--muted)]">
-          Designed by Tim Lok · Engineered with{' '}
+          Designed by{' '}
+          <a href="https://timlok-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer"
+             className="text-[var(--text)] hover:text-[var(--accent)] transition-colors">
+            Tim Lok
+          </a>
+          {' '}· Engineered with{' '}
           <span className="text-[var(--text)]">Claude Code</span>
         </div>
       </footer>
