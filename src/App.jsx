@@ -94,6 +94,13 @@ export default function App() {
         {tab === 'predict' && <Predict teams={data.teams} groupMatchProbs={data.group_match_probs} />}
         {tab === 'value'   && <ValueIndex teams={data.teams} />}
       </main>
+
+      <footer className="border-t border-[var(--border)] mt-8">
+        <div className="max-w-5xl mx-auto px-6 py-4 text-center text-[11px] text-[var(--muted)]">
+          Designed by Tim Lok · Engineered with{' '}
+          <span className="text-[var(--text)]">Claude Code</span>
+        </div>
+      </footer>
     </div>
   )
 }
