@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-08T20:01:07.214662+00:00",
+  "updated_at": "2026-06-09T00:01:09.979299+00:00",
   "bookmakers": [
     "Polymarket"
   ],
@@ -31,7 +31,7 @@
     {
       "name": "Argentina",
       "odds": {
-        "Polymarket": 11.7
+        "Polymarket": 11.83
       }
     },
     {
@@ -61,7 +61,7 @@
     {
       "name": "Belgium",
       "odds": {
-        "Polymarket": 46.51
+        "Polymarket": 44.44
       }
     },
     {
@@ -95,15 +95,15 @@
       }
     },
     {
-      "name": "Switzerland",
+      "name": "USA",
       "odds": {
         "Polymarket": 86.96
       }
     },
     {
-      "name": "USA",
+      "name": "Switzerland",
       "odds": {
-        "Polymarket": 86.96
+        "Polymarket": 95.24
       }
     },
     {
@@ -131,13 +131,13 @@
       }
     },
     {
-      "name": "Sweden",
+      "name": "Austria",
       "odds": {
         "Polymarket": 222.22
       }
     },
     {
-      "name": "Austria",
+      "name": "Sweden",
       "odds": {
         "Polymarket": 222.22
       }
@@ -161,19 +161,7 @@
       }
     },
     {
-      "name": "Paraguay",
-      "odds": {
-        "Polymarket": 400.0
-      }
-    },
-    {
       "name": "Scotland",
-      "odds": {
-        "Polymarket": 400.0
-      }
-    },
-    {
-      "name": "Czechia",
       "odds": {
         "Polymarket": 400.0
       }
@@ -185,25 +173,25 @@
       }
     },
     {
+      "name": "Czechia",
+      "odds": {
+        "Polymarket": 400.0
+      }
+    },
+    {
+      "name": "Paraguay",
+      "odds": {
+        "Polymarket": 400.0
+      }
+    },
+    {
+      "name": "Algeria",
+      "odds": {
+        "Polymarket": 666.67
+      }
+    },
+    {
       "name": "Australia",
-      "odds": {
-        "Polymarket": 666.67
-      }
-    },
-    {
-      "name": "Congo DR",
-      "odds": {
-        "Polymarket": 666.67
-      }
-    },
-    {
-      "name": "IR Iran",
-      "odds": {
-        "Polymarket": 666.67
-      }
-    },
-    {
-      "name": "Ghana",
       "odds": {
         "Polymarket": 666.67
       }
@@ -215,19 +203,25 @@
       }
     },
     {
-      "name": "Algeria",
+      "name": "IR Iran",
       "odds": {
         "Polymarket": 666.67
       }
     },
     {
-      "name": "Iraq",
+      "name": "Congo DR",
       "odds": {
-        "Polymarket": 2000.0
+        "Polymarket": 666.67
       }
     },
     {
-      "name": "Cabo Verde",
+      "name": "Ghana",
+      "odds": {
+        "Polymarket": 666.67
+      }
+    },
+    {
+      "name": "New Zealand",
       "odds": {
         "Polymarket": 2000.0
       }
@@ -239,7 +233,7 @@
       }
     },
     {
-      "name": "Haiti",
+      "name": "Jordan",
       "odds": {
         "Polymarket": 2000.0
       }
@@ -257,7 +251,7 @@
       }
     },
     {
-      "name": "Saudi Arabia",
+      "name": "Haiti",
       "odds": {
         "Polymarket": 2000.0
       }
@@ -269,25 +263,31 @@
       }
     },
     {
+      "name": "Cabo Verde",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Saudi Arabia",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
       "name": "South Africa",
       "odds": {
         "Polymarket": 2000.0
       }
     },
     {
-      "name": "New Zealand",
+      "name": "Iraq",
       "odds": {
         "Polymarket": 2000.0
       }
     },
     {
       "name": "Curaçao",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Jordan",
       "odds": {
         "Polymarket": 2000.0
       }
