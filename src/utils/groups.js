@@ -45,6 +45,35 @@ export function computeRealStandings(completedMatches) {
   return result
 }
 
+// Blend real results with model expectations: each team gets its actual points
+// from played fixtures plus probabilistic expected points from unplayed ones.
+// Same row shape as computeRealStandings plus expectedPts (the hybrid total).
+// With no completed matches this reduces to pure expected points.
+export function computeHybridStandings(groupMatchProbs, completedMatches) {
+  const real = computeRealStandings(completedMatches)
+  const playedPairs = new Set()
+  completedMatches.forEach(m => {
+    if (m.stage === 'group') playedPairs.add(m.group + '|' + [m.home, m.away].sort().join('|'))
+  })
+  const remaining = {}
+  Object.entries(FIFA_2026_GROUPS).forEach(([gid, teams]) => {
+    remaining[gid] = Object.fromEntries(teams.map(t => [t, 0]))
+  })
+  groupMatchProbs.forEach(({ group, home, away, home_win, draw, away_win }) => {
+    if (!remaining[group]) return
+    if (playedPairs.has(group + '|' + [home, away].sort().join('|'))) return
+    remaining[group][home] += home_win * 3 + draw
+    remaining[group][away] += away_win * 3 + draw
+  })
+  const result = {}
+  Object.entries(real).forEach(([gid, rows]) => {
+    result[gid] = rows
+      .map(r => ({ ...r, expectedPts: r.pts + (remaining[gid][r.team] ?? 0) }))
+      .sort((x, y) => y.expectedPts - x.expectedPts || y.gd - x.gd || y.gf - x.gf || x.team.localeCompare(y.team))
+  })
+  return result
+}
+
 // Compute expected points per team in each group from group_match_probs
 export function computeGroupStandings(groupMatchProbs) {
   const pts = {}
