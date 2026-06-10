@@ -37,6 +37,11 @@ jobs:
         working-directory: backend
         run: python run.py --data data/historical_matches.csv --sims 10000 --output ../public/data/results.json
 
+      - name: Validate simulation output
+        timeout-minutes: 2
+        working-directory: backend
+        run: python validate_results.py ../public/data/results.json
+
       - name: Fetch bookmaker odds
         timeout-minutes: 5
         working-directory: backend
