@@ -35,7 +35,7 @@ jobs:
       - name: Run simulations
         timeout-minutes: 10
         working-directory: backend
-        run: python run.py --data data/historical_matches.csv --sims 10000 --output ../public/data/results.json
+        run: python run.py --data data/historical_matches.csv --sims 10000 --output ../public/data/results.json --live
 
       - name: Validate simulation output
         timeout-minutes: 2

@@ -11,6 +11,7 @@ from src.elo import build_ratings
 from src.export import append_prob_history, to_json, write_elo_history
 from src.poisson import fit_rho, lambda_from_elo, match_probs
 from src.simulate import FIFA_2026_GROUPS, run_simulations
+from src.tournament_state import build_state
 
 
 def blend_with_market(raw_pcts: dict[str, float], output_path: str, alpha: float) -> dict[str, float]:
@@ -90,6 +91,8 @@ def main() -> None:
     parser.add_argument("--output", default="results/results.json")
     parser.add_argument("--alpha", type=float, default=0.4,
                         help="Model weight in market blend (0=pure market, 1=pure model). Default 0.4.")
+    parser.add_argument("--live", action="store_true",
+                        help="Condition simulations on real WC 2026 results from the data CSV.")
     args = parser.parse_args()
 
     print(f"Loading match data from {args.data} ...")
@@ -106,8 +109,16 @@ def main() -> None:
     rho = fit_rho(df, ratings)
     print(f"  rho = {rho}")
 
+    state = None
+    if args.live:
+        print("Building live tournament state ...")
+        state = build_state(args.data)
+        n_group = sum(len(v) for v in state.group_matches.values())
+        print(f"  {n_group} group matches played, {len(state.ko_matches)} knockout matches, "
+              f"{len(state.eliminated)} teams eliminated.")
+
     print(f"Running {args.sims:,} simulations ...")
-    win_counts = run_simulations(ratings, n=args.sims, n_jobs=args.jobs, rho=rho)
+    win_counts = run_simulations(ratings, n=args.sims, n_jobs=args.jobs, rho=rho, state=state)
 
     # Raw model probabilities (before market blending)
     total_sims = sum(win_counts.values())
@@ -117,6 +128,13 @@ def main() -> None:
     print("Applying market calibration ...")
     blended_pcts = blend_with_market(raw_pcts, args.output, args.alpha)
 
+    # Eliminated teams must show exactly 0% even if stale market odds linger
+    if state is not None and state.eliminated:
+        blended_pcts = {t: (0.0 if t in state.eliminated else p) for t, p in blended_pcts.items()}
+        total = sum(blended_pcts.values())
+        if total > 0:
+            blended_pcts = {t: 100.0 * p / total for t, p in blended_pcts.items()}
+
     # Rebuild win_counts from blended_pcts so export sorts correctly
     # We pass blended as win_counts (scaled to original total) and raw separately
     blended_counts = {team: int(round(pct / 100.0 * total_sims)) for team, pct in blended_pcts.items()}
@@ -125,7 +143,7 @@ def main() -> None:
     gmp = build_group_match_probs(ratings, rho=rho)
 
     print(f"Writing results to {args.output} ...")
-    to_json(blended_counts, ratings, gmp, args.output, total_sims, raw_win_pcts=raw_pcts)
+    to_json(blended_counts, ratings, gmp, args.output, total_sims, raw_win_pcts=raw_pcts, state=state)
 
     print("Appending probability history ...")
     append_prob_history(blended_pcts, args.output)

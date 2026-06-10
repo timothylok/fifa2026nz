@@ -16,6 +16,7 @@ def to_json(
     output_path: str,
     n_simulations: int,
     raw_win_pcts: dict[str, float] | None = None,
+    state=None,
 ) -> None:
     total = sum(win_counts.values())
     teams = sorted(
@@ -31,9 +32,31 @@ def to_json(
         key=lambda t: t["win_pct"],
         reverse=True,
     )
+    # Live-tournament fields (Fable5 P2) — empty/None when not running --live
+    # so the frontend sees a stable schema either way.
+    completed: list[dict] = []
+    eliminated: list[str] = []
+    if state is not None:
+        for gid, ms in state.group_matches.items():
+            for m in ms:
+                completed.append(
+                    {"stage": "group", "group": gid, "date": m.date, "home": m.home,
+                     "away": m.away, "home_goals": m.home_goals, "away_goals": m.away_goals}
+                )
+        for r in state.ko_results:
+            completed.append(
+                {"stage": r["round"], "date": r["date"], "home": r["home"], "away": r["away"],
+                 "home_goals": r["home_goals"], "away_goals": r["away_goals"], "winner": r["winner"]}
+            )
+        completed.sort(key=lambda c: c["date"])
+        eliminated = sorted(state.eliminated)
+
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "n_simulations": n_simulations,
+        "as_of": completed[-1]["date"] if completed else None,
+        "completed_matches": completed,
+        "eliminated": eliminated,
         "teams": teams,
         "group_match_probs": group_match_probs,
     }

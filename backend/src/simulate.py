@@ -87,13 +87,25 @@ def simulate_group(
     ratings: dict[str, float],
     rng: np.random.Generator,
     rho: float = RHO,
+    played: list | None = None,
 ) -> list[dict]:
+    # Real results (PlayedMatch rows from tournament_state) are injected as
+    # fixed scores; only unplayed fixtures are sampled.
+    played_scores: dict[frozenset, tuple[str, int, int]] = {}
+    for m in played or []:
+        played_scores[frozenset((m.home, m.away))] = (m.home, m.home_goals, m.away_goals)
+
     records: dict[str, dict] = {
         t: {"team": t, "pts": 0, "gd": 0, "gf": 0} for t in group_teams
     }
     for i, home in enumerate(group_teams):
         for away in group_teams[i + 1 :]:
-            gh, ga = simulate_match(home, away, ratings, rng, allow_draw=True, rho=rho)
+            fixed = played_scores.get(frozenset((home, away)))
+            if fixed is not None:
+                real_home, hg, ag = fixed
+                gh, ga = (hg, ag) if real_home == home else (ag, hg)
+            else:
+                gh, ga = simulate_match(home, away, ratings, rng, allow_draw=True, rho=rho)
             records[home]["gf"] += gh
             records[away]["gf"] += ga
             records[home]["gd"] += gh - ga
@@ -124,9 +136,13 @@ def simulate_groups(
     ratings: dict[str, float],
     rng: np.random.Generator,
     rho: float = RHO,
+    played_by_group: dict[str, list] | None = None,
 ) -> dict[str, list[dict]]:
     return {
-        gid: simulate_group(teams, ratings, rng, rho=rho)
+        gid: simulate_group(
+            teams, ratings, rng, rho=rho,
+            played=played_by_group.get(gid) if played_by_group else None,
+        )
         for gid, teams in FIFA_2026_GROUPS.items()
     }
 
@@ -187,39 +203,70 @@ def play_knockout(
     ratings: dict[str, float],
     rng: np.random.Generator,
     rho: float = RHO,
+    decided: dict[frozenset, str] | None = None,
+    eliminated: set[str] | None = None,
 ) -> str:
-    """Single-elimination: list of (team_a, team_b) pairs → winner of tournament."""
-    while len(teams) > 1:
-        next_round: list[tuple[str, str]] = []
+    """Single-elimination: list of (team_a, team_b) pairs → winner of tournament.
+
+    `decided` ({unordered pair: winner}) locks real knockout results;
+    `eliminated` forces teams already knocked out in reality to lose any
+    sampled match (their title probability must be exactly 0)."""
+    while teams:
+        winners: list[str] = []
         for a, b in teams:
-            ga, gb = simulate_match(a, b, ratings, rng, allow_draw=False, rho=rho)
-            winner = a if ga > gb else b
-            next_round.append((winner, winner))  # placeholder pairing
+            winner = decided.get(frozenset((a, b))) if decided else None
+            if winner is None and eliminated and (a in eliminated) != (b in eliminated):
+                winner = b if a in eliminated else a
+            if winner is None:
+                ga, gb = simulate_match(a, b, ratings, rng, allow_draw=False, rho=rho)
+                winner = a if ga > gb else b
+            winners.append(winner)
+        if len(winners) == 1:
+            return winners[0]
         # Re-pair winners sequentially
-        winners = [pair[0] for pair in next_round]
         teams = [(winners[i], winners[i + 1]) for i in range(0, len(winners) - 1, 2)]
         if len(winners) % 2 == 1:
             # bye — last team advances automatically
             teams.append((winners[-1], winners[-1]))
-    return teams[0][0] if teams else ""
+    return ""
 
 
 def simulate_tournament(
     ratings: dict[str, float],
     rng: np.random.Generator,
     rho: float = RHO,
+    state=None,
 ) -> str:
-    group_results = simulate_groups(ratings, rng, rho=rho)
-    slots, third_by_group = get_qualifiers(group_results)
-    r32 = _build_r32(slots, third_by_group)
-    return play_knockout(r32, ratings, rng, rho=rho)
+    """`state` is an optional tournament_state.TournamentState (duck-typed to
+    avoid a circular import). None or an empty state reproduces today's
+    unconditional behaviour exactly (same RNG call sequence)."""
+    if state is not None and state.groups_complete:
+        # Real group stage is final — use the deterministic FIFA-tiebreak
+        # qualifiers instead of re-simulating (rng tiebreaks could differ).
+        r32 = list(state.r32_pairs)
+    else:
+        played = state.group_matches if state is not None else None
+        group_results = simulate_groups(ratings, rng, rho=rho, played_by_group=played)
+        slots, third_by_group = get_qualifiers(group_results)
+        r32 = _build_r32(slots, third_by_group)
+
+    decided = None
+    eliminated = None
+    if state is not None:
+        decided = {
+            frozenset((r["home"], r["away"])): r["winner"]
+            for r in state.ko_results
+            if r["winner"] is not None and r["round"] != "3RD"
+        }
+        eliminated = state.eliminated
+    return play_knockout(r32, ratings, rng, rho=rho, decided=decided, eliminated=eliminated)
 
 
-def _batch(ratings: dict[str, float], n: int, seed: int, rho: float = RHO) -> dict[str, int]:
+def _batch(ratings: dict[str, float], n: int, seed: int, rho: float = RHO, state=None) -> dict[str, int]:
     rng = np.random.default_rng(seed)
     counts: dict[str, int] = {}
     for _ in range(n):
-        winner = simulate_tournament(ratings, rng, rho=rho)
+        winner = simulate_tournament(ratings, rng, rho=rho, state=state)
         counts[winner] = counts.get(winner, 0) + 1
     return counts
 
@@ -229,6 +276,7 @@ def run_simulations(
     n: int = 10_000,
     n_jobs: int = -1,
     rho: float = RHO,
+    state=None,
 ) -> dict[str, int]:
     n_cpu = __import__("os").cpu_count() or 4
     workers = n_cpu if n_jobs == -1 else max(1, n_jobs)
@@ -237,7 +285,7 @@ def run_simulations(
     batches[-1] += n - sum(batches)  # absorb remainder
 
     results = Parallel(n_jobs=workers)(
-        delayed(_batch)(ratings, b, seed=i * 999983, rho=rho)
+        delayed(_batch)(ratings, b, seed=i * 999983, rho=rho, state=state)
         for i, b in enumerate(batches)
     )
 
