@@ -14,6 +14,37 @@ export const FIFA_2026_GROUPS = {
   L: ['Ghana', 'Panama', 'England', 'Croatia'],
 }
 
+// Compute real standings per group from results.json completed_matches.
+// Tiebreaks: pts → GD → GF → alphabetical (backend h2h mini-table not mirrored;
+// authoritative order comes from the backend once a group completes).
+export function computeRealStandings(completedMatches) {
+  const table = {}
+  Object.entries(FIFA_2026_GROUPS).forEach(([gid, teams]) => {
+    table[gid] = Object.fromEntries(
+      teams.map(t => [t, { team: t, played: 0, won: 0, drawn: 0, lost: 0, gf: 0, ga: 0 }])
+    )
+  })
+  completedMatches.forEach(m => {
+    if (m.stage !== 'group') return
+    const g = table[m.group]
+    if (!g || !g[m.home] || !g[m.away]) return
+    const h = g[m.home], a = g[m.away]
+    h.played += 1; a.played += 1
+    h.gf += m.home_goals; h.ga += m.away_goals
+    a.gf += m.away_goals; a.ga += m.home_goals
+    if (m.home_goals > m.away_goals) { h.won += 1; a.lost += 1 }
+    else if (m.home_goals < m.away_goals) { a.won += 1; h.lost += 1 }
+    else { h.drawn += 1; a.drawn += 1 }
+  })
+  const result = {}
+  Object.entries(table).forEach(([gid, teams]) => {
+    result[gid] = Object.values(teams)
+      .map(r => ({ ...r, gd: r.gf - r.ga, pts: r.won * 3 + r.drawn }))
+      .sort((x, y) => y.pts - x.pts || y.gd - x.gd || y.gf - x.gf || x.team.localeCompare(y.team))
+  })
+  return result
+}
+
 // Compute expected points per team in each group from group_match_probs
 export function computeGroupStandings(groupMatchProbs) {
   const pts = {}

@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { flag, FlagIcon } from '../utils/flags.jsx'
-import { FIFA_2026_GROUPS, computeGroupStandings } from '../utils/groups'
+import { FIFA_2026_GROUPS, computeGroupStandings, computeRealStandings } from '../utils/groups'
 
 function ProbBar({ homeWin, draw, awayWin }) {
   return (
@@ -12,8 +12,39 @@ function ProbBar({ homeWin, draw, awayWin }) {
   )
 }
 
-function MatchCard({ match }) {
+function MatchCard({ match, result }) {
   const { home, away, home_win, draw, away_win } = match
+
+  if (result) {
+    // Played fixture — show the actual score (oriented to this card's home/away)
+    const hg = result.home === home ? result.home_goals : result.away_goals
+    const ag = result.home === home ? result.away_goals : result.home_goals
+    const hWon = hg > ag
+    const aWon = ag > hg
+    return (
+      <div className="bg-[var(--bg)] border border-[var(--border)] rounded-lg p-3" data-played="true">
+        <div className="flex items-center gap-2">
+          <div className="flex-1 flex items-center gap-1.5">
+            <span className="text-base leading-none"><FlagIcon name={home} /></span>
+            <span className={`text-xs font-medium truncate ${hWon ? 'text-[var(--text)]' : 'text-[var(--muted)]'}`}>
+              {home}
+            </span>
+          </div>
+          <div className="shrink-0 text-center">
+            <div className="text-sm font-mono font-bold text-[var(--text)]">{hg} – {ag}</div>
+            <div className="text-[10px] text-[var(--muted)]">FT</div>
+          </div>
+          <div className="flex-1 flex items-center gap-1.5 justify-end">
+            <span className={`text-xs font-medium truncate text-right ${aWon ? 'text-[var(--text)]' : 'text-[var(--muted)]'}`}>
+              {away}
+            </span>
+            <span className="text-base leading-none"><FlagIcon name={away} /></span>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   const hFav = home_win > away_win
   const aFav = away_win > home_win
 
@@ -61,14 +92,24 @@ function MatchCard({ match }) {
   )
 }
 
-export default function GroupStage({ groupMatchProbs, teams }) {
+export default function GroupStage({ groupMatchProbs, teams, completedMatches = [], eliminated = [] }) {
   const [sel, setSel] = useState('A')
   const groupIds = Object.keys(FIFA_2026_GROUPS)
 
   const standings = useMemo(() => computeGroupStandings(groupMatchProbs), [groupMatchProbs])
+  const liveStandings = useMemo(() => computeRealStandings(completedMatches), [completedMatches])
   const eloMap = useMemo(() => Object.fromEntries(teams.map(t => [t.name, t.elo])), [teams])
   const groupMatches = useMemo(() => groupMatchProbs.filter(m => m.group === sel), [groupMatchProbs, sel])
+  const resultsByPair = useMemo(() => {
+    const map = {}
+    completedMatches.forEach(m => {
+      if (m.stage === 'group' && m.group === sel) map[[m.home, m.away].sort().join('|')] = m
+    })
+    return map
+  }, [completedMatches, sel])
   const groupTeams = standings[sel] ?? []
+  const liveRows = liveStandings[sel] ?? []
+  const groupPlayed = liveRows.some(r => r.played > 0)
 
   return (
     <div>
@@ -87,6 +128,67 @@ export default function GroupStage({ groupMatchProbs, teams }) {
             Group {gid}
           </button>
         ))}
+      </div>
+
+      {/* Live standings (real results) */}
+      <div className="mb-6">
+        <h3 className="text-xs font-semibold text-[var(--muted)] uppercase tracking-wider mb-3">
+          Group {sel} — Live Standings
+        </h3>
+        <div className="bg-[var(--surface)] border border-[var(--border)] rounded-lg overflow-x-auto">
+          <table className="w-full text-sm" data-testid="live-standings">
+            <thead>
+              <tr className="text-[10px] text-[var(--muted)] uppercase">
+                <th className="text-left font-semibold pl-4 pr-2 py-2">#</th>
+                <th className="text-left font-semibold px-2 py-2">Team</th>
+                <th className="text-center font-semibold px-2 py-2">P</th>
+                <th className="text-center font-semibold px-2 py-2">W</th>
+                <th className="text-center font-semibold px-2 py-2">D</th>
+                <th className="text-center font-semibold px-2 py-2">L</th>
+                <th className="text-center font-semibold px-2 py-2">GF</th>
+                <th className="text-center font-semibold px-2 py-2">GA</th>
+                <th className="text-center font-semibold px-2 py-2">GD</th>
+                <th className="text-center font-semibold pl-2 pr-4 py-2">Pts</th>
+              </tr>
+            </thead>
+            <tbody>
+              {liveRows.map((r, i) => {
+                const out = eliminated.includes(r.team)
+                return (
+                  <tr key={r.team} className="border-t border-[var(--border)]">
+                    <td className="pl-4 pr-2 py-2 text-xs font-mono text-[var(--muted)]">{i + 1}</td>
+                    <td className="px-2 py-2">
+                      <span className="flex items-center gap-1.5">
+                        <span className="text-base leading-none"><FlagIcon name={r.team} /></span>
+                        <span className={`text-sm font-medium truncate ${out ? 'text-[var(--muted)] line-through' : ''}`}>
+                          {r.team}
+                        </span>
+                        {out && (
+                          <span className="text-[10px] text-red-400 font-bold bg-red-400/10 px-1.5 py-0.5 rounded shrink-0">
+                            OUT
+                          </span>
+                        )}
+                      </span>
+                    </td>
+                    <td className="text-center px-2 py-2 font-mono text-xs text-[var(--muted)]">{r.played}</td>
+                    <td className="text-center px-2 py-2 font-mono text-xs text-[var(--muted)]">{r.won}</td>
+                    <td className="text-center px-2 py-2 font-mono text-xs text-[var(--muted)]">{r.drawn}</td>
+                    <td className="text-center px-2 py-2 font-mono text-xs text-[var(--muted)]">{r.lost}</td>
+                    <td className="text-center px-2 py-2 font-mono text-xs text-[var(--muted)]">{r.gf}</td>
+                    <td className="text-center px-2 py-2 font-mono text-xs text-[var(--muted)]">{r.ga}</td>
+                    <td className="text-center px-2 py-2 font-mono text-xs text-[var(--muted)]">{r.gd > 0 ? `+${r.gd}` : r.gd}</td>
+                    <td className="text-center pl-2 pr-4 py-2 font-mono text-sm font-bold">{r.pts}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+        {!groupPlayed && (
+          <p className="text-[10px] text-[var(--muted)] mt-2 ml-1">
+            No matches played yet — table updates as results come in
+          </p>
+        )}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -139,7 +241,7 @@ export default function GroupStage({ groupMatchProbs, teams }) {
           </h3>
           <div className="space-y-2">
             {groupMatches.map((match, i) => (
-              <MatchCard key={i} match={match} />
+              <MatchCard key={i} match={match} result={resultsByPair[[match.home, match.away].sort().join('|')]} />
             ))}
           </div>
         </div>

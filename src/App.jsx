@@ -91,7 +91,7 @@ export default function App() {
       <main className="max-w-5xl mx-auto px-6 py-8">
         {tab === 'odds'          && <ChampionshipOdds teams={data.teams} groupMatchProbs={data.group_match_probs} />}
         {tab === 'trajectories'  && <EloTrajectories />}
-        {tab === 'groups'        && <GroupStage groupMatchProbs={data.group_match_probs} teams={data.teams} />}
+        {tab === 'groups'        && <GroupStage groupMatchProbs={data.group_match_probs} teams={data.teams} completedMatches={data.completed_matches ?? []} eliminated={data.eliminated ?? []} />}
         {tab === 'bracket' && <Bracket teams={data.teams} groupMatchProbs={data.group_match_probs} />}
         {tab === 'sandbox' && <EloSandbox teams={data.teams} />}
         {tab === 'predict' && <Predict teams={data.teams} groupMatchProbs={data.group_match_probs} />}
