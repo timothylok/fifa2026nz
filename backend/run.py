@@ -8,7 +8,7 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).parent))
 
 from src.elo import build_ratings
-from src.export import to_json, write_elo_history
+from src.export import append_prob_history, to_json, write_elo_history
 from src.poisson import fit_rho, lambda_from_elo, match_probs
 from src.simulate import FIFA_2026_GROUPS, run_simulations
 
@@ -126,6 +126,9 @@ def main() -> None:
 
     print(f"Writing results to {args.output} ...")
     to_json(blended_counts, ratings, gmp, args.output, total_sims, raw_win_pcts=raw_pcts)
+
+    print("Appending probability history ...")
+    append_prob_history(blended_pcts, args.output)
 
     elo_history_path = str(Path(args.output).parent / "elo_history.json")
     print(f"Writing Elo history to {elo_history_path} ...")

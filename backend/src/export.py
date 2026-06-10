@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _WEB_PUBLIC = os.path.join(_ROOT, "web", "public", "data", "results.json")
 _WEB_ELO_HISTORY = os.path.join(_ROOT, "web", "public", "data", "elo_history.json")
+_WEB_PROB_HISTORY = os.path.join(_ROOT, "web", "public", "data", "prob_history.json")
 
 
 def to_json(
@@ -47,6 +48,50 @@ def to_json(
         and os.path.isdir(web_dir)
     ):
         shutil.copy2(output_path, _WEB_PUBLIC)
+
+
+def append_prob_history(
+    win_pcts: dict[str, float],
+    results_output_path: str,
+    run_date: str | None = None,
+    top_n: int = 20,
+) -> None:
+    """Append today's win_pct snapshot (top teams, 1dp) to prob_history.json
+    next to results.json. One entry per day: a same-date re-run replaces that
+    day's entry. A corrupted history file is left untouched (snapshot skipped)
+    so it stays recoverable — history cannot be backfilled."""
+    history_path = os.path.join(
+        os.path.dirname(os.path.abspath(results_output_path)), "prob_history.json"
+    )
+    date = run_date or datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    top = sorted(win_pcts.items(), key=lambda kv: kv[1], reverse=True)[:top_n]
+    entry = {"date": date, "probs": {team: round(pct, 1) for team, pct in top}}
+
+    history: list = []
+    if os.path.exists(history_path):
+        try:
+            with open(history_path, encoding="utf-8") as f:
+                history = json.load(f)
+            if not isinstance(history, list):
+                raise ValueError("prob_history.json root is not a list")
+        except (ValueError, OSError) as exc:
+            print(
+                f"  WARNING: could not read {history_path} ({exc}) — "
+                "file left untouched, snapshot skipped."
+            )
+            return
+
+    history = [e for e in history if e.get("date") != date]
+    history.append(entry)
+    with open(history_path, "w", encoding="utf-8") as f:
+        json.dump(history, f, separators=(",", ":"))
+
+    web_dir = os.path.dirname(_WEB_PROB_HISTORY)
+    if (
+        os.path.dirname(os.path.abspath(_WEB_PROB_HISTORY)) != os.path.dirname(os.path.abspath(history_path))
+        and os.path.isdir(web_dir)
+    ):
+        shutil.copy2(history_path, _WEB_PROB_HISTORY)
 
 
 def write_elo_history(history: dict, output_path: str) -> None:
