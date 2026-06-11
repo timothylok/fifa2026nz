@@ -7,7 +7,7 @@
    "home_win": 0.413,
    "draw": 0.264,
    "away_win": 0.323,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "A|Mexico|Korea Republic": {
    "group": "A",
@@ -16,7 +16,7 @@
    "home_win": 0.3563,
    "draw": 0.2657,
    "away_win": 0.378,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "A|Mexico|Czechia": {
    "group": "A",
@@ -25,16 +25,16 @@
    "home_win": 0.4744,
    "draw": 0.2561,
    "away_win": 0.2696,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "A|South Africa|Korea Republic": {
    "group": "A",
    "home": "South Africa",
    "away": "Korea Republic",
-   "home_win": 0.3127,
+   "home_win": 0.3128,
    "draw": 0.2629,
    "away_win": 0.4243,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "A|South Africa|Czechia": {
    "group": "A",
@@ -43,7 +43,7 @@
    "home_win": 0.4268,
    "draw": 0.2627,
    "away_win": 0.3105,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "A|Korea Republic|Czechia": {
    "group": "A",
@@ -52,7 +52,7 @@
    "home_win": 0.4859,
    "draw": 0.254,
    "away_win": 0.2601,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "B|Canada|Bosnia and Herzegovina": {
    "group": "B",
@@ -61,7 +61,7 @@
    "home_win": 0.4696,
    "draw": 0.2569,
    "away_win": 0.2735,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "B|Canada|Qatar": {
    "group": "B",
@@ -70,7 +70,7 @@
    "home_win": 0.5138,
    "draw": 0.2481,
    "away_win": 0.2381,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "B|Canada|Switzerland": {
    "group": "B",
@@ -79,7 +79,7 @@
    "home_win": 0.3678,
    "draw": 0.2658,
    "away_win": 0.3664,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "B|Bosnia and Herzegovina|Qatar": {
    "group": "B",
@@ -88,7 +88,7 @@
    "home_win": 0.4092,
    "draw": 0.2642,
    "away_win": 0.3266,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "B|Bosnia and Herzegovina|Switzerland": {
    "group": "B",
@@ -97,7 +97,7 @@
    "home_win": 0.2741,
    "draw": 0.257,
    "away_win": 0.4689,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "B|Qatar|Switzerland": {
    "group": "B",
@@ -106,7 +106,7 @@
    "home_win": 0.2387,
    "draw": 0.2483,
    "away_win": 0.513,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "C|Haiti|Scotland": {
    "group": "C",
@@ -115,7 +115,7 @@
    "home_win": 0.3729,
    "draw": 0.2658,
    "away_win": 0.3613,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "C|Haiti|Brazil": {
    "group": "C",
@@ -124,7 +124,7 @@
    "home_win": 0.2857,
    "draw": 0.2592,
    "away_win": 0.4552,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "C|Haiti|Morocco": {
    "group": "C",
@@ -133,7 +133,7 @@
    "home_win": 0.2344,
    "draw": 0.247,
    "away_win": 0.5186,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "C|Scotland|Brazil": {
    "group": "C",
@@ -142,7 +142,7 @@
    "home_win": 0.2805,
    "draw": 0.2582,
    "away_win": 0.4613,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "C|Scotland|Morocco": {
    "group": "C",
@@ -151,7 +151,7 @@
    "home_win": 0.2297,
    "draw": 0.2455,
    "away_win": 0.5248,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "C|Brazil|Morocco": {
    "group": "C",
@@ -160,34 +160,34 @@
    "home_win": 0.3093,
    "draw": 0.2626,
    "away_win": 0.4281,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "D|Australia|Türkiye": {
    "group": "D",
    "home": "Australia",
    "away": "Türkiye",
-   "home_win": 0.3807,
+   "home_win": 0.3808,
    "draw": 0.2657,
-   "away_win": 0.3537,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.3536,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "D|Australia|USA": {
    "group": "D",
    "home": "Australia",
    "away": "USA",
-   "home_win": 0.4094,
+   "home_win": 0.4095,
    "draw": 0.2642,
    "away_win": 0.3263,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "D|Australia|Paraguay": {
    "group": "D",
    "home": "Australia",
    "away": "Paraguay",
-   "home_win": 0.4692,
-   "draw": 0.257,
-   "away_win": 0.2738,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "home_win": 0.4693,
+   "draw": 0.2569,
+   "away_win": 0.2737,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "D|Türkiye|USA": {
    "group": "D",
@@ -196,7 +196,7 @@
    "home_win": 0.3955,
    "draw": 0.2651,
    "away_win": 0.3394,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "D|Türkiye|Paraguay": {
    "group": "D",
@@ -205,7 +205,7 @@
    "home_win": 0.4549,
    "draw": 0.2592,
    "away_win": 0.2859,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "D|USA|Paraguay": {
    "group": "D",
@@ -214,7 +214,7 @@
    "home_win": 0.4254,
    "draw": 0.2628,
    "away_win": 0.3118,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "E|Côte d'Ivoire|Ecuador": {
    "group": "E",
@@ -223,16 +223,16 @@
    "home_win": 0.4078,
    "draw": 0.2643,
    "away_win": 0.3278,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "E|Côte d'Ivoire|Germany": {
    "group": "E",
    "home": "Côte d'Ivoire",
    "away": "Germany",
-   "home_win": 0.3665,
+   "home_win": 0.3663,
    "draw": 0.2658,
-   "away_win": 0.3676,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.3679,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "E|Côte d'Ivoire|Curaçao": {
    "group": "E",
@@ -241,16 +241,16 @@
    "home_win": 0.4842,
    "draw": 0.2543,
    "away_win": 0.2615,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "E|Ecuador|Germany": {
    "group": "E",
    "home": "Ecuador",
    "away": "Germany",
-   "home_win": 0.3273,
+   "home_win": 0.327,
    "draw": 0.2643,
-   "away_win": 0.4084,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.4087,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "E|Ecuador|Curaçao": {
    "group": "E",
@@ -258,44 +258,44 @@
    "away": "Curaçao",
    "home_win": 0.4418,
    "draw": 0.261,
-   "away_win": 0.2972,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.2973,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "E|Germany|Curaçao": {
    "group": "E",
    "home": "Germany",
    "away": "Curaçao",
-   "home_win": 0.4848,
-   "draw": 0.2542,
-   "away_win": 0.261,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "home_win": 0.4851,
+   "draw": 0.2541,
+   "away_win": 0.2608,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "F|Netherlands|Japan": {
    "group": "F",
    "home": "Netherlands",
    "away": "Japan",
-   "home_win": 0.3482,
+   "home_win": 0.3479,
    "draw": 0.2655,
-   "away_win": 0.3863,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.3866,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "F|Netherlands|Sweden": {
    "group": "F",
    "home": "Netherlands",
    "away": "Sweden",
-   "home_win": 0.5233,
+   "home_win": 0.523,
    "draw": 0.2459,
-   "away_win": 0.2308,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.231,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "F|Netherlands|Tunisia": {
    "group": "F",
    "home": "Netherlands",
    "away": "Tunisia",
-   "home_win": 0.4582,
-   "draw": 0.2587,
-   "away_win": 0.2831,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "home_win": 0.4578,
+   "draw": 0.2588,
+   "away_win": 0.2834,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "F|Japan|Sweden": {
    "group": "F",
@@ -304,7 +304,7 @@
    "home_win": 0.5437,
    "draw": 0.2407,
    "away_win": 0.2156,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "F|Japan|Tunisia": {
    "group": "F",
@@ -313,7 +313,7 @@
    "home_win": 0.4784,
    "draw": 0.2554,
    "away_win": 0.2662,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "F|Sweden|Tunisia": {
    "group": "F",
@@ -322,34 +322,34 @@
    "home_win": 0.3078,
    "draw": 0.2624,
    "away_win": 0.4298,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "G|IR Iran|New Zealand": {
    "group": "G",
    "home": "IR Iran",
    "away": "New Zealand",
-   "home_win": 0.4709,
+   "home_win": 0.471,
    "draw": 0.2567,
-   "away_win": 0.2725,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.2723,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "G|IR Iran|Belgium": {
    "group": "G",
    "home": "IR Iran",
    "away": "Belgium",
-   "home_win": 0.3706,
+   "home_win": 0.3707,
    "draw": 0.2658,
-   "away_win": 0.3636,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.3634,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "G|IR Iran|Egypt": {
    "group": "G",
    "home": "IR Iran",
    "away": "Egypt",
-   "home_win": 0.3944,
+   "home_win": 0.3943,
    "draw": 0.2652,
    "away_win": 0.3405,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "G|New Zealand|Belgium": {
    "group": "G",
@@ -358,25 +358,25 @@
    "home_win": 0.2755,
    "draw": 0.2573,
    "away_win": 0.4672,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "G|New Zealand|Egypt": {
    "group": "G",
    "home": "New Zealand",
    "away": "Egypt",
-   "home_win": 0.2967,
+   "home_win": 0.2965,
    "draw": 0.2609,
-   "away_win": 0.4423,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.4426,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "G|Belgium|Egypt": {
    "group": "G",
    "home": "Belgium",
    "away": "Egypt",
-   "home_win": 0.3908,
+   "home_win": 0.3906,
    "draw": 0.2653,
-   "away_win": 0.3439,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.3441,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "H|Saudi Arabia|Uruguay": {
    "group": "H",
@@ -385,7 +385,7 @@
    "home_win": 0.3393,
    "draw": 0.2651,
    "away_win": 0.3956,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "H|Saudi Arabia|Spain": {
    "group": "H",
@@ -394,16 +394,16 @@
    "home_win": 0.232,
    "draw": 0.2463,
    "away_win": 0.5217,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "H|Saudi Arabia|Cabo Verde": {
    "group": "H",
    "home": "Saudi Arabia",
    "away": "Cabo Verde",
-   "home_win": 0.3629,
+   "home_win": 0.3632,
    "draw": 0.2658,
-   "away_win": 0.3713,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.371,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "H|Uruguay|Spain": {
    "group": "H",
@@ -412,25 +412,25 @@
    "home_win": 0.2555,
    "draw": 0.2529,
    "away_win": 0.4916,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "H|Uruguay|Cabo Verde": {
    "group": "H",
    "home": "Uruguay",
    "away": "Cabo Verde",
-   "home_win": 0.3913,
+   "home_win": 0.3916,
    "draw": 0.2653,
-   "away_win": 0.3434,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.3431,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "H|Spain|Cabo Verde": {
    "group": "H",
    "home": "Spain",
    "away": "Cabo Verde",
-   "home_win": 0.5173,
+   "home_win": 0.5175,
    "draw": 0.2473,
-   "away_win": 0.2354,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.2352,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "I|France|Senegal": {
    "group": "I",
@@ -439,16 +439,16 @@
    "home_win": 0.3901,
    "draw": 0.2653,
    "away_win": 0.3446,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "I|France|Iraq": {
    "group": "I",
    "home": "France",
    "away": "Iraq",
-   "home_win": 0.4793,
+   "home_win": 0.4794,
    "draw": 0.2552,
-   "away_win": 0.2655,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.2654,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "I|France|Norway": {
    "group": "I",
@@ -456,8 +456,8 @@
    "away": "Norway",
    "home_win": 0.3872,
    "draw": 0.2655,
-   "away_win": 0.3474,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.3473,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "I|Senegal|Iraq": {
    "group": "I",
@@ -465,17 +465,17 @@
    "away": "Iraq",
    "home_win": 0.4552,
    "draw": 0.2592,
-   "away_win": 0.2857,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.2856,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "I|Senegal|Norway": {
    "group": "I",
    "home": "Senegal",
    "away": "Norway",
-   "home_win": 0.3642,
+   "home_win": 0.3643,
    "draw": 0.2658,
    "away_win": 0.3699,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "I|Iraq|Norway": {
    "group": "I",
@@ -484,7 +484,7 @@
    "home_win": 0.2831,
    "draw": 0.2587,
    "away_win": 0.4582,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "J|Argentina|Algeria": {
    "group": "J",
@@ -493,7 +493,7 @@
    "home_win": 0.3699,
    "draw": 0.2658,
    "away_win": 0.3643,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "J|Argentina|Austria": {
    "group": "J",
@@ -502,7 +502,7 @@
    "home_win": 0.4185,
    "draw": 0.2635,
    "away_win": 0.318,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "J|Argentina|Jordan": {
    "group": "J",
@@ -511,7 +511,7 @@
    "home_win": 0.5029,
    "draw": 0.2505,
    "away_win": 0.2465,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "J|Algeria|Austria": {
    "group": "J",
@@ -519,8 +519,8 @@
    "away": "Austria",
    "home_win": 0.4156,
    "draw": 0.2637,
-   "away_win": 0.3206,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.3207,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "J|Algeria|Jordan": {
    "group": "J",
@@ -529,7 +529,7 @@
    "home_win": 0.4999,
    "draw": 0.2512,
    "away_win": 0.2489,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "J|Austria|Jordan": {
    "group": "J",
@@ -537,8 +537,8 @@
    "away": "Jordan",
    "home_win": 0.4494,
    "draw": 0.26,
-   "away_win": 0.2907,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.2906,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "K|Portugal|Congo DR": {
    "group": "K",
@@ -547,16 +547,16 @@
    "home_win": 0.4139,
    "draw": 0.2639,
    "away_win": 0.3222,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "K|Portugal|Uzbekistan": {
    "group": "K",
    "home": "Portugal",
    "away": "Uzbekistan",
-   "home_win": 0.3908,
+   "home_win": 0.3909,
    "draw": 0.2653,
-   "away_win": 0.3439,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.3438,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "K|Portugal|Colombia": {
    "group": "K",
@@ -565,16 +565,16 @@
    "home_win": 0.3853,
    "draw": 0.2655,
    "away_win": 0.3491,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "K|Congo DR|Uzbekistan": {
    "group": "K",
    "home": "Congo DR",
    "away": "Uzbekistan",
-   "home_win": 0.3449,
+   "home_win": 0.345,
    "draw": 0.2654,
-   "away_win": 0.3898,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.3897,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "K|Congo DR|Colombia": {
    "group": "K",
@@ -582,17 +582,17 @@
    "away": "Colombia",
    "home_win": 0.3396,
    "draw": 0.2651,
-   "away_win": 0.3952,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.3953,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "K|Uzbekistan|Colombia": {
    "group": "K",
    "home": "Uzbekistan",
    "away": "Colombia",
-   "home_win": 0.3617,
+   "home_win": 0.3616,
    "draw": 0.2658,
-   "away_win": 0.3725,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.3726,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "L|Ghana|Panama": {
    "group": "L",
@@ -600,8 +600,8 @@
    "away": "Panama",
    "home_win": 0.3225,
    "draw": 0.2639,
-   "away_win": 0.4136,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "away_win": 0.4135,
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "L|Ghana|England": {
    "group": "L",
@@ -610,7 +610,7 @@
    "home_win": 0.2248,
    "draw": 0.2439,
    "away_win": 0.5313,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "L|Ghana|Croatia": {
    "group": "L",
@@ -619,7 +619,7 @@
    "home_win": 0.2717,
    "draw": 0.2565,
    "away_win": 0.4717,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "L|Panama|England": {
    "group": "L",
@@ -628,7 +628,7 @@
    "home_win": 0.2628,
    "draw": 0.2546,
    "away_win": 0.4826,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "L|Panama|Croatia": {
    "group": "L",
@@ -637,7 +637,7 @@
    "home_win": 0.3133,
    "draw": 0.263,
    "away_win": 0.4237,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   },
   "L|England|Croatia": {
    "group": "L",
@@ -646,7 +646,7 @@
    "home_win": 0.4241,
    "draw": 0.263,
    "away_win": 0.3129,
-   "as_of": "2026-06-10T18:01:57.194821+00:00"
+   "as_of": "2026-06-11T00:38:27.827352+00:00"
   }
  },
  "scored": [],
