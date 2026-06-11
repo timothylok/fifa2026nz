@@ -14,6 +14,21 @@ from src.simulate import FIFA_2026_GROUPS, run_simulations
 from src.tournament_state import build_state
 
 
+# Alpha schedule (Fable5 P5): the model gains real-tournament information as
+# matches are played, so its blend weight rises once the knockouts begin.
+GROUP_STAGE_ALPHA = 0.4
+KNOCKOUT_ALPHA = 0.55
+
+
+def resolve_alpha(cli_alpha: float | None, state) -> float:
+    """Model weight for the market blend; an explicit --alpha always wins."""
+    if cli_alpha is not None:
+        return cli_alpha
+    if state is not None and state.groups_complete:
+        return KNOCKOUT_ALPHA
+    return GROUP_STAGE_ALPHA
+
+
 def blend_with_market(raw_pcts: dict[str, float], output_path: str, alpha: float) -> dict[str, float]:
     """Blend raw model probabilities with Polymarket-implied probabilities.
 
@@ -89,8 +104,9 @@ def main() -> None:
     parser.add_argument("--sims", type=int, default=10_000)
     parser.add_argument("--jobs", type=int, default=-1)
     parser.add_argument("--output", default="results/results.json")
-    parser.add_argument("--alpha", type=float, default=0.4,
-                        help="Model weight in market blend (0=pure market, 1=pure model). Default 0.4.")
+    parser.add_argument("--alpha", type=float, default=None,
+                        help="Model weight in market blend (0=pure market, 1=pure model). "
+                             "Default: 0.4 in group stage, 0.55 once knockouts begin.")
     parser.add_argument("--live", action="store_true",
                         help="Condition simulations on real WC 2026 results from the data CSV.")
     args = parser.parse_args()
@@ -125,8 +141,9 @@ def main() -> None:
     raw_pcts = {team: 100.0 * win_counts.get(team, 0) / total_sims for team in ratings}
 
     # Market calibration: blend raw model with Polymarket-implied probs
+    alpha = resolve_alpha(args.alpha, state)
     print("Applying market calibration ...")
-    blended_pcts = blend_with_market(raw_pcts, args.output, args.alpha)
+    blended_pcts = blend_with_market(raw_pcts, args.output, alpha)
 
     # Eliminated teams must show exactly 0% even if stale market odds linger
     if state is not None and state.eliminated:
