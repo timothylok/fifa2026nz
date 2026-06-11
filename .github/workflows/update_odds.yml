@@ -6,6 +6,10 @@ on:
 permissions:
   contents: write
 
+# Both data workflows push to main — never run them at the same time
+concurrency:
+  group: repo-data-push
+
 jobs:
   odds:
     runs-on: ubuntu-latest
