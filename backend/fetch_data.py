@@ -20,10 +20,17 @@ SOURCE_URL = (
     "https://raw.githubusercontent.com/martj42/international_results"
     "/master/results.csv"
 )
+SHOOTOUTS_URL = (
+    "https://raw.githubusercontent.com/martj42/international_results"
+    "/master/shootouts.csv"
+)
 DATA_PATH = Path("data/historical_matches.csv")
+SHOOTOUTS_PATH = Path("data/shootouts.csv")
 MIN_DATE = "2018-01-01"  # two full World Cup cycles
+WC_START_DATE = "2026-06-11"  # shootouts only matter for the WC knockout tracker
 
 # martj42 naming → our naming (must match FIFA_2026_GROUPS in simulate.py)
+# shootouts.csv uses some legacy names ("Czech Republic") that results.csv doesn't
 TEAM_NAME_MAP = {
     "South Korea": "Korea Republic",
     "Turkey": "Türkiye",
@@ -32,6 +39,7 @@ TEAM_NAME_MAP = {
     "Iran": "IR Iran",
     "Cape Verde": "Cabo Verde",
     "DR Congo": "Congo DR",
+    "Czech Republic": "Czechia",
 }
 
 FIFA_2026_TEAMS = {
@@ -70,6 +78,35 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
     df = df[["date", "home_team", "away_team", "home_goals", "away_goals", "tournament"]].copy()
     df["date"] = df["date"].dt.strftime("%Y-%m-%d")
     return df.sort_values("date").reset_index(drop=True)
+
+
+def transform_shootouts(df: pd.DataFrame) -> pd.DataFrame:
+    """WC 2026 shootout rows with our team naming: date, home_team, away_team, winner."""
+    for col in ("home_team", "away_team", "winner"):
+        df[col] = df[col].replace(TEAM_NAME_MAP)
+    df["date"] = pd.to_datetime(df["date"])
+    df = df[df["date"] >= WC_START_DATE].copy()
+    df["date"] = df["date"].dt.strftime("%Y-%m-%d")
+    return df[["date", "home_team", "away_team", "winner"]].sort_values("date").reset_index(drop=True)
+
+
+def update_shootouts(dry_run: bool) -> None:
+    """Fetch shootouts.csv (fail-soft: keep/create existing file on error)."""
+    try:
+        resp = requests.get(SHOOTOUTS_URL, timeout=60)
+        resp.raise_for_status()
+        shootouts = transform_shootouts(pd.read_csv(io.StringIO(resp.text)))
+    except Exception as exc:
+        print(f"WARNING: shootouts fetch failed ({exc}) — keeping existing file.", file=sys.stderr)
+        if not dry_run and not SHOOTOUTS_PATH.exists():
+            SHOOTOUTS_PATH.parent.mkdir(exist_ok=True)
+            SHOOTOUTS_PATH.write_text("date,home_team,away_team,winner\n", encoding="utf-8")
+        return
+    print(f"  WC 2026 shootout rows: {len(shootouts)}")
+    if not dry_run:
+        SHOOTOUTS_PATH.parent.mkdir(exist_ok=True)
+        shootouts.to_csv(SHOOTOUTS_PATH, index=False)
+        print(f"  Saved -> {SHOOTOUTS_PATH}")
 
 
 def merge_with_existing(new_df: pd.DataFrame, path: Path) -> pd.DataFrame:
@@ -123,11 +160,12 @@ def main() -> None:
 
     if args.dry_run:
         print("Dry run — no file written.")
-        return
+    else:
+        DATA_PATH.parent.mkdir(exist_ok=True)
+        merged.to_csv(DATA_PATH, index=False)
+        print(f"  Saved -> {DATA_PATH}")
 
-    DATA_PATH.parent.mkdir(exist_ok=True)
-    merged.to_csv(DATA_PATH, index=False)
-    print(f"  Saved -> {DATA_PATH}")
+    update_shootouts(args.dry_run)
 
 
 if __name__ == "__main__":

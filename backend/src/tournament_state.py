@@ -11,6 +11,7 @@ from __future__ import annotations
 import csv
 import logging
 from dataclasses import dataclass, field
+from pathlib import Path
 
 from .simulate import FIFA_2026_GROUPS, _build_r32
 
@@ -77,6 +78,27 @@ def load_played_matches(
             )
     matches.sort(key=lambda m: m.date)
     return matches
+
+
+def load_shootout_winners(csv_path) -> dict[tuple[str, frozenset], str]:
+    """{(date, unordered team pair): winner} from martj42 shootouts.csv.
+
+    Empty dict if the file is missing — KO draws then warn as before.
+    """
+    if csv_path is None or not Path(csv_path).exists():
+        return {}
+    winners: dict[tuple[str, frozenset], str] = {}
+    with open(csv_path, newline="", encoding="utf-8-sig") as f:
+        for row in csv.DictReader(f):
+            home, away, winner = row["home_team"], row["away_team"], row["winner"]
+            if winner not in (home, away) or winner not in ALL_TEAMS:
+                logger.warning(
+                    "Shootout row skipped (unknown team or winner): %s vs %s -> %s",
+                    home, away, winner,
+                )
+                continue
+            winners[(row["date"], frozenset((home, away)))] = winner
+    return winners
 
 
 def extract_results(
@@ -196,13 +218,15 @@ def _track_knockouts(
     ko_matches: list[PlayedMatch],
     qualified: set[str],
     r32_pairs: list[tuple[str, str]],
+    shootout_winners: dict[tuple[str, frozenset], str] | None = None,
 ) -> tuple[list[dict], set[str], set[str]]:
     """Advance winners / eliminate losers round by round.
 
     Rounds are inferred from match count in chronological order (16 R32,
     8 R16, 4 QF, 2 SF, 1 F); a match between two already-eliminated teams
-    is the third-place playoff. Draws (decided on penalties, which the CSV
-    does not record) leave both teams alive with a logged warning.
+    is the third-place playoff. Draws are resolved via shootout_winners
+    (martj42 shootouts.csv); a draw with no shootout entry leaves both
+    teams alive with a logged warning.
     """
     alive = set(qualified)
     eliminated = set(ALL_TEAMS) - alive
@@ -230,12 +254,13 @@ def _track_knockouts(
         elif m.away_goals > m.home_goals:
             winner = m.away
         else:
-            winner = None
-            logger.warning(
-                "Knockout draw %s %d-%d %s: winner decided on penalties, "
-                "not in CSV — neither team marked eliminated",
-                m.home, m.home_goals, m.away_goals, m.away,
-            )
+            winner = (shootout_winners or {}).get((m.date, frozenset((m.home, m.away))))
+            if winner is None:
+                logger.warning(
+                    "Knockout draw %s %d-%d %s: winner decided on penalties, "
+                    "no shootout row found — neither team marked eliminated",
+                    m.home, m.home_goals, m.away_goals, m.away,
+                )
         if winner is not None and rnd != "3RD":
             loser = m.away if winner == m.home else m.home
             alive.discard(loser)
@@ -254,7 +279,10 @@ def _track_knockouts(
     return ko_results, alive, eliminated
 
 
-def build_state_from_matches(matches: list[PlayedMatch]) -> TournamentState:
+def build_state_from_matches(
+    matches: list[PlayedMatch],
+    shootout_winners: dict[tuple[str, frozenset], str] | None = None,
+) -> TournamentState:
     """Full tournament state from a chronological list of played WC matches."""
     group_matches, ko_matches = extract_results(matches)
     standings = compute_standings(group_matches)
@@ -283,11 +311,19 @@ def build_state_from_matches(matches: list[PlayedMatch]) -> TournamentState:
 
     qualified = {t for pair in state.r32_pairs for t in pair}
     state.ko_results, state.alive, state.eliminated = _track_knockouts(
-        ko_matches, qualified, state.r32_pairs
+        ko_matches, qualified, state.r32_pairs, shootout_winners
     )
     return state
 
 
-def build_state(csv_path) -> TournamentState:
-    """Tournament state from historical_matches.csv (empty state if no WC rows)."""
-    return build_state_from_matches(load_played_matches(csv_path))
+def build_state(csv_path, shootouts_path=None) -> TournamentState:
+    """Tournament state from historical_matches.csv (empty state if no WC rows).
+
+    shootouts_path defaults to shootouts.csv next to the matches CSV;
+    if absent, KO draws warn and eliminate nobody.
+    """
+    if shootouts_path is None:
+        shootouts_path = Path(csv_path).parent / "shootouts.csv"
+    return build_state_from_matches(
+        load_played_matches(csv_path), load_shootout_winners(shootouts_path)
+    )

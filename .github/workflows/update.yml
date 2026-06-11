@@ -61,7 +61,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add backend/data/historical_matches.csv public/data/results.json public/data/market_odds.json public/data/prob_history.json public/data/elo_history.json public/data/accuracy.json
+          git add backend/data/historical_matches.csv backend/data/shootouts.csv public/data/results.json public/data/market_odds.json public/data/prob_history.json public/data/elo_history.json public/data/accuracy.json
           git diff --staged --quiet || git commit -m "chore: daily data refresh [skip ci]"
           git push
 
