@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { FIFA_2026_GROUPS } from '../utils/groups'
 import { flag, FlagIcon } from '../utils/flags.jsx'
+import TitleRace from './TitleRace'
 
 const HOST_NATIONS = new Set(['USA', 'Canada', 'Mexico'])
 
@@ -20,13 +21,19 @@ function WinBar({ prob, color, max }) {
   )
 }
 
-export default function ChampionshipOdds({ teams, groupMatchProbs }) {
+export default function ChampionshipOdds({ teams, groupMatchProbs, eliminated = [] }) {
   const [query, setQuery]       = useState('')
   const [showAll, setShowAll]   = useState(false)
   const [expanded, setExpanded] = useState(null)
   const [copied, setCopied]     = useState(false)
 
-  const simTeams = useMemo(() => teams.filter(t => t.win_pct > 0), [teams])
+  const elimSet = useMemo(() => new Set(eliminated), [eliminated])
+  // Eliminated teams have their blended win_pct zeroed by the backend —
+  // keep them listed (greyed) instead of silently dropping them.
+  const simTeams = useMemo(
+    () => teams.filter(t => t.win_pct > 0 || elimSet.has(t.name)),
+    [teams, elimSet]
+  )
 
   // Lookup maps
   const teamsMap = useMemo(() => Object.fromEntries(simTeams.map(t => [t.name, t])), [simTeams])
@@ -126,6 +133,9 @@ export default function ChampionshipOdds({ teams, groupMatchProbs }) {
         <span className="flex items-center gap-1.5"><span className="inline-block w-2.5 h-2.5 rounded-sm bg-[#8892a4]" /> Longshots</span>
       </div>
 
+      {/* Title race over time */}
+      <TitleRace />
+
       {/* Rows */}
       <div className="space-y-1">
         {visible.map((team) => {
@@ -145,6 +155,7 @@ export default function ChampionshipOdds({ teams, groupMatchProbs }) {
             ? Math.round(opponents.reduce((s, o) => s + o.elo, 0) / opponents.length)
             : null
           const isHost = HOST_NATIONS.has(team.name)
+          const isOut  = elimSet.has(team.name)
 
           return (
             <div key={team.name}>
@@ -153,6 +164,7 @@ export default function ChampionshipOdds({ teams, groupMatchProbs }) {
                 onClick={() => setExpanded(isOpen ? null : team.name)}
                 className={`flex items-center gap-3 bg-[var(--surface)] border rounded-lg px-4 py-2.5
                             cursor-pointer transition-colors select-none
+                            ${isOut ? 'opacity-60' : ''}
                             ${isOpen
                               ? 'border-[var(--accent)]/60 rounded-b-none'
                               : 'border-[var(--border)] hover:border-[var(--accent)]/40'}`}
@@ -161,7 +173,14 @@ export default function ChampionshipOdds({ teams, groupMatchProbs }) {
                   {rank + 1}
                 </span>
                 <span className="text-lg leading-none shrink-0"><FlagIcon name={team.name} /></span>
-                <span className="text-sm font-medium w-32 shrink-0 truncate">{team.name}</span>
+                <span className={`text-sm font-medium w-32 shrink-0 truncate ${isOut ? 'line-through text-[var(--muted)]' : ''}`}>
+                  {team.name}
+                </span>
+                {isOut && (
+                  <span className="text-[10px] text-red-400 font-bold bg-red-400/10 px-1.5 py-0.5 rounded shrink-0">
+                    OUT
+                  </span>
+                )}
                 <div className="flex-1 bg-[var(--border)]/40 rounded-full h-2 overflow-hidden">
                   <div className="h-full rounded-full transition-all duration-500"
                     style={{ width: `${barW}%`, backgroundColor: color }} />
