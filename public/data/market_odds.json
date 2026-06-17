@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-17T08:01:16.669329+00:00",
+  "updated_at": "2026-06-17T11:05:08.038380+00:00",
   "bookmakers": [
     "Polymarket"
   ],
@@ -19,7 +19,7 @@
     {
       "name": "Argentina",
       "odds": {
-        "Polymarket": 9.48
+        "Polymarket": 8.97
       }
     },
     {
@@ -31,7 +31,7 @@
     {
       "name": "Portugal",
       "odds": {
-        "Polymarket": 9.85
+        "Polymarket": 9.66
       }
     },
     {
@@ -55,7 +55,7 @@
     {
       "name": "Norway",
       "odds": {
-        "Polymarket": 39.22
+        "Polymarket": 37.74
       }
     },
     {
@@ -85,7 +85,7 @@
     {
       "name": "Colombia",
       "odds": {
-        "Polymarket": 64.52
+        "Polymarket": 68.97
       }
     },
     {
@@ -131,6 +131,12 @@
       }
     },
     {
+      "name": "Australia",
+      "odds": {
+        "Polymarket": 222.22
+      }
+    },
+    {
       "name": "Ecuador",
       "odds": {
         "Polymarket": 222.22
@@ -149,25 +155,19 @@
       }
     },
     {
-      "name": "Australia",
-      "odds": {
-        "Polymarket": 222.22
-      }
-    },
-    {
       "name": "Korea Republic",
       "odds": {
         "Polymarket": 285.71
       }
     },
     {
-      "name": "Egypt",
+      "name": "Scotland",
       "odds": {
         "Polymarket": 400.0
       }
     },
     {
-      "name": "Scotland",
+      "name": "Egypt",
       "odds": {
         "Polymarket": 400.0
       }
@@ -185,6 +185,12 @@
       }
     },
     {
+      "name": "Bosnia and Herzegovina",
+      "odds": {
+        "Polymarket": 666.67
+      }
+    },
+    {
       "name": "Algeria",
       "odds": {
         "Polymarket": 666.67
@@ -197,61 +203,7 @@
       }
     },
     {
-      "name": "Bosnia and Herzegovina",
-      "odds": {
-        "Polymarket": 666.67
-      }
-    },
-    {
-      "name": "Haiti",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Czechia",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Qatar",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Saudi Arabia",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Jordan",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "New Zealand",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Tunisia",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Uzbekistan",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Congo DR",
+      "name": "Curaçao",
       "odds": {
         "Polymarket": 2000.0
       }
@@ -263,19 +215,61 @@
       }
     },
     {
+      "name": "New Zealand",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Jordan",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Tunisia",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Cabo Verde",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Uzbekistan",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Czechia",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Saudi Arabia",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Haiti",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
       "name": "Iraq",
       "odds": {
         "Polymarket": 2000.0
       }
     },
     {
-      "name": "IR Iran",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Curaçao",
+      "name": "Qatar",
       "odds": {
         "Polymarket": 2000.0
       }
@@ -287,7 +281,13 @@
       }
     },
     {
-      "name": "Cabo Verde",
+      "name": "IR Iran",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Congo DR",
       "odds": {
         "Polymarket": 2000.0
       }
