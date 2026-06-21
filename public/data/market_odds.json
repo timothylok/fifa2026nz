@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-21T12:01:15.617579+00:00",
+  "updated_at": "2026-06-21T16:01:17.118902+00:00",
   "bookmakers": [
     "Polymarket"
   ],
@@ -31,7 +31,7 @@
     {
       "name": "Portugal",
       "odds": {
-        "Polymarket": 14.6
+        "Polymarket": 15.04
       }
     },
     {
@@ -41,27 +41,21 @@
       }
     },
     {
-      "name": "Germany",
-      "odds": {
-        "Polymarket": 17.7
-      }
-    },
-    {
       "name": "Netherlands",
       "odds": {
         "Polymarket": 17.7
       }
     },
     {
-      "name": "USA",
+      "name": "Germany",
       "odds": {
-        "Polymarket": 25.32
+        "Polymarket": 18.69
       }
     },
     {
-      "name": "Japan",
+      "name": "USA",
       "odds": {
-        "Polymarket": 40.0
+        "Polymarket": 25.32
       }
     },
     {
@@ -73,7 +67,13 @@
     {
       "name": "Morocco",
       "odds": {
-        "Polymarket": 44.44
+        "Polymarket": 42.55
+      }
+    },
+    {
+      "name": "Japan",
+      "odds": {
+        "Polymarket": 48.78
       }
     },
     {
@@ -101,7 +101,7 @@
       }
     },
     {
-      "name": "Senegal",
+      "name": "Croatia",
       "odds": {
         "Polymarket": 181.82
       }
@@ -113,15 +113,21 @@
       }
     },
     {
+      "name": "Senegal",
+      "odds": {
+        "Polymarket": 181.82
+      }
+    },
+    {
       "name": "Uruguay",
       "odds": {
         "Polymarket": 181.82
       }
     },
     {
-      "name": "Croatia",
+      "name": "Korea Republic",
       "odds": {
-        "Polymarket": 181.82
+        "Polymarket": 285.71
       }
     },
     {
@@ -137,9 +143,9 @@
       }
     },
     {
-      "name": "Korea Republic",
+      "name": "Australia",
       "odds": {
-        "Polymarket": 285.71
+        "Polymarket": 400.0
       }
     },
     {
@@ -155,13 +161,13 @@
       }
     },
     {
-      "name": "Australia",
+      "name": "Ecuador",
       "odds": {
-        "Polymarket": 400.0
+        "Polymarket": 666.67
       }
     },
     {
-      "name": "Ecuador",
+      "name": "Paraguay",
       "odds": {
         "Polymarket": 666.67
       }
@@ -179,25 +185,25 @@
       }
     },
     {
-      "name": "Paraguay",
+      "name": "Ghana",
       "odds": {
-        "Polymarket": 666.67
+        "Polymarket": 1000.0
       }
     },
     {
-      "name": "Czechia",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Curaçao",
+      "name": "Uzbekistan",
       "odds": {
         "Polymarket": 2000.0
       }
     },
     {
-      "name": "Bosnia and Herzegovina",
+      "name": "Panama",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "IR Iran",
       "odds": {
         "Polymarket": 2000.0
       }
@@ -215,7 +221,31 @@
       }
     },
     {
-      "name": "IR Iran",
+      "name": "South Africa",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Saudi Arabia",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Bosnia and Herzegovina",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Czechia",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Curaçao",
       "odds": {
         "Polymarket": 2000.0
       }
@@ -233,30 +263,6 @@
       }
     },
     {
-      "name": "Ghana",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Uzbekistan",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Saudi Arabia",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Panama",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
       "name": "Algeria",
       "odds": {
         "Polymarket": 2000.0
@@ -264,12 +270,6 @@
     },
     {
       "name": "New Zealand",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "South Africa",
       "odds": {
         "Polymarket": 2000.0
       }
