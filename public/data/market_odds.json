@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-25T16:01:23.439073+00:00",
+  "updated_at": "2026-06-25T18:01:46.210830+00:00",
   "bookmakers": [
     "Polymarket"
   ],
@@ -7,7 +7,7 @@
     {
       "name": "France",
       "odds": {
-        "Polymarket": 5.19
+        "Polymarket": 5.25
       }
     },
     {
@@ -31,7 +31,7 @@
     {
       "name": "Portugal",
       "odds": {
-        "Polymarket": 12.42
+        "Polymarket": 12.27
       }
     },
     {
@@ -43,7 +43,7 @@
     {
       "name": "Brazil",
       "odds": {
-        "Polymarket": 18.35
+        "Polymarket": 18.02
       }
     },
     {
@@ -61,7 +61,7 @@
     {
       "name": "Norway",
       "odds": {
-        "Polymarket": 31.75
+        "Polymarket": 30.77
       }
     },
     {
@@ -97,7 +97,7 @@
     {
       "name": "Switzerland",
       "odds": {
-        "Polymarket": 105.26
+        "Polymarket": 117.65
       }
     },
     {
@@ -113,13 +113,7 @@
       }
     },
     {
-      "name": "Canada",
-      "odds": {
-        "Polymarket": 400.0
-      }
-    },
-    {
-      "name": "Austria",
+      "name": "Senegal",
       "odds": {
         "Polymarket": 400.0
       }
@@ -131,43 +125,19 @@
       }
     },
     {
-      "name": "Senegal",
+      "name": "Austria",
       "odds": {
         "Polymarket": 400.0
       }
     },
     {
-      "name": "Sweden",
+      "name": "Canada",
       "odds": {
-        "Polymarket": 666.67
-      }
-    },
-    {
-      "name": "Uruguay",
-      "odds": {
-        "Polymarket": 666.67
-      }
-    },
-    {
-      "name": "Ghana",
-      "odds": {
-        "Polymarket": 666.67
-      }
-    },
-    {
-      "name": "Cabo Verde",
-      "odds": {
-        "Polymarket": 666.67
+        "Polymarket": 400.0
       }
     },
     {
       "name": "Korea Republic",
-      "odds": {
-        "Polymarket": 666.67
-      }
-    },
-    {
-      "name": "Bosnia and Herzegovina",
       "odds": {
         "Polymarket": 666.67
       }
@@ -185,49 +155,31 @@
       }
     },
     {
-      "name": "Saudi Arabia",
+      "name": "Bosnia and Herzegovina",
       "odds": {
-        "Polymarket": 2000.0
+        "Polymarket": 666.67
       }
     },
     {
-      "name": "Scotland",
+      "name": "Ghana",
       "odds": {
-        "Polymarket": 2000.0
+        "Polymarket": 666.67
       }
     },
     {
-      "name": "Congo DR",
+      "name": "Uruguay",
       "odds": {
-        "Polymarket": 2000.0
+        "Polymarket": 666.67
       }
     },
     {
-      "name": "Uzbekistan",
+      "name": "Sweden",
       "odds": {
-        "Polymarket": 2000.0
+        "Polymarket": 666.67
       }
     },
     {
-      "name": "South Africa",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Algeria",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "New Zealand",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Iraq",
+      "name": "Curaçao",
       "odds": {
         "Polymarket": 2000.0
       }
@@ -239,13 +191,61 @@
       }
     },
     {
-      "name": "Curaçao",
+      "name": "Uzbekistan",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Congo DR",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "New Zealand",
       "odds": {
         "Polymarket": 2000.0
       }
     },
     {
       "name": "Paraguay",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Scotland",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Algeria",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "South Africa",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Cabo Verde",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Iraq",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Saudi Arabia",
       "odds": {
         "Polymarket": 2000.0
       }
