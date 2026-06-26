@@ -1,59 +1,5 @@
 {
  "predictions": {
-  "D|Australia|Paraguay": {
-   "group": "D",
-   "home": "Australia",
-   "away": "Paraguay",
-   "home_win": 0.464,
-   "draw": 0.2578,
-   "away_win": 0.2782,
-   "as_of": "2026-06-25T09:29:07.155254+00:00"
-  },
-  "D|Türkiye|USA": {
-   "group": "D",
-   "home": "Türkiye",
-   "away": "USA",
-   "home_win": 0.34,
-   "draw": 0.2651,
-   "away_win": 0.3949,
-   "as_of": "2026-06-25T09:29:07.155254+00:00"
-  },
-  "E|Côte d'Ivoire|Curaçao": {
-   "group": "E",
-   "home": "Côte d'Ivoire",
-   "away": "Curaçao",
-   "home_win": 0.4892,
-   "draw": 0.2533,
-   "away_win": 0.2575,
-   "as_of": "2026-06-25T09:29:07.155254+00:00"
-  },
-  "E|Ecuador|Germany": {
-   "group": "E",
-   "home": "Ecuador",
-   "away": "Germany",
-   "home_win": 0.2971,
-   "draw": 0.2609,
-   "away_win": 0.442,
-   "as_of": "2026-06-25T09:29:07.155254+00:00"
-  },
-  "F|Netherlands|Tunisia": {
-   "group": "F",
-   "home": "Netherlands",
-   "away": "Tunisia",
-   "home_win": 0.5043,
-   "draw": 0.2502,
-   "away_win": 0.2455,
-   "as_of": "2026-06-25T09:29:07.155254+00:00"
-  },
-  "F|Japan|Sweden": {
-   "group": "F",
-   "home": "Japan",
-   "away": "Sweden",
-   "home_win": 0.5355,
-   "draw": 0.2428,
-   "away_win": 0.2217,
-   "as_of": "2026-06-25T09:29:07.155254+00:00"
-  },
   "G|IR Iran|Egypt": {
    "group": "G",
    "home": "IR Iran",
@@ -61,7 +7,7 @@
    "home_win": 0.3784,
    "draw": 0.2657,
    "away_win": 0.3559,
-   "as_of": "2026-06-25T09:29:07.155254+00:00"
+   "as_of": "2026-06-25T18:01:45.095052+00:00"
   },
   "G|New Zealand|Belgium": {
    "group": "G",
@@ -70,7 +16,7 @@
    "home_win": 0.2708,
    "draw": 0.2563,
    "away_win": 0.4729,
-   "as_of": "2026-06-25T09:29:07.155254+00:00"
+   "as_of": "2026-06-25T18:01:45.095052+00:00"
   },
   "H|Saudi Arabia|Cabo Verde": {
    "group": "H",
@@ -79,34 +25,34 @@
    "home_win": 0.3494,
    "draw": 0.2655,
    "away_win": 0.3851,
-   "as_of": "2026-06-25T09:29:07.155254+00:00"
+   "as_of": "2026-06-25T18:01:45.095052+00:00"
   },
   "H|Uruguay|Spain": {
    "group": "H",
    "home": "Uruguay",
    "away": "Spain",
    "home_win": 0.2505,
-   "draw": 0.2516,
-   "away_win": 0.4979,
-   "as_of": "2026-06-25T09:29:07.155254+00:00"
+   "draw": 0.2515,
+   "away_win": 0.498,
+   "as_of": "2026-06-25T18:01:45.095052+00:00"
   },
   "I|France|Norway": {
    "group": "I",
    "home": "France",
    "away": "Norway",
-   "home_win": 0.392,
+   "home_win": 0.3921,
    "draw": 0.2652,
    "away_win": 0.3427,
-   "as_of": "2026-06-25T09:29:07.155254+00:00"
+   "as_of": "2026-06-25T18:01:45.095052+00:00"
   },
   "I|Senegal|Iraq": {
    "group": "I",
    "home": "Senegal",
    "away": "Iraq",
-   "home_win": 0.4512,
+   "home_win": 0.4513,
    "draw": 0.2597,
-   "away_win": 0.2891,
-   "as_of": "2026-06-25T09:29:07.155254+00:00"
+   "away_win": 0.289,
+   "as_of": "2026-06-25T18:01:45.095052+00:00"
   },
   "J|Argentina|Jordan": {
    "group": "J",
@@ -115,7 +61,7 @@
    "home_win": 0.5487,
    "draw": 0.2393,
    "away_win": 0.212,
-   "as_of": "2026-06-25T09:29:07.155254+00:00"
+   "as_of": "2026-06-25T18:01:45.095052+00:00"
   },
   "J|Algeria|Austria": {
    "group": "J",
@@ -124,7 +70,7 @@
    "home_win": 0.4071,
    "draw": 0.2644,
    "away_win": 0.3285,
-   "as_of": "2026-06-25T09:29:07.155254+00:00"
+   "as_of": "2026-06-25T18:01:45.095052+00:00"
   },
   "K|Portugal|Colombia": {
    "group": "K",
@@ -133,7 +79,7 @@
    "home_win": 0.3838,
    "draw": 0.2656,
    "away_win": 0.3506,
-   "as_of": "2026-06-25T09:29:07.155254+00:00"
+   "as_of": "2026-06-25T18:01:45.095052+00:00"
   },
   "K|Congo DR|Uzbekistan": {
    "group": "K",
@@ -142,7 +88,7 @@
    "home_win": 0.3695,
    "draw": 0.2658,
    "away_win": 0.3647,
-   "as_of": "2026-06-25T09:29:07.155254+00:00"
+   "as_of": "2026-06-25T18:01:45.095052+00:00"
   },
   "L|Ghana|Croatia": {
    "group": "L",
@@ -151,7 +97,7 @@
    "home_win": 0.2856,
    "draw": 0.2591,
    "away_win": 0.4552,
-   "as_of": "2026-06-25T09:29:07.155254+00:00"
+   "as_of": "2026-06-25T18:01:45.095052+00:00"
   },
   "L|Panama|England": {
    "group": "L",
@@ -160,7 +106,7 @@
    "home_win": 0.2388,
    "draw": 0.2483,
    "away_win": 0.5129,
-   "as_of": "2026-06-25T09:29:07.155254+00:00"
+   "as_of": "2026-06-25T18:01:45.095052+00:00"
   }
  },
  "scored": [
@@ -973,11 +919,101 @@
    "away_win": 0.4694,
    "brier": 0.4224,
    "predicted_at": "2026-06-24T09:38:27.145306+00:00"
+  },
+  {
+   "key": "D|Australia|Paraguay",
+   "group": "D",
+   "home": "Australia",
+   "away": "Paraguay",
+   "date": "2026-06-25",
+   "home_goals": 0,
+   "away_goals": 0,
+   "outcome": "draw",
+   "home_win": 0.464,
+   "draw": 0.2578,
+   "away_win": 0.2782,
+   "brier": 0.8436,
+   "predicted_at": "2026-06-25T09:29:07.155254+00:00"
+  },
+  {
+   "key": "D|Türkiye|USA",
+   "group": "D",
+   "home": "Türkiye",
+   "away": "USA",
+   "date": "2026-06-25",
+   "home_goals": 3,
+   "away_goals": 2,
+   "outcome": "home_win",
+   "home_win": 0.34,
+   "draw": 0.2651,
+   "away_win": 0.3949,
+   "brier": 0.6618,
+   "predicted_at": "2026-06-25T09:29:07.155254+00:00"
+  },
+  {
+   "key": "E|Côte d'Ivoire|Curaçao",
+   "group": "E",
+   "home": "Côte d'Ivoire",
+   "away": "Curaçao",
+   "date": "2026-06-25",
+   "home_goals": 2,
+   "away_goals": 0,
+   "outcome": "home_win",
+   "home_win": 0.4892,
+   "draw": 0.2533,
+   "away_win": 0.2575,
+   "brier": 0.3914,
+   "predicted_at": "2026-06-25T09:29:07.155254+00:00"
+  },
+  {
+   "key": "E|Ecuador|Germany",
+   "group": "E",
+   "home": "Ecuador",
+   "away": "Germany",
+   "date": "2026-06-25",
+   "home_goals": 2,
+   "away_goals": 1,
+   "outcome": "home_win",
+   "home_win": 0.2971,
+   "draw": 0.2609,
+   "away_win": 0.442,
+   "brier": 0.7575,
+   "predicted_at": "2026-06-25T09:29:07.155254+00:00"
+  },
+  {
+   "key": "F|Japan|Sweden",
+   "group": "F",
+   "home": "Japan",
+   "away": "Sweden",
+   "date": "2026-06-25",
+   "home_goals": 1,
+   "away_goals": 1,
+   "outcome": "draw",
+   "home_win": 0.5355,
+   "draw": 0.2428,
+   "away_win": 0.2217,
+   "brier": 0.9093,
+   "predicted_at": "2026-06-25T09:29:07.155254+00:00"
+  },
+  {
+   "key": "F|Netherlands|Tunisia",
+   "group": "F",
+   "home": "Netherlands",
+   "away": "Tunisia",
+   "date": "2026-06-25",
+   "home_goals": 3,
+   "away_goals": 1,
+   "outcome": "home_win",
+   "home_win": 0.5043,
+   "draw": 0.2502,
+   "away_win": 0.2455,
+   "brier": 0.3686,
+   "predicted_at": "2026-06-25T09:29:07.155254+00:00"
   }
  ],
  "summary": {
-  "n_scored": 54,
-  "mean_brier": 0.5964,
+  "n_scored": 60,
+  "mean_brier": 0.6023,
   "baseline_uniform": 0.6667
  }
 }
