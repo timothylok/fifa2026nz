@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-27T08:41:32.713099+00:00",
+  "updated_at": "2026-06-27T12:01:14.747335+00:00",
   "bookmakers": [
     "Polymarket"
   ],
@@ -7,19 +7,19 @@
     {
       "name": "France",
       "odds": {
-        "Polymarket": 4.64
+        "Polymarket": 4.62
       }
     },
     {
       "name": "Argentina",
       "odds": {
-        "Polymarket": 5.67
+        "Polymarket": 5.42
       }
     },
     {
       "name": "Spain",
       "odds": {
-        "Polymarket": 8.03
+        "Polymarket": 8.16
       }
     },
     {
@@ -31,7 +31,7 @@
     {
       "name": "Portugal",
       "odds": {
-        "Polymarket": 12.74
+        "Polymarket": 12.42
       }
     },
     {
@@ -43,37 +43,25 @@
     {
       "name": "Netherlands",
       "odds": {
-        "Polymarket": 21.51
+        "Polymarket": 22.47
       }
     },
     {
       "name": "Germany",
       "odds": {
-        "Polymarket": 21.98
+        "Polymarket": 22.99
       }
     },
     {
       "name": "Norway",
       "odds": {
-        "Polymarket": 39.22
+        "Polymarket": 40.82
       }
     },
     {
       "name": "USA",
       "odds": {
-        "Polymarket": 39.22
-      }
-    },
-    {
-      "name": "Japan",
-      "odds": {
-        "Polymarket": 64.52
-      }
-    },
-    {
-      "name": "Colombia",
-      "odds": {
-        "Polymarket": 68.97
+        "Polymarket": 42.55
       }
     },
     {
@@ -83,7 +71,19 @@
       }
     },
     {
+      "name": "Japan",
+      "odds": {
+        "Polymarket": 68.97
+      }
+    },
+    {
       "name": "Belgium",
+      "odds": {
+        "Polymarket": 74.07
+      }
+    },
+    {
+      "name": "Colombia",
       "odds": {
         "Polymarket": 74.07
       }
@@ -103,13 +103,7 @@
     {
       "name": "Ecuador",
       "odds": {
-        "Polymarket": 153.85
-      }
-    },
-    {
-      "name": "Senegal",
-      "odds": {
-        "Polymarket": 222.22
+        "Polymarket": 181.82
       }
     },
     {
@@ -119,13 +113,13 @@
       }
     },
     {
-      "name": "Côte d'Ivoire",
+      "name": "Senegal",
       "odds": {
-        "Polymarket": 285.71
+        "Polymarket": 222.22
       }
     },
     {
-      "name": "Sweden",
+      "name": "Côte d'Ivoire",
       "odds": {
         "Polymarket": 400.0
       }
@@ -143,19 +137,13 @@
       }
     },
     {
-      "name": "Bosnia and Herzegovina",
-      "odds": {
-        "Polymarket": 666.67
-      }
-    },
-    {
-      "name": "Cabo Verde",
-      "odds": {
-        "Polymarket": 666.67
-      }
-    },
-    {
       "name": "Austria",
+      "odds": {
+        "Polymarket": 666.67
+      }
+    },
+    {
+      "name": "Sweden",
       "odds": {
         "Polymarket": 666.67
       }
@@ -167,9 +155,45 @@
       }
     },
     {
+      "name": "Bosnia and Herzegovina",
+      "odds": {
+        "Polymarket": 666.67
+      }
+    },
+    {
       "name": "Ghana",
       "odds": {
         "Polymarket": 666.67
+      }
+    },
+    {
+      "name": "Cabo Verde",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "IR Iran",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Uzbekistan",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "South Africa",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Paraguay",
+      "odds": {
+        "Polymarket": 2000.0
       }
     },
     {
@@ -185,37 +209,13 @@
       }
     },
     {
-      "name": "Uzbekistan",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Paraguay",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "IR Iran",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Algeria",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
       "name": "Congo DR",
       "odds": {
         "Polymarket": 2000.0
       }
     },
     {
-      "name": "South Africa",
+      "name": "Algeria",
       "odds": {
         "Polymarket": 2000.0
       }
