@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-29T08:01:41.530815+00:00",
+  "updated_at": "2026-06-29T11:07:44.702106+00:00",
   "bookmakers": [
     "Polymarket"
   ],
@@ -7,7 +7,7 @@
     {
       "name": "France",
       "odds": {
-        "Polymarket": 4.26
+        "Polymarket": 4.3
       }
     },
     {
@@ -37,7 +37,7 @@
     {
       "name": "Brazil",
       "odds": {
-        "Polymarket": 17.7
+        "Polymarket": 17.39
       }
     },
     {
@@ -71,13 +71,13 @@
       }
     },
     {
-      "name": "Belgium",
+      "name": "Morocco",
       "odds": {
         "Polymarket": 74.07
       }
     },
     {
-      "name": "Morocco",
+      "name": "Belgium",
       "odds": {
         "Polymarket": 74.07
       }
@@ -91,7 +91,7 @@
     {
       "name": "Japan",
       "odds": {
-        "Polymarket": 95.24
+        "Polymarket": 86.96
       }
     },
     {
@@ -131,6 +131,18 @@
       }
     },
     {
+      "name": "Ghana",
+      "odds": {
+        "Polymarket": 666.67
+      }
+    },
+    {
+      "name": "Austria",
+      "odds": {
+        "Polymarket": 666.67
+      }
+    },
+    {
       "name": "Egypt",
       "odds": {
         "Polymarket": 666.67
@@ -143,7 +155,7 @@
       }
     },
     {
-      "name": "Austria",
+      "name": "Algeria",
       "odds": {
         "Polymarket": 666.67
       }
@@ -155,19 +167,13 @@
       }
     },
     {
-      "name": "Ghana",
+      "name": "Congo DR",
       "odds": {
-        "Polymarket": 666.67
+        "Polymarket": 2000.0
       }
     },
     {
-      "name": "Algeria",
-      "odds": {
-        "Polymarket": 666.67
-      }
-    },
-    {
-      "name": "Paraguay",
+      "name": "Bosnia and Herzegovina",
       "odds": {
         "Polymarket": 2000.0
       }
@@ -179,13 +185,7 @@
       }
     },
     {
-      "name": "Congo DR",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Bosnia and Herzegovina",
+      "name": "Paraguay",
       "odds": {
         "Polymarket": 2000.0
       }
