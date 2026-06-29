@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-29T04:01:14.429878+00:00",
+  "updated_at": "2026-06-29T08:01:41.530815+00:00",
   "bookmakers": [
     "Polymarket"
   ],
@@ -7,19 +7,19 @@
     {
       "name": "France",
       "odds": {
-        "Polymarket": 4.36
+        "Polymarket": 4.26
       }
     },
     {
       "name": "Argentina",
       "odds": {
-        "Polymarket": 4.89
+        "Polymarket": 4.8
       }
     },
     {
       "name": "Spain",
       "odds": {
-        "Polymarket": 8.97
+        "Polymarket": 9.05
       }
     },
     {
@@ -31,13 +31,13 @@
     {
       "name": "Portugal",
       "odds": {
-        "Polymarket": 17.39
+        "Polymarket": 16.26
       }
     },
     {
       "name": "Brazil",
       "odds": {
-        "Polymarket": 17.39
+        "Polymarket": 17.7
       }
     },
     {
@@ -55,13 +55,13 @@
     {
       "name": "Colombia",
       "odds": {
-        "Polymarket": 37.74
+        "Polymarket": 39.22
       }
     },
     {
       "name": "USA",
       "odds": {
-        "Polymarket": 40.82
+        "Polymarket": 42.55
       }
     },
     {
@@ -131,7 +131,7 @@
       }
     },
     {
-      "name": "Ghana",
+      "name": "Egypt",
       "odds": {
         "Polymarket": 666.67
       }
@@ -143,25 +143,19 @@
       }
     },
     {
-      "name": "Egypt",
-      "odds": {
-        "Polymarket": 666.67
-      }
-    },
-    {
       "name": "Austria",
       "odds": {
         "Polymarket": 666.67
       }
     },
     {
-      "name": "Bosnia and Herzegovina",
+      "name": "Australia",
       "odds": {
         "Polymarket": 666.67
       }
     },
     {
-      "name": "Australia",
+      "name": "Ghana",
       "odds": {
         "Polymarket": 666.67
       }
@@ -179,13 +173,19 @@
       }
     },
     {
+      "name": "Cabo Verde",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
       "name": "Congo DR",
       "odds": {
         "Polymarket": 2000.0
       }
     },
     {
-      "name": "Cabo Verde",
+      "name": "Bosnia and Herzegovina",
       "odds": {
         "Polymarket": 2000.0
       }
