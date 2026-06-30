@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-30T09:44:59.496207+00:00",
+  "updated_at": "2026-06-30T12:01:09.167274+00:00",
   "bookmakers": [
     "Polymarket"
   ],
@@ -37,13 +37,13 @@
     {
       "name": "Portugal",
       "odds": {
-        "Polymarket": 16.53
+        "Polymarket": 16.26
       }
     },
     {
       "name": "Morocco",
       "odds": {
-        "Polymarket": 25.97
+        "Polymarket": 26.67
       }
     },
     {
@@ -67,7 +67,7 @@
     {
       "name": "Mexico",
       "odds": {
-        "Polymarket": 60.61
+        "Polymarket": 57.14
       }
     },
     {
@@ -107,25 +107,19 @@
       }
     },
     {
-      "name": "Canada",
-      "odds": {
-        "Polymarket": 400.0
-      }
-    },
-    {
       "name": "Paraguay",
       "odds": {
         "Polymarket": 400.0
       }
     },
     {
-      "name": "Egypt",
+      "name": "Canada",
       "odds": {
-        "Polymarket": 666.67
+        "Polymarket": 400.0
       }
     },
     {
-      "name": "Australia",
+      "name": "Sweden",
       "odds": {
         "Polymarket": 666.67
       }
@@ -137,7 +131,7 @@
       }
     },
     {
-      "name": "Sweden",
+      "name": "Egypt",
       "odds": {
         "Polymarket": 666.67
       }
@@ -149,13 +143,19 @@
       }
     },
     {
-      "name": "Bosnia and Herzegovina",
+      "name": "Australia",
+      "odds": {
+        "Polymarket": 666.67
+      }
+    },
+    {
+      "name": "Cabo Verde",
       "odds": {
         "Polymarket": 2000.0
       }
     },
     {
-      "name": "Cabo Verde",
+      "name": "Bosnia and Herzegovina",
       "odds": {
         "Polymarket": 2000.0
       }
