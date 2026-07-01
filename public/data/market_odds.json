@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-01T09:55:54.497470+00:00",
+  "updated_at": "2026-07-01T12:01:09.158215+00:00",
   "bookmakers": [
     "Polymarket"
   ],
@@ -13,7 +13,7 @@
     {
       "name": "Argentina",
       "odds": {
-        "Polymarket": 5.28
+        "Polymarket": 5.17
       }
     },
     {
@@ -37,7 +37,13 @@
     {
       "name": "Portugal",
       "odds": {
-        "Polymarket": 16.39
+        "Polymarket": 17.09
+      }
+    },
+    {
+      "name": "USA",
+      "odds": {
+        "Polymarket": 35.09
       }
     },
     {
@@ -53,15 +59,9 @@
       }
     },
     {
-      "name": "USA",
-      "odds": {
-        "Polymarket": 39.22
-      }
-    },
-    {
       "name": "Morocco",
       "odds": {
-        "Polymarket": 42.55
+        "Polymarket": 39.22
       }
     },
     {
@@ -79,7 +79,7 @@
     {
       "name": "Switzerland",
       "odds": {
-        "Polymarket": 117.65
+        "Polymarket": 133.33
       }
     },
     {
@@ -101,7 +101,7 @@
       }
     },
     {
-      "name": "Austria",
+      "name": "Paraguay",
       "odds": {
         "Polymarket": 666.67
       }
@@ -113,21 +113,27 @@
       }
     },
     {
-      "name": "Algeria",
-      "odds": {
-        "Polymarket": 666.67
-      }
-    },
-    {
-      "name": "Paraguay",
-      "odds": {
-        "Polymarket": 666.67
-      }
-    },
-    {
       "name": "Australia",
       "odds": {
         "Polymarket": 666.67
+      }
+    },
+    {
+      "name": "Austria",
+      "odds": {
+        "Polymarket": 666.67
+      }
+    },
+    {
+      "name": "Cabo Verde",
+      "odds": {
+        "Polymarket": 2000.0
+      }
+    },
+    {
+      "name": "Congo DR",
+      "odds": {
+        "Polymarket": 2000.0
       }
     },
     {
@@ -143,13 +149,7 @@
       }
     },
     {
-      "name": "Cabo Verde",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Congo DR",
+      "name": "Algeria",
       "odds": {
         "Polymarket": 2000.0
       }
