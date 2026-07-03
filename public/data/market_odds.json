@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-03T00:01:24.309414+00:00",
+  "updated_at": "2026-07-03T04:01:11.827132+00:00",
   "bookmakers": [
     "Polymarket"
   ],
@@ -7,43 +7,43 @@
     {
       "name": "France",
       "odds": {
-        "Polymarket": 2.92
+        "Polymarket": 2.93
       }
     },
     {
       "name": "Argentina",
       "odds": {
-        "Polymarket": 5.33
+        "Polymarket": 5.36
       }
     },
     {
       "name": "Spain",
       "odds": {
-        "Polymarket": 7.78
+        "Polymarket": 8.16
       }
     },
     {
       "name": "England",
       "odds": {
-        "Polymarket": 13.07
+        "Polymarket": 13.25
       }
     },
     {
       "name": "Brazil",
       "odds": {
-        "Polymarket": 15.27
+        "Polymarket": 15.75
       }
     },
     {
       "name": "Portugal",
       "odds": {
-        "Polymarket": 16.81
+        "Polymarket": 16.53
       }
     },
     {
       "name": "Mexico",
       "odds": {
-        "Polymarket": 30.77
+        "Polymarket": 27.4
       }
     },
     {
@@ -73,7 +73,7 @@
     {
       "name": "Belgium",
       "odds": {
-        "Polymarket": 74.07
+        "Polymarket": 80.0
       }
     },
     {
@@ -83,15 +83,15 @@
       }
     },
     {
-      "name": "Croatia",
-      "odds": {
-        "Polymarket": 285.71
-      }
-    },
-    {
       "name": "Canada",
       "odds": {
         "Polymarket": 400.0
+      }
+    },
+    {
+      "name": "Paraguay",
+      "odds": {
+        "Polymarket": 666.67
       }
     },
     {
@@ -107,19 +107,13 @@
       }
     },
     {
-      "name": "Paraguay",
-      "odds": {
-        "Polymarket": 666.67
-      }
-    },
-    {
-      "name": "Ghana",
+      "name": "Algeria",
       "odds": {
         "Polymarket": 2000.0
       }
     },
     {
-      "name": "Austria",
+      "name": "Croatia",
       "odds": {
         "Polymarket": 2000.0
       }
@@ -131,7 +125,7 @@
       }
     },
     {
-      "name": "Algeria",
+      "name": "Ghana",
       "odds": {
         "Polymarket": 2000.0
       }
