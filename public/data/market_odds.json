@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-03T20:01:07.656378+00:00",
+  "updated_at": "2026-07-04T00:01:15.882950+00:00",
   "bookmakers": [
     "Polymarket"
   ],
@@ -7,43 +7,49 @@
     {
       "name": "France",
       "odds": {
-        "Polymarket": 3.0
+        "Polymarket": 2.85
       }
     },
     {
       "name": "Argentina",
       "odds": {
-        "Polymarket": 5.17
+        "Polymarket": 7.12
       }
     },
     {
       "name": "Spain",
       "odds": {
-        "Polymarket": 7.72
+        "Polymarket": 7.97
       }
     },
     {
       "name": "England",
       "odds": {
-        "Polymarket": 13.99
+        "Polymarket": 12.9
       }
     },
     {
       "name": "Brazil",
       "odds": {
-        "Polymarket": 14.81
+        "Polymarket": 14.29
       }
     },
     {
       "name": "Portugal",
       "odds": {
-        "Polymarket": 16.81
+        "Polymarket": 16.39
       }
     },
     {
       "name": "Mexico",
       "odds": {
-        "Polymarket": 33.9
+        "Polymarket": 26.32
+      }
+    },
+    {
+      "name": "Colombia",
+      "odds": {
+        "Polymarket": 35.09
       }
     },
     {
@@ -55,31 +61,25 @@
     {
       "name": "USA",
       "odds": {
-        "Polymarket": 40.82
-      }
-    },
-    {
-      "name": "Colombia",
-      "odds": {
-        "Polymarket": 42.55
+        "Polymarket": 39.22
       }
     },
     {
       "name": "Norway",
       "odds": {
-        "Polymarket": 54.05
+        "Polymarket": 57.14
       }
     },
     {
       "name": "Belgium",
       "odds": {
-        "Polymarket": 80.0
+        "Polymarket": 95.24
       }
     },
     {
       "name": "Switzerland",
       "odds": {
-        "Polymarket": 117.65
+        "Polymarket": 105.26
       }
     },
     {
@@ -89,9 +89,15 @@
       }
     },
     {
+      "name": "Cabo Verde",
+      "odds": {
+        "Polymarket": 400.0
+      }
+    },
+    {
       "name": "Egypt",
       "odds": {
-        "Polymarket": 666.67
+        "Polymarket": 400.0
       }
     },
     {
@@ -101,19 +107,13 @@
       }
     },
     {
-      "name": "Cabo Verde",
+      "name": "Australia",
       "odds": {
         "Polymarket": 2000.0
       }
     },
     {
       "name": "Ghana",
-      "odds": {
-        "Polymarket": 2000.0
-      }
-    },
-    {
-      "name": "Australia",
       "odds": {
         "Polymarket": 2000.0
       }
