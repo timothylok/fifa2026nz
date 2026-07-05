@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-05T08:57:34.228071+00:00",
+  "generated_at": "2026-07-05T18:01:43.887040+00:00",
   "n_simulations": 10000,
   "as_of": "2026-07-04",
   "completed_matches": [
@@ -853,93 +853,93 @@
   "teams": [
     {
       "name": "France",
-      "win_pct": 24.39,
-      "raw_win_pct": 15.18,
+      "win_pct": 24.09,
+      "raw_win_pct": 15.13,
       "elo": 1865.0
     },
     {
       "name": "Argentina",
-      "win_pct": 12.02,
-      "raw_win_pct": 8.18,
-      "elo": 1858.1
+      "win_pct": 12.04,
+      "raw_win_pct": 8.16,
+      "elo": 1858.2
     },
     {
       "name": "Spain",
-      "win_pct": 10.32,
-      "raw_win_pct": 8.52,
-      "elo": 1867.3
+      "win_pct": 10.24,
+      "raw_win_pct": 8.5,
+      "elo": 1867.4
     },
     {
       "name": "Morocco",
-      "win_pct": 10.12,
-      "raw_win_pct": 16.07,
+      "win_pct": 10.02,
+      "raw_win_pct": 16.12,
       "elo": 1874.8
     },
     {
-      "name": "Brazil",
-      "win_pct": 6.16,
-      "raw_win_pct": 5.77,
-      "elo": 1807.6
-    },
-    {
       "name": "England",
-      "win_pct": 6.15,
-      "raw_win_pct": 5.67,
+      "win_pct": 6.3,
+      "raw_win_pct": 5.6,
       "elo": 1822.4
     },
     {
+      "name": "Brazil",
+      "win_pct": 6.29,
+      "raw_win_pct": 5.74,
+      "elo": 1807.6
+    },
+    {
       "name": "Portugal",
-      "win_pct": 5.62,
-      "raw_win_pct": 5.27,
+      "win_pct": 5.71,
+      "raw_win_pct": 5.26,
       "elo": 1786.1
     },
     {
       "name": "Mexico",
-      "win_pct": 5.32,
-      "raw_win_pct": 6.93,
+      "win_pct": 5.33,
+      "raw_win_pct": 6.94,
       "elo": 1781.2
     },
     {
       "name": "Colombia",
-      "win_pct": 4.25,
-      "raw_win_pct": 5.16,
+      "win_pct": 4.21,
+      "raw_win_pct": 5.15,
       "elo": 1756.2
     },
     {
       "name": "USA",
-      "win_pct": 4.02,
-      "raw_win_pct": 5.3,
+      "win_pct": 4.01,
+      "raw_win_pct": 5.36,
       "elo": 1697.6
     },
     {
-      "name": "Norway",
-      "win_pct": 3.46,
-      "raw_win_pct": 4.95,
-      "elo": 1777.7
-    },
-    {
       "name": "Belgium",
-      "win_pct": 3.46,
-      "raw_win_pct": 5.27,
+      "win_pct": 3.53,
+      "raw_win_pct": 5.32,
       "elo": 1763.9
     },
     {
+      "name": "Norway",
+      "win_pct": 3.48,
+      "raw_win_pct": 4.98,
+      "elo": 1777.3
+    },
+    {
       "name": "Switzerland",
-      "win_pct": 2.92,
-      "raw_win_pct": 4.62,
+      "win_pct": 2.94,
+      "raw_win_pct": 4.64,
       "elo": 1739.7
     },
     {
       "name": "Egypt",
-      "win_pct": 1.78,
-      "raw_win_pct": 3.11,
+      "win_pct": 1.82,
+      "raw_win_pct": 3.1,
       "elo": 1712.3
     },
     {
       "name": "Iraq",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1568.0
+      "elo": 1568.4
     },
     {
       "name": "United Arab Emirates",
@@ -969,7 +969,7 @@
       "name": "Jordan",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1557.8
+      "elo": 1557.4
     },
     {
       "name": "Finland",
@@ -981,19 +981,19 @@
       "name": "Moldova",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1358.7
+      "elo": 1358.5
     },
     {
       "name": "Korea Republic",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1700.7
+      "elo": 1700.4
     },
     {
       "name": "Bosnia and Herzegovina",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1524.8
+      "elo": 1524.5
     },
     {
       "name": "Jamaica",
@@ -1041,7 +1041,7 @@
       "name": "Kuwait",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1424.4
+      "elo": 1424.3
     },
     {
       "name": "Qatar",
@@ -1053,7 +1053,7 @@
       "name": "Algeria",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1745.9
+      "elo": 1746.0
     },
     {
       "name": "Tanzania",
@@ -1071,7 +1071,7 @@
       "name": "Serbia",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1539.4
+      "elo": 1539.5
     },
     {
       "name": "Peru",
@@ -1095,7 +1095,7 @@
       "name": "Costa Rica",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1438.2
+      "elo": 1438.1
     },
     {
       "name": "Senegal",
@@ -1131,7 +1131,7 @@
       "name": "T\u00fcrkiye",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1675.1
+      "elo": 1675.2
     },
     {
       "name": "Republic of Ireland",
@@ -1143,13 +1143,13 @@
       "name": "Russia",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1530.9
+      "elo": 1530.8
     },
     {
       "name": "Australia",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1706.4
+      "elo": 1706.7
     },
     {
       "name": "Ukraine",
@@ -1167,13 +1167,13 @@
       "name": "Austria",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1698.3
+      "elo": 1698.8
     },
     {
       "name": "Slovenia",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1490.1
+      "elo": 1490.0
     },
     {
       "name": "Czech Republic",
@@ -1185,7 +1185,7 @@
       "name": "Netherlands",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1802.2
+      "elo": 1802.6
     },
     {
       "name": "Cura\u00e7ao",
@@ -1215,7 +1215,7 @@
       "name": "Italy",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1542.1
+      "elo": 1541.9
     },
     {
       "name": "Japan",
@@ -1227,13 +1227,13 @@
       "name": "Mali",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1540.3
+      "elo": 1540.2
     },
     {
       "name": "Germany",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1758.9
+      "elo": 1758.6
     },
     {
       "name": "Chile",
@@ -1287,13 +1287,13 @@
       "name": "China",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1408.1
+      "elo": 1407.9
     },
     {
       "name": "Wales",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1477.7
+      "elo": 1477.6
     },
     {
       "name": "Albania",
@@ -1323,19 +1323,19 @@
       "name": "Poland",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1501.2
+      "elo": 1501.3
     },
     {
       "name": "Romania",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1401.6
+      "elo": 1401.5
     },
     {
       "name": "Luxembourg",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1426.2
+      "elo": 1426.1
     },
     {
       "name": "Vietnam",
@@ -1347,13 +1347,13 @@
       "name": "Hungary",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1461.6
+      "elo": 1462.0
     },
     {
       "name": "Trinidad and Tobago",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1413.6
+      "elo": 1413.5
     },
     {
       "name": "Palestine",
@@ -1365,13 +1365,13 @@
       "name": "Cyprus",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1330.1
+      "elo": 1330.0
     },
     {
       "name": "Nigeria",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1611.6
+      "elo": 1611.5
     },
     {
       "name": "Honduras",
@@ -1419,7 +1419,7 @@
       "name": "Madagascar",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1398.1
+      "elo": 1397.8
     },
     {
       "name": "Taiwan",
@@ -1461,7 +1461,7 @@
       "name": "China PR",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1417.1
+      "elo": 1417.5
     },
     {
       "name": "Guatemala",
@@ -1473,7 +1473,7 @@
       "name": "Venezuela",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1503.0
+      "elo": 1503.1
     },
     {
       "name": "Ecuador",
@@ -1551,7 +1551,7 @@
       "name": "Oman",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1414.6
+      "elo": 1414.5
     },
     {
       "name": "El Salvador",
@@ -1563,7 +1563,7 @@
       "name": "Israel",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1456.1
+      "elo": 1456.0
     },
     {
       "name": "Central African Republic",
@@ -1575,7 +1575,7 @@
       "name": "Benin",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1423.1
+      "elo": 1422.7
     },
     {
       "name": "Comoros",
@@ -1599,7 +1599,7 @@
       "name": "Sudan",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1454.7
+      "elo": 1454.8
     },
     {
       "name": "Zimbabwe",
@@ -1665,7 +1665,7 @@
       "name": "Ethiopia",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1411.9
+      "elo": 1412.8
     },
     {
       "name": "Saint Kitts and Nevis",
@@ -1713,7 +1713,7 @@
       "name": "Kazakhstan",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1403.0
+      "elo": 1402.9
     },
     {
       "name": "Azerbaijan",
@@ -1767,7 +1767,7 @@
       "name": "Mauritania",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1412.5
+      "elo": 1411.7
     },
     {
       "name": "Basque Country",
@@ -1797,7 +1797,7 @@
       "name": "Indonesia",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1427.2
+      "elo": 1427.3
     },
     {
       "name": "Burundi",
@@ -1851,7 +1851,7 @@
       "name": "Kosovo",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1448.5
+      "elo": 1448.9
     },
     {
       "name": "Gibraltar",
@@ -1869,7 +1869,7 @@
       "name": "Hong Kong",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1390.0
+      "elo": 1390.1
     },
     {
       "name": "Singapore",
@@ -1929,7 +1929,7 @@
       "name": "Mozambique",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1405.6
+      "elo": 1405.9
     },
     {
       "name": "Barbados",
@@ -1983,7 +1983,7 @@
       "name": "Dominican Republic",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1426.1
+      "elo": 1426.0
     },
     {
       "name": "Suriname",
@@ -2001,7 +2001,7 @@
       "name": "South Sudan",
       "win_pct": 0.0,
       "raw_win_pct": 0.0,
-      "elo": 1413.4
+      "elo": 1413.8
     },
     {
       "name": "Papua New Guinea",
@@ -2125,9 +2125,9 @@
       "group": "A",
       "home": "Mexico",
       "away": "Korea Republic",
-      "home_win": 0.4179,
+      "home_win": 0.4182,
       "draw": 0.264,
-      "away_win": 0.3181
+      "away_win": 0.3179
     },
     {
       "group": "A",
@@ -2141,15 +2141,15 @@
       "group": "A",
       "home": "South Africa",
       "away": "Korea Republic",
-      "home_win": 0.3206,
-      "draw": 0.2642,
-      "away_win": 0.4152
+      "home_win": 0.3208,
+      "draw": 0.2643,
+      "away_win": 0.415
     },
     {
       "group": "A",
       "home": "South Africa",
       "away": "Czechia",
-      "home_win": 0.3876,
+      "home_win": 0.3875,
       "draw": 0.2659,
       "away_win": 0.3465
     },
@@ -2157,17 +2157,17 @@
       "group": "A",
       "home": "Korea Republic",
       "away": "Czechia",
-      "home_win": 0.4366,
+      "home_win": 0.4364,
       "draw": 0.2621,
-      "away_win": 0.3013
+      "away_win": 0.3015
     },
     {
       "group": "B",
       "home": "Canada",
       "away": "Bosnia and Herzegovina",
-      "home_win": 0.4665,
+      "home_win": 0.4667,
       "draw": 0.2578,
-      "away_win": 0.2757
+      "away_win": 0.2755
     },
     {
       "group": "B",
@@ -2181,7 +2181,7 @@
       "group": "B",
       "home": "Canada",
       "away": "Switzerland",
-      "home_win": 0.33,
+      "home_win": 0.3301,
       "draw": 0.265,
       "away_win": 0.4049
     },
@@ -2189,17 +2189,17 @@
       "group": "B",
       "home": "Bosnia and Herzegovina",
       "away": "Qatar",
-      "home_win": 0.4214,
+      "home_win": 0.4212,
       "draw": 0.2637,
-      "away_win": 0.315
+      "away_win": 0.3151
     },
     {
       "group": "B",
       "home": "Bosnia and Herzegovina",
       "away": "Switzerland",
-      "home_win": 0.2434,
-      "draw": 0.2502,
-      "away_win": 0.5064
+      "home_win": 0.2432,
+      "draw": 0.2501,
+      "away_win": 0.5066
     },
     {
       "group": "B",
@@ -2247,7 +2247,7 @@
       "away": "Morocco",
       "home_win": 0.2141,
       "draw": 0.2406,
-      "away_win": 0.5453
+      "away_win": 0.5452
     },
     {
       "group": "C",
@@ -2261,31 +2261,31 @@
       "group": "D",
       "home": "Australia",
       "away": "T\u00fcrkiye",
-      "home_win": 0.3864,
+      "home_win": 0.3866,
       "draw": 0.266,
-      "away_win": 0.3476
+      "away_win": 0.3474
     },
     {
       "group": "D",
       "home": "Australia",
       "away": "USA",
-      "home_win": 0.3723,
+      "home_win": 0.3725,
       "draw": 0.2663,
-      "away_win": 0.3614
+      "away_win": 0.3612
     },
     {
       "group": "D",
       "home": "Australia",
       "away": "Paraguay",
-      "home_win": 0.4532,
+      "home_win": 0.4534,
       "draw": 0.2599,
-      "away_win": 0.2869
+      "away_win": 0.2867
     },
     {
       "group": "D",
       "home": "T\u00fcrkiye",
       "away": "USA",
-      "home_win": 0.3529,
+      "home_win": 0.353,
       "draw": 0.2661,
       "away_win": 0.3809
     },
@@ -2293,9 +2293,9 @@
       "group": "D",
       "home": "T\u00fcrkiye",
       "away": "Paraguay",
-      "home_win": 0.4327,
+      "home_win": 0.4328,
       "draw": 0.2625,
-      "away_win": 0.3048
+      "away_win": 0.3047
     },
     {
       "group": "D",
@@ -2311,15 +2311,15 @@
       "away": "Ecuador",
       "home_win": 0.4138,
       "draw": 0.2644,
-      "away_win": 0.3218
+      "away_win": 0.3219
     },
     {
       "group": "E",
       "home": "C\u00f4te d'Ivoire",
       "away": "Germany",
-      "home_win": 0.3599,
+      "home_win": 0.3601,
       "draw": 0.2663,
-      "away_win": 0.3738
+      "away_win": 0.3736
     },
     {
       "group": "E",
@@ -2333,9 +2333,9 @@
       "group": "E",
       "home": "Ecuador",
       "away": "Germany",
-      "home_win": 0.3153,
+      "home_win": 0.3155,
       "draw": 0.2637,
-      "away_win": 0.421
+      "away_win": 0.4208
     },
     {
       "group": "E",
@@ -2349,33 +2349,33 @@
       "group": "E",
       "home": "Germany",
       "away": "Cura\u00e7ao",
-      "home_win": 0.5013,
+      "home_win": 0.5011,
       "draw": 0.2513,
-      "away_win": 0.2474
+      "away_win": 0.2476
     },
     {
       "group": "F",
       "home": "Netherlands",
       "away": "Japan",
-      "home_win": 0.3738,
+      "home_win": 0.374,
       "draw": 0.2663,
-      "away_win": 0.3599
+      "away_win": 0.3597
     },
     {
       "group": "F",
       "home": "Netherlands",
       "away": "Sweden",
-      "home_win": 0.5241,
-      "draw": 0.2461,
-      "away_win": 0.2298
+      "home_win": 0.5243,
+      "draw": 0.246,
+      "away_win": 0.2297
     },
     {
       "group": "F",
       "home": "Netherlands",
       "away": "Tunisia",
-      "home_win": 0.5196,
+      "home_win": 0.5199,
       "draw": 0.2471,
-      "away_win": 0.2332
+      "away_win": 0.233
     },
     {
       "group": "F",
@@ -2405,7 +2405,7 @@
       "group": "G",
       "home": "IR Iran",
       "away": "New Zealand",
-      "home_win": 0.4835,
+      "home_win": 0.4834,
       "draw": 0.2549,
       "away_win": 0.2617
     },
@@ -2439,7 +2439,7 @@
       "away": "Egypt",
       "home_win": 0.271,
       "draw": 0.2569,
-      "away_win": 0.4722
+      "away_win": 0.4721
     },
     {
       "group": "G",
@@ -2461,7 +2461,7 @@
       "group": "H",
       "home": "Saudi Arabia",
       "away": "Spain",
-      "home_win": 0.2113,
+      "home_win": 0.2112,
       "draw": 0.2396,
       "away_win": 0.5492
     },
@@ -2477,7 +2477,7 @@
       "group": "H",
       "home": "Uruguay",
       "away": "Spain",
-      "home_win": 0.2329,
+      "home_win": 0.2328,
       "draw": 0.247,
       "away_win": 0.5201
     },
@@ -2485,7 +2485,7 @@
       "group": "H",
       "home": "Uruguay",
       "away": "Cabo Verde",
-      "home_win": 0.3817,
+      "home_win": 0.3816,
       "draw": 0.2661,
       "away_win": 0.3522
     },
@@ -2495,7 +2495,7 @@
       "away": "Cabo Verde",
       "home_win": 0.5358,
       "draw": 0.2431,
-      "away_win": 0.2211
+      "away_win": 0.221
     },
     {
       "group": "I",
@@ -2509,41 +2509,41 @@
       "group": "I",
       "home": "France",
       "away": "Iraq",
-      "home_win": 0.561,
-      "draw": 0.2362,
-      "away_win": 0.2028
+      "home_win": 0.5607,
+      "draw": 0.2363,
+      "away_win": 0.203
     },
     {
       "group": "I",
       "home": "France",
       "away": "Norway",
-      "home_win": 0.4224,
+      "home_win": 0.4226,
       "draw": 0.2636,
-      "away_win": 0.314
+      "away_win": 0.3138
     },
     {
       "group": "I",
       "home": "Senegal",
       "away": "Iraq",
-      "home_win": 0.4677,
-      "draw": 0.2576,
-      "away_win": 0.2746
+      "home_win": 0.4675,
+      "draw": 0.2577,
+      "away_win": 0.2749
     },
     {
       "group": "I",
       "home": "Senegal",
       "away": "Norway",
-      "home_win": 0.3343,
+      "home_win": 0.3346,
       "draw": 0.2653,
-      "away_win": 0.4003
+      "away_win": 0.4001
     },
     {
       "group": "I",
       "home": "Iraq",
       "away": "Norway",
-      "home_win": 0.2461,
-      "draw": 0.2509,
-      "away_win": 0.5029
+      "home_win": 0.2465,
+      "draw": 0.251,
+      "away_win": 0.5024
     },
     {
       "group": "J",
@@ -2557,41 +2557,41 @@
       "group": "J",
       "home": "Argentina",
       "away": "Austria",
-      "home_win": 0.4699,
+      "home_win": 0.4696,
       "draw": 0.2573,
-      "away_win": 0.2728
+      "away_win": 0.2731
     },
     {
       "group": "J",
       "home": "Argentina",
       "away": "Jordan",
-      "home_win": 0.5632,
-      "draw": 0.2356,
-      "away_win": 0.2012
+      "home_win": 0.5635,
+      "draw": 0.2355,
+      "away_win": 0.201
     },
     {
       "group": "J",
       "home": "Algeria",
       "away": "Austria",
-      "home_win": 0.3969,
+      "home_win": 0.3965,
       "draw": 0.2655,
-      "away_win": 0.3376
+      "away_win": 0.3379
     },
     {
       "group": "J",
       "home": "Algeria",
       "away": "Jordan",
-      "home_win": 0.4886,
-      "draw": 0.2539,
-      "away_win": 0.2575
+      "home_win": 0.489,
+      "draw": 0.2538,
+      "away_win": 0.2572
     },
     {
       "group": "J",
       "home": "Austria",
       "away": "Jordan",
-      "home_win": 0.4571,
-      "draw": 0.2593,
-      "away_win": 0.2836
+      "home_win": 0.4578,
+      "draw": 0.2592,
+      "away_win": 0.283
     },
     {
       "group": "K",
