@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-07T08:01:13.559343+00:00",
+  "updated_at": "2026-07-07T09:49:24.360445+00:00",
   "bookmakers": [
     "Polymarket"
   ],
@@ -13,25 +13,25 @@
     {
       "name": "Argentina",
       "odds": {
-        "Polymarket": 5.33
+        "Polymarket": 5.31
       }
     },
     {
       "name": "Spain",
       "odds": {
-        "Polymarket": 5.48
+        "Polymarket": 5.54
       }
     },
     {
       "name": "England",
       "odds": {
-        "Polymarket": 6.92
+        "Polymarket": 6.97
       }
     },
     {
       "name": "Norway",
       "odds": {
-        "Polymarket": 19.05
+        "Polymarket": 17.39
       }
     },
     {
@@ -61,7 +61,7 @@
     {
       "name": "Egypt",
       "odds": {
-        "Polymarket": 285.71
+        "Polymarket": 400.0
       }
     }
   ]
