@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-16T08:19:21.363978+00:00",
+  "updated_at": "2026-07-16T12:01:25.245735+00:00",
   "bookmakers": [
     "Polymarket"
   ],
@@ -13,7 +13,7 @@
     {
       "name": "Argentina",
       "odds": {
-        "Polymarket": 2.41
+        "Polymarket": 2.4
       }
     }
   ]
