@@ -2130,8 +2130,8 @@ date,home_team,away_team,home_goals,away_goals,tournament
 2022-11-26,Poland,Saudi Arabia,2,0,FIFA World Cup
 2022-11-26,Argentina,Mexico,2,0,FIFA World Cup
 2022-11-27,Croatia,Canada,4,1,FIFA World Cup
-2022-11-27,Morocco,Belgium,2,0,WC2022
 2022-11-27,Germany,Spain,1,1,WC2022
+2022-11-27,Morocco,Belgium,2,0,WC2022
 2022-11-27,Belgium,Morocco,0,2,FIFA World Cup
 2022-11-27,Japan,Costa Rica,0,1,FIFA World Cup
 2022-11-27,Spain,Germany,1,1,FIFA World Cup
@@ -2158,8 +2158,8 @@ date,home_team,away_team,home_goals,away_goals,tournament
 2022-12-02,Cameroon,Brazil,1,0,FIFA World Cup
 2022-12-02,Ghana,Uruguay,0,2,FIFA World Cup
 2022-12-02,Korea Republic,Portugal,2,1,FIFA World Cup
-2022-12-03,Poland,France,1,3,WC2022
 2022-12-03,USA,Netherlands,1,3,WC2022
+2022-12-03,Poland,France,1,3,WC2022
 2022-12-03,Netherlands,USA,3,1,FIFA World Cup
 2022-12-03,Australia,Argentina,1,2,WC2022
 2022-12-03,Argentina,Australia,2,1,FIFA World Cup
@@ -2950,16 +2950,16 @@ date,home_team,away_team,home_goals,away_goals,tournament
 2024-09-05,Algeria,Equatorial Guinea,2,0,African Cup of Nations qualification
 2024-09-05,Jordan,Kuwait,1,1,FIFA World Cup qualification
 2024-09-05,Serbia,Spain,0,0,UEFA Nations League
-2024-09-05,Mali,Mauritania,2,1,CAFQ2026
 2024-09-05,New Zealand,Solomon Islands,3,0,OFCQ2026
-2024-09-05,South Africa,Rwanda,2,0,CAFQ2026
-2024-09-05,Iraq,UAE,2,1,AFCQ2026
-2024-09-05,Honduras,Suriname,4,1,CONCACAFQ
-2024-09-05,Algeria,Togo,3,0,CAFQ2026
-2024-09-05,Venezuela,Bolivia,2,0,CONMEBOLQ
-2024-09-05,Congo DR,Sudan,3,1,CAFQ2026
+2024-09-05,Mali,Mauritania,2,1,CAFQ2026
 2024-09-05,Japan,China PR,7,0,FIFA World Cup qualification
+2024-09-05,Congo DR,Sudan,3,1,CAFQ2026
+2024-09-05,Venezuela,Bolivia,2,0,CONMEBOLQ
 2024-09-05,Paraguay,Chile,1,1,CONMEBOLQ
+2024-09-05,Honduras,Suriname,4,1,CONCACAFQ
+2024-09-05,Iraq,UAE,2,1,AFCQ2026
+2024-09-05,South Africa,Rwanda,2,0,CAFQ2026
+2024-09-05,Algeria,Togo,3,0,CAFQ2026
 2024-09-05,Uzbekistan,North Korea,1,0,FIFA World Cup qualification
 2024-09-06,Austria,Norway,2,0,UEFAQ2026
 2024-09-06,Cabo Verde,Zambia,3,1,CAFQ2026
@@ -2984,15 +2984,15 @@ date,home_team,away_team,home_goals,away_goals,tournament
 2024-09-06,Uruguay,Paraguay,0,0,FIFA World Cup qualification
 2024-09-06,Belgium,Israel,3,1,UEFA Nations League
 2024-09-07,USA,Canada,1,2,Friendly
-2024-09-07,Curaçao,Trinidad and Tobago,2,0,CONCACAFQ
+2024-09-07,Haiti,Cuba,3,0,CONCACAFQ
 2024-09-07,Germany,Hungary,5,0,UEFA Nations League
 2024-09-07,Mexico,New Zealand,3,0,Friendly
 2024-09-07,Republic of Ireland,England,0,2,UEFA Nations League
 2024-09-07,Georgia,Czechia,4,1,UEFA Nations League
 2024-09-07,Bosnia and Herzegovina,Cyprus,3,0,UEFANationsLeague
-2024-09-07,Haiti,Cuba,3,0,CONCACAFQ
-2024-09-07,Netherlands,Bosnia and Herzegovina,5,2,UEFA Nations League
 2024-09-07,Czechia,Georgia,2,1,UEFANationsLeague
+2024-09-07,Netherlands,Bosnia and Herzegovina,5,2,UEFA Nations League
+2024-09-07,Curaçao,Trinidad and Tobago,2,0,CONCACAFQ
 2024-09-08,Switzerland,Spain,1,4,UEFA Nations League
 2024-09-08,Portugal,Scotland,2,1,UEFA Nations League
 2024-09-08,Gambia,Tunisia,1,2,African Cup of Nations qualification
@@ -3008,27 +3008,27 @@ date,home_team,away_team,home_goals,away_goals,tournament
 2024-09-09,Burundi,Senegal,0,1,African Cup of Nations qualification
 2024-09-09,Niger,Ghana,1,1,African Cup of Nations qualification
 2024-09-09,Morocco,Lesotho,1,0,African Cup of Nations qualification
-2024-09-10,Uzbekistan,UAE,2,1,AFCQ2026
-2024-09-10,Honduras,Canada,0,2,CONCACAFQ
 2024-09-10,Chile,Paraguay,2,1,CONMEBOLQ
+2024-09-10,Honduras,Canada,0,2,CONCACAFQ
+2024-09-10,Uzbekistan,UAE,2,1,AFCQ2026
 2024-09-10,Czechia,Ukraine,3,2,UEFA Nations League
-2024-09-10,Algeria,Guinea,2,0,CAFQ2026
+2024-09-10,South Africa,Benin,3,1,CAFQ2026
 2024-09-10,Netherlands,Germany,2,2,UEFA Nations League
-2024-09-10,Bolivia,Venezuela,0,1,CONMEBOLQ
+2024-09-10,Algeria,Guinea,2,0,CAFQ2026
 2024-09-10,Chad,Côte d'Ivoire,0,2,African Cup of Nations qualification
-2024-09-10,Ethiopia,Cabo Verde,0,2,CAFQ2026
+2024-09-10,Bolivia,Venezuela,0,1,CONMEBOLQ
+2024-09-10,China PR,Saudi Arabia,1,2,FIFA World Cup qualification
 2024-09-10,Jordan,India,3,0,AFCQ2026
 2024-09-10,Australia,China,2,0,AFCQ2026
-2024-09-10,Cuba,Haiti,0,2,CONCACAFQ
-2024-09-10,South Africa,Benin,3,1,CAFQ2026
-2024-09-10,Hungary,Bosnia and Herzegovina,0,0,UEFA Nations League
-2024-09-10,Iraq,Oman,2,0,AFCQ2026
-2024-09-10,Mali,Congo,4,0,CAFQ2026
-2024-09-10,Trinidad and Tobago,Curaçao,1,2,CONCACAFQ
-2024-09-10,Congo DR,Tanzania,3,0,CAFQ2026
-2024-09-10,China PR,Saudi Arabia,1,2,FIFA World Cup qualification
-2024-09-10,South Sudan,South Africa,2,3,African Cup of Nations qualification
 2024-09-10,Romania,Bosnia and Herzegovina,1,2,UEFANationsLeague
+2024-09-10,Hungary,Bosnia and Herzegovina,0,0,UEFA Nations League
+2024-09-10,Congo DR,Tanzania,3,0,CAFQ2026
+2024-09-10,Trinidad and Tobago,Curaçao,1,2,CONCACAFQ
+2024-09-10,Mali,Congo,4,0,CAFQ2026
+2024-09-10,Iraq,Oman,2,0,AFCQ2026
+2024-09-10,Ethiopia,Cabo Verde,0,2,CAFQ2026
+2024-09-10,South Sudan,South Africa,2,3,African Cup of Nations qualification
+2024-09-10,Cuba,Haiti,0,2,CONCACAFQ
 2024-09-10,Liberia,Algeria,0,3,African Cup of Nations qualification
 2024-09-10,England,Finland,2,0,UEFA Nations League
 2024-09-10,Bahrain,Japan,0,5,FIFA World Cup qualification
@@ -3064,9 +3064,8 @@ date,home_team,away_team,home_goals,away_goals,tournament
 2024-10-10,Norway,Slovenia,3,0,UEFA Nations League
 2024-10-10,Jordan,Korea Republic,0,2,FIFA World Cup qualification
 2024-10-10,Australia,China,3,1,FIFA World Cup qualification
-2024-10-10,Albania,Romania,3,0,UEFAQ2026
-2024-10-10,England,Greece,1,2,UEFA Nations League
 2024-10-10,Hungary,Germany,0,5,UEFAQ2026
+2024-10-10,England,Greece,1,2,UEFA Nations League
 2024-10-10,Austria,Slovenia,4,0,UEFAQ2026
 2024-10-10,Scotland,Croatia,1,2,UEFAQ2026
 2024-10-10,Türkiye,Wales,0,0,UEFAQ2026
@@ -3075,6 +3074,7 @@ date,home_team,away_team,home_goals,away_goals,tournament
 2024-10-10,Kyrgyzstan,Uzbekistan,0,3,AFCQ2026
 2024-10-10,Côte d'Ivoire,Comoros,3,0,CAFQ2026
 2024-10-10,Australia,China PR,3,1,FIFA World Cup qualification
+2024-10-10,Albania,Romania,3,0,UEFAQ2026
 2024-10-10,Saudi Arabia,Japan,0,2,FIFA World Cup qualification
 2024-10-10,Iraq,Palestine,1,0,FIFA World Cup qualification
 2024-10-11,Grenada,Curaçao,0,0,CONCACAF Nations League
@@ -3091,16 +3091,16 @@ date,home_team,away_team,home_goals,away_goals,tournament
 2024-10-11,Aruba,Haiti,1,3,CONCACAF Nations League
 2024-10-11,Côte d'Ivoire,Sierra Leone,4,1,African Cup of Nations qualification
 2024-10-11,Bosnia and Herzegovina,Germany,1,2,UEFA Nations League
+2024-10-11,Iraq,Qatar,2,0,AFCQ2026
 2024-10-11,Australia,Japan,0,1,AFCQ2026
 2024-10-11,Venezuela,Argentina,1,1,CONMEBOLQ
 2024-10-11,Czechia,Ukraine,2,0,UEFANationsLeague
 2024-10-11,Congo DR,Gabon,4,1,CAFQ2026
 2024-10-11,Jordan,Korea Republic,0,2,AFCQ2026
 2024-10-11,Honduras,Guatemala,2,1,CONCACAFQ
-2024-10-11,Bosnia and Herzegovina,Kosovo,2,0,UEFANationsLeague
-2024-10-11,Iraq,Qatar,2,0,AFCQ2026
-2024-10-11,Paraguay,Colombia,0,0,CONMEBOLQ
 2024-10-11,Algeria,Equatorial Guinea,5,0,CAFQ2026
+2024-10-11,Paraguay,Colombia,0,0,CONMEBOLQ
+2024-10-11,Bosnia and Herzegovina,Kosovo,2,0,UEFANationsLeague
 2024-10-12,Serbia,Switzerland,2,0,UEFA Nations League
 2024-10-12,Poland,Portugal,1,3,UEFA Nations League
 2024-10-12,USA,Panama,2,0,Friendly
@@ -3113,12 +3113,12 @@ date,home_team,away_team,home_goals,away_goals,tournament
 2024-10-14,Curaçao,Grenada,1,0,CONCACAF Nations League
 2024-10-14,Bosnia and Herzegovina,Hungary,0,2,UEFA Nations League
 2024-10-14,Estonia,Sweden,0,3,UEFA Nations League
-2024-10-14,Norway,Montenegro,3,0,UEFAQ2026
-2024-10-14,Kosovo,Bosnia and Herzegovina,0,2,UEFANationsLeague
+2024-10-14,Albania,Czechia,0,2,UEFANationsLeague
 2024-10-14,Mozambique,Cabo Verde,0,2,CAFQ2026
+2024-10-14,Kosovo,Bosnia and Herzegovina,0,2,UEFANationsLeague
 2024-10-14,Aruba,Haiti,3,5,CONCACAF Nations League
 2024-10-14,New Zealand,Malaysia,4,0,Friendly
-2024-10-14,Albania,Czechia,0,2,UEFANationsLeague
+2024-10-14,Norway,Montenegro,3,0,UEFAQ2026
 2024-10-14,Iceland,Türkiye,2,4,UEFA Nations League
 2024-10-14,Belgium,France,1,2,UEFA Nations League
 2024-10-14,Germany,Netherlands,1,0,UEFA Nations League
@@ -3151,8 +3151,7 @@ date,home_team,away_team,home_goals,away_goals,tournament
 2024-10-15,Brazil,Peru,4,0,FIFA World Cup qualification
 2024-10-15,UAE,Uzbekistan,1,2,AFCQ2026
 2024-10-15,Malawi,Senegal,0,1,African Cup of Nations qualification
-2024-11-14,Hungary,Netherlands,1,4,UEFAQ2026
-2024-11-14,Haiti,Dominican Republic,3,1,CONCACAFQ
+2024-11-14,Austria,Serbia,0,0,UEFAQ2026
 2024-11-14,Georgia,Czechia,1,3,UEFANationsLeague
 2024-11-14,Scotland,Portugal,0,0,UEFAQ2026
 2024-11-14,Uzbekistan,Kyrgyzstan,4,0,AFCQ2026
@@ -3160,7 +3159,8 @@ date,home_team,away_team,home_goals,away_goals,tournament
 2024-11-14,Albania,Slovakia,0,0,UEFAQ2026
 2024-11-14,Curaçao,Guatemala,2,1,CONCACAFQ
 2024-11-14,Norway,Moldova,4,0,UEFAQ2026
-2024-11-14,Austria,Serbia,0,0,UEFAQ2026
+2024-11-14,Haiti,Dominican Republic,3,1,CONCACAFQ
+2024-11-14,Hungary,Netherlands,1,4,UEFAQ2026
 2024-11-14,Qatar,Uzbekistan,3,2,FIFA World Cup qualification
 2024-11-14,Kuwait,Korea Republic,1,3,FIFA World Cup qualification
 2024-11-14,Madagascar,Tunisia,2,3,African Cup of Nations qualification
@@ -3203,9 +3203,9 @@ date,home_team,away_team,home_goals,away_goals,tournament
 2024-11-16,Germany,Bosnia and Herzegovina,7,0,UEFA Nations League
 2024-11-16,Sweden,Slovakia,2,1,UEFA Nations League
 2024-11-17,England,Republic of Ireland,5,0,UEFA Nations League
-2024-11-17,Ukraine,Czechia,1,2,UEFANationsLeague
-2024-11-17,Guatemala,Curaçao,0,1,CONCACAFQ
 2024-11-17,Dominican Republic,Haiti,0,3,CONCACAFQ
+2024-11-17,Guatemala,Curaçao,0,1,CONCACAFQ
+2024-11-17,Ukraine,Czechia,1,2,UEFANationsLeague
 2024-11-17,Algeria,Liberia,5,1,African Cup of Nations qualification
 2024-11-17,Norway,Kazakhstan,5,0,UEFA Nations League
 2024-11-17,Austria,Slovenia,1,1,UEFA Nations League
@@ -3272,14 +3272,14 @@ date,home_team,away_team,home_goals,away_goals,tournament
 2025-03-20,Austria,Serbia,1,1,UEFA Nations League
 2025-03-20,Netherlands,Spain,2,2,UEFA Nations League
 2025-03-20,Italy,Germany,1,2,UEFA Nations League
-2025-03-20,Curaçao,Suriname,3,0,CONCACAFQ
+2025-03-20,Saudi Arabia,China PR,1,0,FIFA World Cup qualification
 2025-03-20,Denmark,Portugal,1,0,UEFA Nations League
 2025-03-20,Croatia,France,2,0,UEFA Nations League
 2025-03-20,Haiti,Bermuda,4,0,CONCACAFQ
 2025-03-20,Canada,Mexico,0,2,CONCACAF Nations League
 2025-03-20,Paraguay,Chile,1,0,FIFA World Cup qualification
+2025-03-20,Curaçao,Suriname,3,0,CONCACAFQ
 2025-03-20,Uzbekistan,North Korea,3,0,AFCQ2026
-2025-03-20,Saudi Arabia,China PR,1,0,FIFA World Cup qualification
 2025-03-20,USA,Panama,0,1,CONCACAF Nations League
 2025-03-20,Greece,Scotland,0,1,UEFA Nations League
 2025-03-20,Korea Republic,Oman,1,1,FIFA World Cup qualification
@@ -3296,10 +3296,10 @@ date,home_team,away_team,home_goals,away_goals,tournament
 2025-03-20,Cabo Verde,Mauritius,1,0,FIFA World Cup qualification
 2025-03-20,Uzbekistan,Kyrgyzstan,1,0,FIFA World Cup qualification
 2025-03-21,Congo DR,South Sudan,1,0,FIFA World Cup qualification
-2025-03-21,Cabo Verde,Ethiopia,3,0,CAFQ2026
+2025-03-21,Côte d'Ivoire,Cameroon,2,0,CAFQ2026
 2025-03-21,Korea Republic,Australia,1,0,AFCQ2026
 2025-03-21,Jordan,Iraq,1,1,AFCQ2026
-2025-03-21,Norway,Azerbaijan,3,0,UEFAQ2026
+2025-03-21,Cabo Verde,Ethiopia,3,0,CAFQ2026
 2025-03-21,Saudi Arabia,Bahrain,3,0,AFCQ2026
 2025-03-21,Northern Ireland,Switzerland,1,1,Friendly
 2025-03-21,New Zealand,Fiji,7,0,FIFA World Cup qualification
@@ -3313,7 +3313,7 @@ date,home_team,away_team,home_goals,away_goals,tournament
 2025-03-21,Botswana,Algeria,1,3,FIFA World Cup qualification
 2025-03-21,Burundi,Côte d'Ivoire,0,1,FIFA World Cup qualification
 2025-03-21,Ecuador,Venezuela,2,1,FIFA World Cup qualification
-2025-03-21,Côte d'Ivoire,Cameroon,2,0,CAFQ2026
+2025-03-21,Norway,Azerbaijan,3,0,UEFAQ2026
 2025-03-22,Azerbaijan,Haiti,0,3,Friendly
 2025-03-22,Luxembourg,Sweden,1,0,Friendly
 2025-03-22,Sudan,Senegal,0,0,FIFA World Cup qualification
@@ -3335,9 +3335,9 @@ date,home_team,away_team,home_goals,away_goals,tournament
 2025-03-24,Madagascar,Ghana,0,3,FIFA World Cup qualification
 2025-03-24,Bosnia and Herzegovina,Cyprus,2,1,FIFA World Cup qualification
 2025-03-24,England,Latvia,3,0,FIFA World Cup qualification
-2025-03-25,Australia,Korea Republic,1,1,AFCQ2026
-2025-03-25,Algeria,Madagascar,3,0,CAFQ2026
-2025-03-25,Zambia,Cabo Verde,1,2,CAFQ2026
+2025-03-25,Comoros,Côte d'Ivoire,0,3,CAFQ2026
+2025-03-25,Paraguay,Brazil,1,4,CONMEBOLQ
+2025-03-25,Venezuela,Uruguay,0,2,CONMEBOLQ
 2025-03-25,Gibraltar,Czechia,0,4,FIFA World Cup qualification
 2025-03-25,Israel,Norway,2,4,FIFA World Cup qualification
 2025-03-25,Kyrgyzstan,Qatar,3,1,FIFA World Cup qualification
@@ -3345,10 +3345,10 @@ date,home_team,away_team,home_goals,away_goals,tournament
 2025-03-25,Angola,Cabo Verde,1,2,FIFA World Cup qualification
 2025-03-25,Benin,South Africa,0,2,FIFA World Cup qualification
 2025-03-25,Senegal,Togo,2,0,FIFA World Cup qualification
-2025-03-25,UAE,Uzbekistan,0,2,AFCQ2026
+2025-03-25,Congo DR,Ethiopia,5,0,CAFQ2026
 2025-03-25,Algeria,Mozambique,5,1,FIFA World Cup qualification
 2025-03-25,Mauritania,Congo DR,0,2,FIFA World Cup qualification
-2025-03-25,Kazakhstan,Norway,0,4,UEFAQ2026
+2025-03-25,Iraq,Jordan,0,0,AFCQ2026
 2025-03-25,Bermuda,Haiti,0,3,CONCACAFQ
 2025-03-25,Sweden,Northern Ireland,5,1,Friendly
 2025-03-25,China,Australia,0,2,FIFA World Cup qualification
@@ -3362,11 +3362,11 @@ date,home_team,away_team,home_goals,away_goals,tournament
 2025-03-25,Japan,Saudi Arabia,0,0,FIFA World Cup qualification
 2025-03-25,Morocco,Tanzania,2,0,FIFA World Cup qualification
 2025-03-25,Egypt,Sierra Leone,1,0,FIFA World Cup qualification
-2025-03-25,Iraq,Jordan,0,0,AFCQ2026
-2025-03-25,Congo DR,Ethiopia,5,0,CAFQ2026
-2025-03-25,Comoros,Côte d'Ivoire,0,3,CAFQ2026
-2025-03-25,Paraguay,Brazil,1,4,CONMEBOLQ
-2025-03-25,Venezuela,Uruguay,0,2,CONMEBOLQ
+2025-03-25,Australia,Korea Republic,1,1,AFCQ2026
+2025-03-25,Algeria,Madagascar,3,0,CAFQ2026
+2025-03-25,Zambia,Cabo Verde,1,2,CAFQ2026
+2025-03-25,UAE,Uzbekistan,0,2,AFCQ2026
+2025-03-25,Kazakhstan,Norway,0,4,UEFAQ2026
 2025-03-25,Switzerland,Luxembourg,3,1,Friendly
 2025-05-28,Nigeria,Ghana,2,1,Unity Cup
 2025-05-29,Malaysia,Cabo Verde,1,1,Friendly
